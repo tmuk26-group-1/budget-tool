@@ -13,4 +13,5 @@
 ## Declaration
 
 I, Albin Törnberg, declare that I am the sole author of the content I add to this repository.  
-I, Simon Rignell, declare that I am the sole author of the content I add to this repository.
+I, Simon Rignell, declare that I am the sole author of the content I add to this repository.  
+I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  

@@ -1,0 +1,19 @@
+# Python cache (Python will generate these automatically)
+__pycache__/
+*.pyc
+
+# Virtual environment (if anyone creates a virtual environment, it must stay local)
+venv/
+.env/
+.venv/
+
+# OS files (created randomly by macOS and Windows. they're useless)
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Logs (if programs prints logs, they shouldn't be committed)
+*.log
