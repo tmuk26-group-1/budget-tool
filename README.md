@@ -33,7 +33,15 @@ The system will follow a clean separation between frontend, backend, and data la
 - __HTML__ for frontend.
 
 ## Workflow
-To be decided...
+Work devided into three teams:  
+- Team 1 __FRONTEND__ : Jafar and Vasilis  
+    Decide on the look of the webbapplication and the user interface.
+- Team 2 __BACKEND__  : Gresa and Ellen  
+    Implement the logic behind the application. This is the bridge between the fronend nd the database.
+- Team 3 __DATABASE__ : Albin and Simon  
+    Implement the part of storing users, budgets and expenses.  
+
+__COMMUNICATION IS KEY__
 
 ## Members
 
