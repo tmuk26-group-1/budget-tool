@@ -22,10 +22,10 @@ Future milestones may include:
 - saving goals.
 
 ## How will it work?
-The __frontend__ will provide pages for login, dashboard, and expense entry.
-The __backend__ will expose routes for authentication, budget managment, and expense handling.
-The __database__ will store users, budgets, and expenses.
-The system will follow a clean separation between frontend, backend, and data layers.
+The __frontend__ will provide pages for login, dashboard, and expense entry.  
+The __backend__ will expose routes for authentication, budget managment, and expense handling.  
+The __database__ will store users, budgets, and expenses.  
+The system will follow a clean separation between frontend, backend, and data layers.  
 
 ## Technology Choices
 - __Pyhton__ for backend
@@ -51,9 +51,9 @@ To be decided...
 I, __Albin Törnberg__, declare that I am the sole author of the content I add to this repository.  
 I, __Simon Rignell__, declare that I am the sole author of the content I add to this repository.  
 I, __Vasilis Segersköld__, declare that I am the sole author of the content I add to this repository.  
-I, __Gresa Hoxha__, declare that I am the sole author of the content I add to this repository.
-I, __Jafar Gohari__, declare that I am the sole author of the content I add to this repository.
-I, __Ellen Pennebratt__, declare that I am the sole author of the content I add to this repository.
+I, __Gresa Hoxha__, declare that I am the sole author of the content I add to this repository.  
+I, __Jafar Gohari__, declare that I am the sole author of the content I add to this repository.  
+I, __Ellen Pennebratt__, declare that I am the sole author of the content I add to this repository.  
 
 
 This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engeneering practices taught in the lectures.
