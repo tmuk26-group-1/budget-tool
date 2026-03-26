@@ -1,4 +1,5 @@
 ## Budget Tool
+BudgetBuddy (?) is a webapplication budgeting tool designed to help users track income, expenses, and monthly budgets.
 
 
 
@@ -17,3 +18,6 @@ I, Albin Törnberg, declare that I am the sole author of the content I add to th
 I, Simon Rignell, declare that I am the sole author of the content I add to this repository.  
 I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  
 I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.
+
+
+
