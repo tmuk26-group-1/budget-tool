@@ -17,10 +17,10 @@ BudgetBuddy (?) is a webapplication budgeting tool designed to help users track 
 I, Albin Törnberg, declare that I am the sole author of the content I add to this repository.  
 I, Simon Rignell, declare that I am the sole author of the content I add to this repository.  
 I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  
-I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.
+I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.  
 I, Jafar Gohari, declare that I am the sole author of the content I add to this repository.
 
 
 
 This project is developed in the Mjukvaruutveckling course.
->>>>>>> 9f3ece76a6f6efc56e2aec1d80cbe57b46b5de3b
+
