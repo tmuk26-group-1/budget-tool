@@ -57,3 +57,19 @@ I, __Ellen Pennebratt__, declare that I am the sole author of the content I add 
 
 
 This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engeneering practices taught in the lectures.
+<<<<<<< HEAD
+=======
+=======
+I, Albin Törnberg, declare that I am the sole author of the content I add to this repository.  
+I, Simon Rignell, declare that I am the sole author of the content I add to this repository.  
+I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  
+I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.  
+I, Jafar Gohari, declare that I am the sole author of the content I add to this repository.  
+I, Ellen Pennebratt, declare that I am the sole author of the content I add to this repository.
+
+
+
+This project is developed in the Mjukvaruutveckling course.
+
+>>>>>>> 2dad761267d08930abff44a6243d17dbb26ff57e
+>>>>>>> 9a0e691c29d2a92cda520c39f69bd26a31846b8d
