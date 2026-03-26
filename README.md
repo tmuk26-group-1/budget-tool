@@ -47,6 +47,7 @@ To be decided...
 
 ## Declaration
 
+<<<<<<< HEAD
 I, __Albin Törnberg__, declare that I am the sole author of the content I add to this repository.  
 I, __Simon Rignell__, declare that I am the sole author of the content I add to this repository.  
 I, __Vasilis Segersköld__, declare that I am the sole author of the content I add to this repository.  
@@ -55,3 +56,15 @@ I, __Gresa Hoxha__, declare that I am the sole author of the content I add to th
 
 
 This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engeneering practices taught in the lectures.
+=======
+I, Albin Törnberg, declare that I am the sole author of the content I add to this repository.  
+I, Simon Rignell, declare that I am the sole author of the content I add to this repository.  
+I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  
+I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.  
+I, Jafar Gohari, declare that I am the sole author of the content I add to this repository.
+
+
+
+This project is developed in the Mjukvaruutveckling course.
+
+>>>>>>> 2dad761267d08930abff44a6243d17dbb26ff57e
