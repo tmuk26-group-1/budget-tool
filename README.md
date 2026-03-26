@@ -24,6 +24,5 @@ I, Ellen Pennebratt, declare that I am the sole author of the content I add to t
 
 
 
-
 This project is developed in the Mjukvaruutveckling course.
 >>>>>>> 9f3ece76a6f6efc56e2aec1d80cbe57b46b5de3b
