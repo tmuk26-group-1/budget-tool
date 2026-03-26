@@ -12,6 +12,7 @@ BudgetBuddy (?) is a webapplication budgeting tool designed to help users track 
 | Simon Rignell      | risi23vx@student.ju.se | llengiR         |
 | Gresa Hoxha        | hogr24bj@student.ju.se | hogr24bj        |
 | Jafar Gohari       | goja23ll@student.ju.se | jafgo0          |
+| Ellen Pennebratt   | peel24jb@student.ju.se | peel24jb        |
 ## Declaration
 
 I, Albin Törnberg, declare that I am the sole author of the content I add to this repository.  
@@ -19,6 +20,8 @@ I, Simon Rignell, declare that I am the sole author of the content I add to this
 I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  
 I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.
 I, Jafar Gohari, declare that I am the sole author of the content I add to this repository.
+I, Ellen Pennebratt, declare that I am the sole author of the content I add to this repository.
+
 
 
 
