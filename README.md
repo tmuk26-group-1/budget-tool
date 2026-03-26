@@ -19,7 +19,7 @@ I, Albin Törnberg, declare that I am the sole author of the content I add to th
 I, Simon Rignell, declare that I am the sole author of the content I add to this repository.  
 I, Vasilis Segersköld, declare that I am the sole author of the content I add to this repository.  
 I, Gresa Hoxha, declare that I am the sole author of the content I add to this repository.  
-I, Jafar Gohari, declare that I am the sole author of the content I add to this repository.
+I, Jafar Gohari, declare that I am the sole author of the content I add to this repository.  
 I, Ellen Pennebratt, declare that I am the sole author of the content I add to this repository.
 
 
