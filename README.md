@@ -21,3 +21,4 @@ I, Gresa Hoxha, declare that I am the sole author of the content I add to this r
 
 
 
+This project is developed in the Mjukvaruutveckling course.
