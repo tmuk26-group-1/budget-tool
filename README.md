@@ -28,7 +28,7 @@ The __database__ will store users, budgets, and expenses.
 The system will follow a clean separation between frontend, backend, and data layers.  
 
 ## Technology Choices
-- __Pyhton__ for backend
+- __Python__ for backend
 - __Flask__ as the web framework
 - __HTML__ for frontend.
 
