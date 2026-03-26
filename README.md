@@ -10,7 +10,7 @@
 | Vasilis Segersköld | phva23yl@student.ju.se | Glimba          |
 | Simon Rignell      | risi23vx@student.ju.se | llengiR         |
 | Gresa Hoxha        | hogr24bj@student.ju.se | hogr24bj        |
-
+| Jafar Gohari       | goja23ll@student.ju.se | jafgo0          |
 ## Declaration
 
 I, Albin Törnberg, declare that I am the sole author of the content I add to this repository.  
