@@ -23,21 +23,23 @@ Future milestones may include:
 
 ## How will it work?
 The __frontend__ will provide pages for login, dashboard, and expense entry.  
-The __backend__ will expose routes for authentication, budget managment, and expense handling.  
+The __backend__ will expose routes for authentication, budget management, and expense handling.  
 The __database__ will store users, budgets, and expenses.  
 The system will follow a clean separation between frontend, backend, and data layers.  
 
 ## Technology Choices
 - __Python__ for backend
 - __Flask__ as the web framework
-- __HTML__ for frontend.
+- __Jinja2__ templating engine (bundled with Flask)
+- __HTML/CSS__ for frontend structure and styling
+- __Javascript__ frontend interactivity
 
 ## Workflow
-Work devided into three teams:  
+Work divided into three teams:  
 - Team 1 __FRONTEND__ : Jafar and Vasilis  
     Decide on the look of the webbapplication and the user interface.
 - Team 2 __BACKEND__  : Gresa and Ellen  
-    Implement the logic behind the application. This is the bridge between the fronend nd the database.
+    Implement the logic behind the application. This is the bridge between the frontend and the database.
 - Team 3 __DATABASE__ : Albin and Simon  
     Implement the part of storing users, budgets and expenses.  
 
@@ -49,7 +51,7 @@ https://github.com/orgs/tmuk26-group-1/projects/2
 
 ## Project Structure Overview
 The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
-- _app.py_ - main application file (__BACKEND__). This will ater intialize Flask, register routes, connect to the database, and start the server.
+- _app.py_ - main application file (__BACKEND__). This will later intialize Flask, register routes, connect to the database, and start the server.
 - _requirements.txt_ - Lists all Python dependencies (currently only Flask).
 - _templates/_ - Contains all HTML pages (__FRONTEND__).
     - _base.html_ is the shared layout.
@@ -62,6 +64,14 @@ This structure forms the foundation of the BudgetBuddy web application and allow
 
 ## How to run the project  
 To be added...  
+
+<!-- Adding this as a comment for now (virtual environment setup):
+1. Clone the repository
+2. Create a virtual environment: `python -m venv venv`
+3. Activate it: `source venv/bin/activate` (Mac/Linux) or `venv\Scripts\activate` (Windows)
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run the app: `flask run`
+6. Open `http://localhost:5000` in your browser -->
 
 ## Members
 
