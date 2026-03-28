@@ -57,6 +57,7 @@ The project follows a standard Flask layout to keep frontend, backend, and futur
 - _static/_ - Stores CDD, images, and other static files (__FRONTEND__).
     - _styles.css_ will hold the app's styling.
 - Nothing is created yet for the __DATABASE__, that will come once the basic Flask app is running.  
+
 This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
 
 ## How to run the project  
