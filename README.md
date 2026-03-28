@@ -43,6 +43,25 @@ Work devided into three teams:
 
 __COMMUNICATION IS KEY__
 
+## Kanban Board  
+We track our workflow using a GitHub Project KanBan Board:  
+https://github.com/orgs/tmuk26-group-1/projects/2
+
+## Project Structure Overview
+The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
+- _app.py_ - main application file (__BACKEND__). This will ater intialize Flask, register routes, connect to the database, and start the server.
+- _requirements.txt_ - Lists all Python dependencies (currently only Flask).
+- _templates/_ - Contains all HTML pages (__FRONTEND__).
+    - _base.html_ is the shared layout.
+    - _login-html_ and dashboard.html will become real pages later.
+- _static/_ - Stores CDD, images, and other static files (__FRONTEND__).
+    - _styles.css_ will hold the app's styling.
+- Nothing is created yet for the __DATABASE__, that will come once the basic Flask app is running.  
+This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
+
+## How to run the project  
+To be added...  
+
 ## Members
 
 | Name               | JU Email               | GitHub Username |
