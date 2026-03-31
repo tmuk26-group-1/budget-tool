@@ -67,8 +67,10 @@ To be added...
 
 <!-- Adding this as a comment for now (virtual environment setup):
 1. Clone the repository
-2. Create a virtual environment: `python -m venv venv`
-3. Activate it: `source venv/bin/activate` (Mac/Linux) or `venv\Scripts\activate` (Windows)
+2. Create a virtual environment: `python -m venv .venv`
+3. Activate it:
+    - Mac/Linux: `source .venv/bin/activate`
+    - Windows: `.venv\Scripts\activate`
 4. Install dependencies: `pip install -r requirements.txt`
 5. Run the app: `flask run`
 6. Open `http://localhost:5000` in your browser -->
