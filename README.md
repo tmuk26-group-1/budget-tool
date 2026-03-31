@@ -5,6 +5,8 @@ BudgetBuddy is a webapplication budgeting tool designed to help users track inco
 - View summaries of spending,
 - Track remaining budget,
 - Visualize spending patterns.
+-  DETTTA SKA VI REVERTA HÖNI
+
 
 ## Project plan (Draft)
 The first version of BudgetBuddy will include:
