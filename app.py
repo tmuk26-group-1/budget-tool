@@ -1,2 +1,13 @@
 # BudgetBuddy main application file
-# Flask setup will be added in the next step.
+
+from flask import Flask
+
+app = Flask(__name__)
+
+##home
+@app.route("/")
+def home():
+    return "BudgetBuddy backend is running! :)"
+
+if __name__ == "__main__":
+    app.run(debug=True)
