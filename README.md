@@ -55,7 +55,9 @@ The project follows a standard Flask layout to keep frontend, backend, and futur
 - _requirements.txt_ - Lists all Python dependencies (currently only Flask).
 - _templates/_ - Contains all HTML pages (__FRONTEND__).
     - _base.html_ is the shared layout.
-    - _login-html_ and dashboard.html will become real pages later.
+    - _login.html_ the index page where login happens
+    - _dashboard.html_ will become real page later.
+    - _registration.html the page for registration
 - _static/_ - Stores CDD, images, and other static files (__FRONTEND__).
     - _styles.css_ will hold the app's styling.
 - Nothing is created yet for the __DATABASE__, that will come once the basic Flask app is running.  
@@ -63,9 +65,7 @@ The project follows a standard Flask layout to keep frontend, backend, and futur
 This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
 
 ## How to run the project  
-To be added...  
-
-<!-- Adding this as a comment for now (virtual environment setup):
+Virtual environment setup:
 1. Clone the repository
 2. Create a virtual environment: `python -m venv .venv`
 3. Activate it:
@@ -73,7 +73,7 @@ To be added...
     - Windows: `.venv\Scripts\activate`
 4. Install dependencies: `pip install -r requirements.txt`
 5. Run the app: `flask run`
-6. Open `http://localhost:5000` in your browser -->
+6. Open `http://localhost:5000` in your browser
 
 ## Members
 
