@@ -1,6 +1,7 @@
 # Python cache (Python will generate these automatically)
 __pycache__/
 *.pyc
+*.pyo
 
 # Virtual environment (if anyone creates a virtual environment, it must stay local)
 venv/
@@ -10,6 +11,7 @@ venv/
 # OS files (created randomly by macOS and Windows. they're useless)
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Editor settings
 .vscode/
