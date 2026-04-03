@@ -1,4 +1,5 @@
 from db.crud import create_user, get_users
+from db.database import init_db
 
 def print_users():
     users = get_users()
@@ -26,6 +27,7 @@ def menu():
     print("0. Exit")
 
 def main():
+    init_db()
     while True:
         menu()
         choice = input("Select option: ")
