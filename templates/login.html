@@ -1,29 +1,32 @@
+{% extends "base.html" %}
 
-<div class="login-container">
+{% block content %}
+    <div class="login-container">
 
-    <form class="login-box">
-        <h1>Login</h1>
+        <form class="login-box">
+            <h1>Login</h1>
 
-        <div class="input-group">
-            <input type="email" placeholder="Email" required>
-        </div>
+            <div class="input-group">
+                <input type="email" placeholder="Email" required>
+            </div>
 
-        <div class="input-group">
-            <input type="password" placeholder="Password" required>
-        </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" required>
+            </div>
 
-        <div class="option-group">
-            <label>
-                <input type ="checkbox"> remember me
-            </label>
-            <a href="#">forgot password?</a>
-        </div>
+            <div class="option-group">
+                <label>
+                    <input type ="checkbox"> remember me
+                </label>
+                <a href="#">forgot password?</a>
+            </div>
 
-        <button type="submit" class="login-button">Login </button>
+            <button type="submit" class="login-button">Login </button>
 
-        <p class="register-text">Don't have an account?
-            <a href="#">Register</a>
-        </p>
-    </form>
-</div>
+            <p class="register-text">Don't have an account?
+                <a href="#">Register</a>
+            </p>
+        </form>
+    </div>
 
+{% endblock %}
