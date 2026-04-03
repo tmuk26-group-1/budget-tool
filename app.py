@@ -1,16 +1,15 @@
 # BudgetBuddy main application file
 
 from flask import Flask, request, jsonify
-from db.crud import create_user
-from db.crud import get_users
-from db.database import init_db
+from db.crud import create_user, get_users
+# from db.database import init_db
 
 
 app = Flask(__name__)
 
 
 # initialize databse tables
-init_db()
+# init_db()
 
 
 # home
