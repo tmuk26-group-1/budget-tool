@@ -1,4 +1,5 @@
 # BudgetBuddy main application file
+# Hello from database
 
 from flask import Flask
 from db.database import init_db
