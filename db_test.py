@@ -17,8 +17,12 @@ def add_user():
     username = input("Username: ")
     password = input("Password: ")
 
-    create_user(email, firstname, lastname, username, password)
-    print("User created.\n")
+    success, result = create_user(email, firstname, lastname, username, password)
+    
+    if success:
+        print("\nUser created.")
+    else:
+        print(f"\nError: {result}")
 
 def menu():
     print("\n--- BudgetBuddy DB Test ---")
