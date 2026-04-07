@@ -1,6 +1,6 @@
 # BudgetBuddy main application file
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from db.crud import create_user, get_users
 from db.database import init_db
 
@@ -8,14 +8,22 @@ from db.database import init_db
 app = Flask(__name__)
 
 
-# initialize databse tables
+# initialize database tables
 init_db()
 
 
-# home
+# home is login page
 @app.route("/")
 def home():
-    return "BudgetBuddy backend is running! :)"
+    return render_template("login.html")
+
+@app.route("/login", methods=["POST"])
+def login_post():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    print("Recieved login:", email, password)
+    return "Login form received!"
 
 
 # register

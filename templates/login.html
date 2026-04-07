@@ -1,15 +1,18 @@
 
 <div class="login-container">
-
-    <form class="login-box">
+<!-- lagt till method="POST" for att login ska kunna SKICKA data -->
+<!-- lagt till action="/login" för att login ska vet VART den ska skicka datan -->
+    <form class="login-box" method="POST" action="/login">
         <h1>Login</h1>
 
+        <!--lagt till name="email" annars kan inte backend se email -->
         <div class="input-group">
-            <input type="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required>
         </div>
 
+        <!--lagt till name="password" annars kan inte backend se password -->
         <div class="input-group">
-            <input type="password" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Password" required>
         </div>
 
         <div class="option-group">
