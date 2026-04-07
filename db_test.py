@@ -1,5 +1,6 @@
-from db.crud import create_user, get_users
+from db.crud import create_user, get_users, create_transaction, get_transaction
 from db.database import init_db
+from datetime import date as Date
 
 def print_users():
     users = get_users()
@@ -28,7 +29,29 @@ def menu():
     print("\n--- BudgetBuddy DB Test ---")
     print("1. Show users")
     print("2. Add user")
+    print("3. Add transaction")
+    print("4. Show transactions")
     print("0. Exit")
+
+def add_transaction():
+    user_id = input("User ID: ")
+    amount = input("Amount: ")
+    category_name = input("Category: ")
+    date_input = input("Date (YYYY-MM-DD): ")
+    date = Date.fromisoformat(date_input)
+    description = input("Description (optional): ")
+
+    create_transaction(user_id, amount, category_name, date, description or None)
+    print("Transaction created.\n")
+
+def print_transactions():
+    user_id = input("User ID: ")
+    transactions = get_transaction(user_id)
+    if not transactions:
+        print("No transactions found")
+        return
+    for t in transactions:
+        print({k: v for k, v in vars(t).items() if not k.startswith("_")})
 
 def main():
     init_db()
@@ -44,6 +67,12 @@ def main():
             print()
             add_user()
 
+        elif choice == "3":
+            add_transaction()
+
+        elif choice == "4":
+            print_transactions()
+
         elif choice == "0":
             print("\nExiting...")
             break
@@ -54,3 +83,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+

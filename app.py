@@ -1,4 +1,5 @@
 # BudgetBuddy main application file
+# Hello from main
 # Hello from database
 
 from flask import Flask
