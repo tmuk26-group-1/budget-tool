@@ -3,6 +3,8 @@
 from flask import Flask, request, jsonify, render_template
 from db.crud import create_user, get_users
 from db.database import init_db
+from flask import Flask, request, jsonify, render_template, redirect, url_for
+
 
 
 app = Flask(__name__)
@@ -11,11 +13,17 @@ app = Flask(__name__)
 # initialize database tables
 init_db()
 
+# dashboard
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
 
 # home is login page
 @app.route("/")
 def home():
     return render_template("login.html")
+
 
 @app.route("/login", methods=["POST"])
 def login_post():
@@ -23,7 +31,7 @@ def login_post():
     password = request.form.get("password")
 
     print("Recieved login:", email, password)
-    return "Login form received!"
+    return redirect (url_for("dashboard"))
 
 
 # register
