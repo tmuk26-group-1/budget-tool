@@ -4,10 +4,12 @@ from flask import Flask, request, jsonify, render_template
 from db.crud import create_user, get_users
 from db.database import init_db
 from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 
 
 
 app = Flask(__name__)
+app.secret_key = "super-secret-key"
 
 
 # initialize database tables
@@ -16,6 +18,7 @@ init_db()
 # dashboard
 @app.route("/dashboard")
 def dashboard():
+    user_id = session.get("user_id")
     return render_template("dashboard.html")
 
 
@@ -31,6 +34,10 @@ def login_post():
     password = request.form.get("password")
 
     print("Recieved login:", email, password)
+
+    # simulate a logged in user
+    session["user_id"] = 1
+
     return redirect (url_for("dashboard"))
 
 
