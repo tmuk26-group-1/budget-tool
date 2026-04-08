@@ -1,11 +1,8 @@
 # BudgetBuddy main application file
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users
 from db.database import init_db
-from flask import Flask, request, jsonify, render_template, redirect, url_for
-from flask import Flask, request, jsonify, render_template, redirect, url_for, session
-
 
 
 app = Flask(__name__)
