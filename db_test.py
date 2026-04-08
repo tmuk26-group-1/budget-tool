@@ -1,4 +1,4 @@
-from db.crud import create_user, get_users, create_transaction, get_transaction
+from db.crud import create_user, get_users, create_transaction, get_transaction, create_category, get_category
 from db.database import init_db
 from datetime import date as Date
 
@@ -31,6 +31,8 @@ def menu():
     print("2. Add user")
     print("3. Add transaction")
     print("4. Show transactions")
+    print("5. Add category")
+    print("6. Show categories")
     print("0. Exit")
 
 def add_transaction():
@@ -53,6 +55,20 @@ def print_transactions():
     for t in transactions:
         print({k: v for k, v in vars(t).items() if not k.startswith("_")})
 
+def add_category():
+    name = input("Category name: ")
+    create_category(name)
+    print("Category created.\n")
+
+
+def print_categories():
+    categories = get_category()
+    if not categories:
+        print("No categories found.")
+        return
+    for c in categories:
+        print({k: v for k, v in vars(c).items() if not k.startswith("_")})
+
 def main():
     init_db()
     while True:
@@ -72,6 +88,12 @@ def main():
 
         elif choice == "4":
             print_transactions()
+
+        elif choice == "5":
+            add_category()
+
+        elif choice == "6":
+            print_categories()
 
         elif choice == "0":
             print("\nExiting...")
