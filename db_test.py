@@ -1,4 +1,4 @@
-from db.crud import create_user, get_users, create_transaction, get_transaction, create_category
+from db.crud import create_user, get_users, create_transaction, get_transaction, create_category, get_category
 from db.database import init_db
 from datetime import date as Date
 
@@ -58,7 +58,7 @@ def add_category():
 
 
 def print_categories():
-    categories = create_category()
+    categories = get_category()
     if not categories:
         print("No categories found.")
         return
