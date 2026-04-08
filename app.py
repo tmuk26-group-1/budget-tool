@@ -5,7 +5,6 @@
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users
-from flask import Flask
 from db.database import init_db
 
 app = Flask(__name__)
