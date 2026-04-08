@@ -60,7 +60,12 @@ The project follows a standard Flask layout to keep frontend, backend, and futur
     - _registration.html the page for registration
 - _static/_ - Stores CDD, images, and other static files (__FRONTEND__).
     - _styles.css_ will hold the app's styling.
-- Nothing is created yet for the __DATABASE__, that will come once the basic Flask app is running.  
+- *db/* - Contains all database logic (**DATABASE**).
+  - *database.py* sets up the SQLite database connection and initializes tables.
+  - *models.py* defines the database tables as SQLAlchemy ORM classes (currently: User).
+  - *crud.py* contains functions to create and retrieve data (currently: create_user, get_users).
+- *db_test.py* - CLI tool for testing the database directly without running the web app.
+
 
 This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
 

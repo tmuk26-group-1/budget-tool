@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-from .database import engine, Base
-from .models import User
+# from .database import engine, Base
+# from .models import User
+from sqlalchemy.orm import declarative_base, sessionmaker, relationship 
 
 DATABASE_URL = "sqlite:///db/budget.db"
 
