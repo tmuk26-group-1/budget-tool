@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 
 <div class="login-container">
 <!-- lagt till method="POST" for att login ska kunna SKICKA data -->
@@ -14,19 +15,33 @@
         <div class="input-group">
             <input type="password" name="password" placeholder="Password" required>
         </div>
+{% block content %}
+    <div class="login-container">
 
-        <div class="option-group">
-            <label>
-                <input type ="checkbox"> remember me
-            </label>
-            <a href="#">forgot password?</a>
-        </div>
+        <form class="login-box">
+            <h1>Login</h1>
 
-        <button type="submit" class="login-button">Login </button>
+            <div class="input-group">
+                <input type="email" placeholder="Email" required>
+            </div>
 
-        <p class="register-text">Don't have an account?
-            <a href="#">Register</a>
-        </p>
-    </form>
-</div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" required>
+            </div>
 
+            <div class="option-group">
+                <label>
+                    <input type ="checkbox"> remember me
+                </label>
+                <a href="#">forgot password?</a>
+            </div>
+
+            <button type="submit" class="login-button">Login </button>
+
+            <p class="register-text">Don't have an account?
+                <a href="#">Register</a>
+            </p>
+        </form>
+    </div>
+
+{% endblock %}

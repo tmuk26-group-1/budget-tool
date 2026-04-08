@@ -19,3 +19,6 @@ desktop.ini
 
 # Logs (if programs prints logs, they shouldn't be committed)
 *.log
+
+# Database file (temporarily)
+db/budget.db
