@@ -34,7 +34,7 @@ def login_post():
     password = request.form.get("password")
 
     print("Recieved login:", email, password)
-
+    
     # simulate a logged in user
     session["user_id"] = 1
 
