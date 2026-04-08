@@ -62,6 +62,13 @@ def create_category(name):
         cat = category(name=name)
         session.add(cat)
         session.commit()
+    
+    except IntegrityError as e:
+        session.rollback()
+        if "name" in str(e.orig):
+            return False, "Category already exists"
+        return False, "Database constraint violation"   # fallback 
+
     finally:
         session.close()
 
