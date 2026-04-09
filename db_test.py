@@ -22,7 +22,6 @@ def print_users():
     users = get_users()
     if not users:
         print("\nNo users found.")
-        return
 
     for user in users:
         print({k: v for k, v in vars(user).items() if not k.startswith("_")})
@@ -64,7 +63,6 @@ def print_categories():
     categories = get_category()
     if not categories:
         print("\nNo categories found.")
-        return
     for c in categories:
         print({k: v for k, v in vars(c).items() if not k.startswith("_")})
 
