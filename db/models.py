@@ -21,7 +21,7 @@ class Transaction(Base):
     __tablename__ = "Transactions"
 
     transaction_id = Column(Integer, primary_key=True) 
-    user_id = Column(Integer, ForeignKey("users.user_id"), nullable = False)
+    user_id = Column(Integer, ForeignKey("Users.user_id"), nullable = False)
     amount = Column(Integer, nullable = False)
     category_name = Column(String, nullable = False)
     date = Column(Date, nullable = False)
