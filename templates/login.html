@@ -1,9 +1,12 @@
 {% extends "base.html" %}
-
-<div class="login-container">
-<!-- lagt till method="POST" for att login ska kunna SKICKA data -->
-<!-- lagt till action="/login" för att login ska vet VART den ska skicka datan -->
-    <form class="login-box" method="POST" action="/login">
+ 
+{% block content %}
+    
+        <div class="login-container">
+        <!-- lagt till method="POST" for att login ska kunna SKICKA data -->
+        <!-- lagt till action="/login" för att login ska vet VART den ska skicka datan -->
+        <img src="grr.png" alt="Vårt projekts snygga logotyp">
+        <form class="login-box" method="POST" action="/login">
         <h1>Login</h1>
 
         <!--lagt till name="email" annars kan inte backend se email -->
@@ -15,19 +18,6 @@
         <div class="input-group">
             <input type="password" name="password" placeholder="Password" required>
         </div>
-{% block content %}
-    <div class="login-container">
-
-        <form class="login-box">
-            <h1>Login</h1>
-
-            <div class="input-group">
-                <input type="email" placeholder="Email" required>
-            </div>
-
-            <div class="input-group">
-                <input type="password" placeholder="Password" required>
-            </div>
 
             <div class="option-group">
                 <label>
