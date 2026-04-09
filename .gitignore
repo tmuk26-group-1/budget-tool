@@ -22,3 +22,4 @@ desktop.ini
 
 # Database file (temporarily)
 db/budget.db
+*.db
