@@ -54,12 +54,14 @@ def create_transaction(user_id, amount, category_name, date, description = None)
     finally:
         session.close()
 
+
 def get_transaction(user_id):
     session = SessionLocal()
     try:
         return session.query(transactions).filter(transactions.user_id == user_id).all()
     finally:
         session.close()
+
 
 def create_category(name):
     session = SessionLocal()
@@ -78,6 +80,7 @@ def create_category(name):
 
     finally:
         session.close()
+
 
 def get_category():
     session = SessionLocal()
