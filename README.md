@@ -72,10 +72,10 @@ This structure forms the foundation of the BudgetBuddy web application and allow
 ## How to run the project  
 Virtual environment setup:
 1. Clone the repository (skip this if you already have the repo locally): https://github.com/tmuk26-group-1/budget-tool
-2. Create a virtual environment (only needed once per machine): `python -m venv venv`
+2. Create a virtual environment (only needed once per machine): `python -m venv .venv`
 3. Activate the virtual environment (do this every time you start working (you'll know it's active when you see '(venv)' at the start of your terminal prompt)):
-    - Mac/Linux: `source venv/bin/activate`
-    - Windows: `venv\Scripts\activate`
+    - Mac/Linux: `source .venv/bin/activate`
+    - Windows: `.venv\Scripts\activate`
 4. Install dependencies (installs exact package versions from requirements.txt): `pip install -r requirements.txt`
 5. Run the app: `flask run`
 6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
