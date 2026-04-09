@@ -86,8 +86,3 @@ def get_category():
         return session.query(category).all()
     finally:
         session.close()
-
-
-
-    
-    
