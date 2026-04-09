@@ -7,7 +7,7 @@ class User(Base):
     ID, email, username must be unique  
     No fields left blank
     '''
-    __tablename__ = "users"
+    __tablename__ = "Users"
 
     user_id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, nullable=False)
@@ -17,7 +17,7 @@ class User(Base):
     password = Column(String, nullable=False)
 
 
-class transactions(Base):
+class Transaction(Base):
     __tablename__ = "Transactions"
 
     transaction_id = Column(Integer, primary_key=True) 
@@ -28,9 +28,9 @@ class transactions(Base):
     description = Column(String)
 
 
-class category(Base):
+class Category(Base):
 
-    __tablename__ = "Category"
+    __tablename__ = "Categories"
 
     category_id = Column(Integer, primary_key = True)
     name = Column(String, unique = True, nullable = False)

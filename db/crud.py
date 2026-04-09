@@ -1,6 +1,6 @@
 from sqlalchemy.exc import IntegrityError
 from .database import SessionLocal
-from .models import User, transactions, category
+from .models import User, Transaction, Category
 
 def create_user(email, firstname, lastname, username, password) -> tuple[bool, User | str]:
     '''
@@ -38,11 +38,11 @@ def get_users():
         session.close()
 
 
-def create_transaction(user_id, amount, category_name, date, description = None):
+def create_transaction(user_id, amount, category_name, date, description = None) -> tuple[bool, Transaction | str]:
     session = SessionLocal()
 
     try:
-        transaction = transactions(user_id=user_id, amount=amount, category_name=category_name, date=date, description=description)
+        transaction = Transaction(user_id=user_id, amount=amount, category_name=category_name, date=date, description=description)
         session.add(transaction)
         session.commit()
         return True, transaction
@@ -58,16 +58,16 @@ def create_transaction(user_id, amount, category_name, date, description = None)
 def get_transaction(user_id):
     session = SessionLocal()
     try:
-        return session.query(transactions).filter(transactions.user_id == user_id).all()
+        return session.query(Transaction).filter(Transaction.user_id == user_id).all()
     finally:
         session.close()
 
 
-def create_category(name):
+def create_category(name) -> tuple[bool, Category | str]:
     session = SessionLocal()
 
     try:
-        cat = category(name=name)
+        cat = Category(name=name)
         session.add(cat)
         session.commit()
         return True, cat
@@ -86,6 +86,6 @@ def get_category():
     session = SessionLocal()
 
     try:
-        return session.query(category).all()
+        return session.query(Category).all()
     finally:
         session.close()
