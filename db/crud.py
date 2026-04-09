@@ -45,8 +45,15 @@ def create_transaction(user_id, amount, category_name, date, description = None)
         transaction = transactions(user_id=user_id, amount=amount, category_name=category_name, date=date, description=description)
         session.add(transaction)
         session.commit()
+        return True, transaction
+    
+    except IntegrityError as e:
+        session.rollback()
+        return False, "Database constraint violation"   # fallback 
+
     finally:
         session.close()
+
 
 def get_transaction(user_id):
     session = SessionLocal()
@@ -54,6 +61,7 @@ def get_transaction(user_id):
         return session.query(transactions).filter(transactions.user_id == user_id).all()
     finally:
         session.close()
+
 
 def create_category(name):
     session = SessionLocal()
@@ -73,6 +81,7 @@ def create_category(name):
     finally:
         session.close()
 
+
 def get_category():
     session = SessionLocal()
 
@@ -80,8 +89,3 @@ def get_category():
         return session.query(category).all()
     finally:
         session.close()
-
-
-
-    
-    

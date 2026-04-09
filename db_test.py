@@ -2,14 +2,6 @@ from db.crud import create_user, get_users, create_transaction, get_transaction,
 from db.database import init_db
 from datetime import date as Date
 
-def print_users():
-    users = get_users()
-    if not users:
-        print("No users found.")
-        return
-
-    for user in users:
-        print({k: v for k, v in vars(user).items() if not k.startswith("_")})
 
 def add_user():
     email = input("Email: ")
@@ -25,15 +17,15 @@ def add_user():
     else:
         print(f"\nError: {result}")
 
-def menu():
-    print("\n--- BudgetBuddy DB Test ---")
-    print("1. Show users")
-    print("2. Add user")
-    print("3. Add transaction")
-    print("4. Show transactions")
-    print("5. Add category")
-    print("6. Show categories")
-    print("0. Exit")
+
+def print_users():
+    users = get_users()
+    if not users:
+        print("\nNo users found.")
+
+    for user in users:
+        print({k: v for k, v in vars(user).items() if not k.startswith("_")})
+
 
 def add_transaction():
     user_id = input("User ID: ")
@@ -43,22 +35,26 @@ def add_transaction():
     date = Date.fromisoformat(date_input)
     description = input("Description (optional): ")
 
-    create_transaction(user_id, amount, category_name, date, description or None)
-    print("Transaction created.\n")
+    success, result = create_transaction(user_id, amount, category_name, date, description or None)
+    if success:
+        print("\nTransaction created.")
+    else:
+        print(f"\nError: {result}")
+
 
 def print_transactions():
     user_id = input("User ID: ")
     transactions = get_transaction(user_id)
     if not transactions:
-        print("No transactions found")
-        return
+        print("\nNo transactions found")
     for t in transactions:
         print({k: v for k, v in vars(t).items() if not k.startswith("_")})
+
 
 def add_category():
     success, result = create_category(input("Category name: "))
     if success:
-        print("Category created.\n")
+        print("\nCategory created.")
     else:
         print(f"\nError: {result}")
 
@@ -66,10 +62,21 @@ def add_category():
 def print_categories():
     categories = get_category()
     if not categories:
-        print("No categories found.")
-        return
+        print("\nNo categories found.")
     for c in categories:
         print({k: v for k, v in vars(c).items() if not k.startswith("_")})
+
+
+def menu():
+    print("\n--- BudgetBuddy DB Test ---")
+    print("1. Add user")
+    print("2. Show users")
+    print("3. Add transaction")
+    print("4. Show transactions")
+    print("5. Add category")
+    print("6. Show categories")
+    print("0. Exit")
+
 
 def main():
     init_db()
@@ -79,11 +86,11 @@ def main():
 
         if choice == "1":
             print()
-            print_users()
+            add_user()
 
         elif choice == "2":
             print()
-            add_user()
+            print_users()
 
         elif choice == "3":
             add_transaction()
