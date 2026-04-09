@@ -62,6 +62,7 @@ def create_category(name):
         cat = category(name=name)
         session.add(cat)
         session.commit()
+        return True, cat
     
     except IntegrityError as e:
         session.rollback()
