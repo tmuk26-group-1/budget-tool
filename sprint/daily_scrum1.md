@@ -16,7 +16,9 @@ We decided that we should merge more often to the main to avoid messy conflicts
 
 
 ## Albin Törnberg
-
+- 7/4 Implemented error handling for DB functions.
+- 8/4 Improved/expanded error handling.
+- 9/4 Polished functions and classes following error handling changes.
 
 ## Jafar Goahari
 
