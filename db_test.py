@@ -56,9 +56,11 @@ def print_transactions():
         print({k: v for k, v in vars(t).items() if not k.startswith("_")})
 
 def add_category():
-    name = input("Category name: ")
-    create_category(name)
-    print("Category created.\n")
+    success, result = create_category(input("Category name: "))
+    if success:
+        print("Category created.\n")
+    else:
+        print(f"\nError: {result}")
 
 
 def print_categories():
