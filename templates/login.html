@@ -9,29 +9,26 @@
         <form class="login-box" method="POST" action="/login">
         <h1>Login</h1>
 
-        <!--lagt till name="email" annars kan inte backend se email -->
         <div class="input-group">
             <input type="email" name="email" placeholder="Email" required>
         </div>
 
-        <!--lagt till name="password" annars kan inte backend se password -->
         <div class="input-group">
             <input type="password" name="password" placeholder="Password" required>
         </div>
 
-            <div class="option-group">
-                <label>
-                    <input type ="checkbox"> remember me
-                </label>
-                <a href="#">forgot password?</a>
-            </div>
+        <div class="option-group">
+            <label>
+                <input type="checkbox"> remember me
+            </label>
+            <a href="#">forgot password?</a>
+        </div>
 
-            <button type="submit" class="login-button">Login </button>
+        <button type="submit" class="login-button">Login</button>
 
-            <p class="register-text">Don't have an account?
-                <a href="#">Register</a>
-            </p>
-        </form>
-    </div>
-
+        <p class="register-text">Don't have an account?
+            <a href="#">Register</a>
+        </p>
+    </form>
+</div>
 {% endblock %}
