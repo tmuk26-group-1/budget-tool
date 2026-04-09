@@ -52,7 +52,7 @@ https://github.com/orgs/tmuk26-group-1/projects/2
 ## Project Structure Overview
 The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
 - _app.py_ - main application file (__BACKEND__). This will later intialize Flask, register routes, connect to the database, and start the server.
-- _requirements.txt_ - Lists all Python dependencies (currently only Flask).
+- _requirements.txt_ - Specifies all dependency versions needed for the virtual environment to run the project, ensuring consistent environments across machines.
 - _templates/_ - Contains all HTML pages (__FRONTEND__).
     - _base.html_ is the shared layout.
     - _login.html_ the index page where login happens
