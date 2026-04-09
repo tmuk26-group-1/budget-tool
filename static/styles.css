@@ -74,7 +74,7 @@ button {
 }
 
 p {
-    color: white;
+    color: rgb(239, 9, 9); /* det va white innan */
     font-size: 14px;
     margin-top: 25px;
 }
