@@ -45,6 +45,12 @@ def create_transaction(user_id, amount, category_name, date, description = None)
         transaction = transactions(user_id=user_id, amount=amount, category_name=category_name, date=date, description=description)
         session.add(transaction)
         session.commit()
+        return True, transaction
+    
+    except IntegrityError as e:
+        session.rollback()
+        return False, "Database constraint violation"   # fallback 
+
     finally:
         session.close()
 
