@@ -1,19 +1,27 @@
 ## Meeting 
 
-- 7/5 
+- 7/4
 Discussing how to plan our project with the help of sprints which we learned on the last lesson
 Creating issues for the sprint, week 15
 
-- 9/5
+- 9/4
 Showing our progress at the lab to professor Rudy and Lucy. Solving problems with our GUI
 Showing PR:s, rudy gave tips on how to make better PR:s. (Be More descriptive). 
-We decided that we should merge more often to the main to avoid messy conflicts 
+We decided that we should merge more often to the main to avoid messy conflicts
+
+- 10/4
+  Planning and come up with suggestions about how the webapp should work and look. Mostly about the GUI. Nothing decided, mostly breifing.
 
 ## Simon Rignell
 
-- 7/5 Creating table for adding and showing transactions
-- 9/5 Added transaction-tests for db_test
+- 7/4 Creating table for adding and showing transactions and adding transaction-tests for db_test, no problems
+- 8/4 Adding daily_scrum, restrospective and sprint_review, no problems
+- 9/4 Pair programming with albin, polishing functions and classes with following error handling changes., found problem with and get_category used twice in db_test. Now fixed. 
 
+Next up to do:
+- #89
+- #75 pair-program with albin 
+  
 
 ## Albin Törnberg
 - 7/4 Implemented error handling for DB functions.
