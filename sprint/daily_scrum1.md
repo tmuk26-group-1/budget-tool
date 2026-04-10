@@ -73,12 +73,31 @@ Next up:
     - Next: Complete forgot-password.html
 
 ## Ellen pennebratt
+
+- 7/4
+    Since last meeting: Participated in discussions about how to plan the project using sprints. Helped create issues for sprint week 15.
+    Next: Continue planning and contribute to defining project structure.
+- 8/4
+    Since last meeting: Continued working with sprint-related planning and organizing tasks. Contributed to discussions about project workflow.
+    Next: Prepare for lab session and review current progress.
+- 9/4
+    Since last meeting: Attended lab session and presented progress to the professors. Received feedback on pull requests (e.g., being more descriptive). Participated in discussions about improving workflow, such as merging more frequently to avoid conflicts.
+    Next: Apply feedback to future pull requests and support team improvements.
+- 10/4
+    Since last meeting: Participated in brainstorming ideas about how the web app should function and look, mainly focusing on the GUI. Discussed focus areas for the next sprint.
+    Next: Work on finalizing the login page and start the "reset password" feature.
+
 ## Gresa Hoxha
 
-
-please add 
-- What you since last meeting
-
-- Any problems/blockers
-
-- What will you do next
+- 7/4
+    Since last meeting: Participated in sprint planning and discussions about the structure of the login functionality and GUI.
+    Next: Start working on login-related improvements.
+- 8/4
+    Since last meeting: Began working on improvements in the login flow and explored different approaches (modifying existing HTML vs. using a separate JavaScript file).
+    Next: Continue implementing changes and test functionality.
+- 9/4
+    Since last meeting: Made changes to login.html and created a pull request. Added comments explaining the updates and reasoning behind modifying the existing file instead of creating a new JS file.
+    Next: Review feedback and make adjustments if needed.
+- 10/4
+    Since last meeting: Reviewed own changes and prepared them for merging after team feedback.
+    Next: Continue working on login features and support upcoming sprint tasks.
