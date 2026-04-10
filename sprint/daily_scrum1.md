@@ -46,10 +46,10 @@ Next up:
 - No problems.
 
 10/4
-- Planning the design for the Dashboard with my frontend partner.
+- Discussed with my frontend partner about different funkion and design in "registration" page. 
 - Starting to code the "Reset password" function and the registration form.
 - Making sure to merge my changes to main more often to avoid messy conflicts.
-- Next up: Finalize Registration page and start working on the Dashboard GUI.
+- Next up: Finalize Registration page #88 and start coding for "forgot password " page.
 
 ## Vasilis Segersköld
 - 7/4
