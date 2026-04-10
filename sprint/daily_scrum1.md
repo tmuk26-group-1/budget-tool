@@ -52,7 +52,25 @@ Making sure to merge my changes to main more often to avoid messy conflicts.
 Next up: Finalize Registration page and start working on the Dashboard GUI.
 
 ## Vasilis Segersköld
+- 7/4
+    - Did: Attended lecture
+    - Blockers: None
+    - Next: Improve instructions in README
 
+- 8/4
+    - Did: Improved the instructions in README on how to run the project and attended lecture
+    - Blockers: None
+    - Next: Clean up login.html
+
+- 9/4
+    - Did: Resolved merge conflicts in login.html and attended lab session
+    - Blockers: None
+    - Next: Build forgot-password.html
+
+- 10/4
+    - Did: Created issue #91 for backend and started forgot-password.html structure
+    - Blockers: Waiting for backend /check-username endpoint (issue #91)
+    - Next: Complete forgot-password.html
 
 ## Ellen pennebratt
 ## Gresa Hoxha
