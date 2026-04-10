@@ -10,7 +10,7 @@ Showing PR:s, rudy gave tips on how to make better PR:s. (Be More descriptive).
 We decided that we should merge more often to the main to avoid messy conflicts
 
 - 10/4
-  Planning and come up with suggestions about how the webapp should work and look. Mostly about the GUI. Nothing decided, mostly breifing.
+Planning and come up with suggestions about how the webapp should work and look. Mostly about the GUI. Nothing decided, mostly breifing. Also discussed focus areas for next sprint (finalize login page, start working on "reset password").
 
 ## Simon Rignell
 
@@ -26,7 +26,11 @@ Next up to do:
 ## Albin Törnberg
 - 7/4 Implemented error handling for DB functions.
 - 8/4 Improved/expanded error handling.
-- 9/4 Polished functions and classes following error handling changes.
+- 9/4 Polished functions and classes following error handling changes. Found issue with transaction table (#89)
+
+Next up:
+- #83
+- #75, pair-programming with Simon
 
 ## Jafar Goahari
 
