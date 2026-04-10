@@ -51,7 +51,6 @@ Starting to code the "Reset password" function and the registration form.
 Making sure to merge my changes to main more often to avoid messy conflicts.
 Next up: Finalize Registration page and start working on the Dashboard GUI.
 
-
 ## Vasilis Segersköld
 
 
