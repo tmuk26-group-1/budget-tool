@@ -33,6 +33,23 @@ Next up:
 - #75, pair-programming with Simon
 
 ## Jafar Goahari
+7/4
+Finished the layout for the Login page, 99% done now.
+Participated in the sprint planning for week 15 and created new issues for the frontend.
+Started planning the "Registration" and "Forgot password" pages.
+No problems.
+
+9/4
+Showed progress to Rudy and Lucy. Working on making my PRs more descriptive after Rudy's feedback.
+Fixed some GUI bugs found during the lab.
+Discussed with the database team (Simon & Albin) how to show their new error handling in the frontend.
+No problems.
+
+10/4
+Planning the design for the Dashboard with my frontend partner.
+Starting to code the "Reset password" function and the registration form.
+Making sure to merge my changes to main more often to avoid messy conflicts.
+Next up: Finalize Registration page and start working on the Dashboard GUI.
 
 
 ## Vasilis Segersköld
