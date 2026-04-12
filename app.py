@@ -5,7 +5,6 @@
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users
-from flask import Flask
 from db.database import init_db
 
 app = Flask(__name__)
@@ -14,28 +13,35 @@ app.secret_key = "super-secret-key"
 # 5 minutes timeout
 SESSION_TIMEOUT = 300
 
-# initialize database tables
-init_db()
-
-# dashboard
-@app.route("/dashboard")
-def dashboard():
-    user_id = session.get("user_id")
-    login_time = session.get("login_time")
-
-    # Not logged in
-    if not user_id or not login_time:
-        return redirect (url_for("home"))
-    
-    if time.time() - login_time > SESSION_TIMEOUT:
-        session.clear()
-        return redirect (url_for("home"))
-    
-    return render_template("dashboard.html")
-
-# home is login page
 # Initialize database
 init_db()
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
+@app.before_request
+def check_session_timeout():
+    protected_routes = ["dashboard"]
+
+    if request.endpoint in protected_routes:
+        user_id = session.get("user_id")
+        login_time = session.get("login_time")
+
+        # Inte inloggad
+        if not user_id or not login_time:
+            session.clear()
+            return redirect(url_for("home"))
+
+        # Session gått ut
+        if time.time() - login_time > SESSION_TIMEOUT:
+            session.clear()
+            return redirect(url_for("home"))
+
+        # Förläng session vid aktivitet (sliding timeout)
+        session["login_time"] = time.time()
+
+# home is login page
 
 ##home
 @app.route("/")
@@ -55,6 +61,11 @@ def login_post():
     session["login_time"] = time.time() 
 
     return redirect (url_for("dashboard"))
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("home"))
 
 # register
 @app.route("/register", methods=["POST"])
