@@ -1,3 +1,11 @@
+## Meeting 
+
+13/4
+- Main concerns for the week:
+    - Log into a real user instead of mock user.
+    - Reset password functionality.
+- Discussed what we can perform unit testing on. For now, we can do one test per person inside db/crud.py.
+
 ## Ellen Pennebratt
 
 12/4
