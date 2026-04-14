@@ -9,9 +9,18 @@
 ## Ellen Pennebratt
 
 12/4
-- Since last meeting: Fixed issue #56 by implementing and correcting session timeout logic, protecting the dashboard, and ensuring proper redirect to the login page on logout or inactivity. Also created this week’s checklists and helped organize sprint tasks.
+- Did: Fixed issue #56 by implementing and correcting session timeout logic, protecting the dashboard, and ensuring proper redirect to the login page on logout or inactivity. Also created this week’s checklists and helped organize sprint tasks.
 
 - Next: Begin improving authentication (e.g., proper user validation) and support the team with further testing.
+
+- Blockers: none
+
+14/4 
+- Did: Created a new GitHub branch to work on the login/authentication functionality and followed the team’s branching workflow. Ensured changes are isolated from the main branch to support safer development and collaboration.
+
+- Next: Continue working on routing the backend and frontend for register page.
+
+- Blockers: none
 
 ## Jafar Gohari
 
