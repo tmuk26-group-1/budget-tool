@@ -3,7 +3,10 @@
 
 name: Python application
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
 
 permissions:
   contents: read
@@ -28,8 +31,7 @@ jobs:
         python --version
         flask --version
     - name: "Test adding users"
-      run: |
-        pytest test_crud.py
+      run: pytest
     # - name: Lint with flake8
     #   run: |
     #     # stop the build if there are Python syntax errors or undefined names
