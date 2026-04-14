@@ -54,7 +54,7 @@ def login_post():
     db = SessionLocal()
     try:
         user = db.query(User).filter(User.email == email).first()
-    finally:
+    finally: 
         db.close()
 
     # wrong e-mail or password
