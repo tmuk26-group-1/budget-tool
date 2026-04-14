@@ -19,3 +19,11 @@
 
 - Discussed the checklist and action items for the current week.
 - Set a goal to complete and deploy the dashboard by the end of the week.
+
+
+## Albin Törnberg
+
+13/4
+- Did: Looked through issues that could be closed. Thought about next steps.
+- Blockers: None
+- Start working on issues #83 and #56.
