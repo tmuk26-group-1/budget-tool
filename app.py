@@ -1,6 +1,7 @@
 # BudgetBuddy main application file
 # Hello from main
 # Hello from database
+# Jaha men hallå där från frontend också
 
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
