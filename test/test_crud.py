@@ -90,3 +90,19 @@ def test_create_transaction_success():
     assert success is True
     assert transaction.amount == 100
     assert transaction.category_id == cat_id
+
+
+def test_update_password_success():
+    crud.create_user("pw@test.com", "A", "B", "pwuser", "oldpassword")
+
+    success, user = crud.update_password("pw@test.com", "newpassword")
+
+    assert success is True
+    assert user.password == "newpassword"
+
+
+def test_update_password_user_not_found():
+    success, msg = crud.update_password("nonexistent@test.com", "newpassword")
+
+    assert success is False
+    assert msg == "No account with that email"
