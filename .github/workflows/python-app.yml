@@ -29,7 +29,9 @@ jobs:
     - name: "Print versions"
       run: |
         python --version
-        flask --version
+        pip show flask
+        pip show pytest
+        pip show taskipy
     - name: "Test adding users"
       run: pytest
     # - name: Lint with flake8
