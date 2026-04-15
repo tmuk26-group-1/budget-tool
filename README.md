@@ -1,3 +1,5 @@
+[![BudgetBuddy](https://github.com/tmuk26-group-1/budget-tool/actions/workflows/python-app.yml/badge.svg)](https://github.com/tmuk26-group-1/budget-tool/actions/workflows/python-app.yml)
+
 ## Budget Tool
 BudgetBuddy is a webapplication budgeting tool designed to help users track income, expenses, and monthly budgets. The goal is to provide a clean, simple interface where users can:
 - Create and manage monthly budgets,
