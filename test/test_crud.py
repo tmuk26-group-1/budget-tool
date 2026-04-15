@@ -5,6 +5,8 @@ from sqlalchemy.orm import sessionmaker
 from db.database import Base
 import db.crud as crud
 
+from datetime import date
+
 
 engine = create_engine("sqlite:///:memory:")
 TestingSessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
@@ -66,3 +68,25 @@ def test_create_user_duplicate_username():
 
     assert success is False
     assert msg == "Username already taken"
+
+
+
+def test_create_transaction_success():
+    # Create Category for transaction test 
+    success, category = crud.create_category("Food")
+    assert success is True
+    assert category.name == "Food"
+
+    cat_id = category.category_id
+
+    success, transaction = crud.create_transaction(
+        user_id=1,
+        amount=100,
+        category_id=1,
+        date=date(2024, 1, 1),
+        description="Lunch"
+    )
+
+    assert success is True
+    assert transaction.amount == 100
+    assert transaction.category_id == cat_id
