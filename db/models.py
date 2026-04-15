@@ -17,13 +17,13 @@ class User(Base):
     password = Column(String, nullable=False)
 
 
-class Transaction(Base):
+class Transaction(Base): 
     __tablename__ = "Transactions"
 
     transaction_id = Column(Integer, primary_key=True) 
     user_id = Column(Integer, ForeignKey("Users.user_id"), nullable = False)
     amount = Column(Integer, nullable = False)
-    category_name = Column(String, nullable = False)
+    category_id = Column(Integer, ForeignKey("Categories.category_id"), nullable=False)
     date = Column(Date, nullable = False)
     description = Column(String)
 

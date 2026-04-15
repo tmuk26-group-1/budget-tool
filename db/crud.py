@@ -38,11 +38,11 @@ def get_users():
         session.close()
 
 
-def create_transaction(user_id, amount, category_name, date, description = None) -> tuple[bool, Transaction | str]:
+def create_transaction(user_id, amount, category_id, date, description = None) -> tuple[bool, Transaction | str]:
     session = SessionLocal()
 
     try:
-        transaction = Transaction(user_id=user_id, amount=amount, category_name=category_name, date=date, description=description)
+        transaction = Transaction(user_id=user_id, amount=amount, category_id=category_id, date=date, description=description)
         session.add(transaction)
         session.commit()
         return True, transaction
