@@ -35,4 +35,4 @@
 13/4
 - Did: Looked through issues for things that could be prioritized/closed. Thought about next steps.
 - Blockers: None
-- Start working on issues #83 and #56.
+- Start working on issues #83 and #75.
