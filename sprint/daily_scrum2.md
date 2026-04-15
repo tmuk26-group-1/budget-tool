@@ -36,3 +36,10 @@
 - Did: Looked through issues for things that could be prioritized/closed. Thought about next steps.
 - Blockers: None
 - Start working on issues #83 and #75.
+
+## Simon Rignell 
+13/4
+- Did: planned issues for sprint-2
+- Blockers: None
+- Start working on issues #89 and #75.
+
