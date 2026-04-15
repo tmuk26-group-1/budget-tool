@@ -1,5 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Dashboard</h1>
-<p>Dashboard placeholder.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Account</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="back-button">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+        </div>
+
+        <h2>Find your account</h2>
+        <p class="subtitle">Enter your email</p>
+
+        <form>
+            <div class="input-group">
+                <input type="email" placeholder="email" required>
+            </div>
+            
+            <button type="submit" class="btn-primary">Continue</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
 {% endblock %}
