@@ -1,2 +1,8 @@
 [tool.pytest.ini_options]
 pythonpath = ["."]
+
+[tool.taskipy.tasks]
+install = "pip install -r requirements.txt"
+run = "flask run"
+test = "pytest test/ -v"
+
