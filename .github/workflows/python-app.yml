@@ -28,11 +28,9 @@ jobs:
     - name: "Print versions"
       run: |
         python --version
-        pip show flask
-        pip show pytest
-        pip show taskipy
-    - name: "Test adding users"
-      run: pytest
+        pip list
+    - name: "Test CRUD"
+      run: task test
     # - name: Lint with flake8
     #   run: |
     #     # stop the build if there are Python syntax errors or undefined names

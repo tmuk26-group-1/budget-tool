@@ -79,8 +79,11 @@ Virtual environment setup:
     - Mac/Linux: `source .venv/bin/activate`
     - Windows: `.venv\Scripts\activate`
 4. Install dependencies (installs exact package versions from requirements.txt (check with `pip list` if your venv has all packages required, else install)): `pip install -r requirements.txt`
-5. Run the app: `flask run`
+5. Run the app: `task run`
 6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
+
+## How to do unit-testing 
+`task test`
 
 ## Members
 
