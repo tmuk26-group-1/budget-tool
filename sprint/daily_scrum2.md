@@ -22,6 +22,15 @@
 
 - Blockers: none
 
+## Gresa Hoxha
+
+16/4
+- Did: Completed the login/authentication system. Added 'get_user_by_email' in 'crud.py' and updated the login route to validate credentials against the database. Connected the frontend routes for registration and forgot‑password to the backend, ensuring proper error handling and session management. Tested registration, password reset, and login flows successfully. The whole login process now works with real users.  
+
+- Next: Implement password hashing for secure authentication and begin writing unit tests for CRUD functions.  
+
+- Blockers: None for the time being.   
+
 ## Jafar Gohari
 
 13/4
