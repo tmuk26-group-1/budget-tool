@@ -4,4 +4,4 @@ pythonpath = ["."]
 [tool.taskipy.tasks]
 run = "flask run"
 test = "pytest test/ -v"
-
+lint = "flake8 db/ test/ app.py db_test.py"
