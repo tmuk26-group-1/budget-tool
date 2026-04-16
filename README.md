@@ -82,10 +82,11 @@ Virtual environment setup:
 5. Run the app: `task run`
 6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
 
-### How to do unit-testing 
-```
-task test
-```
+### How to perform tests 
+
+- Perform unit testing using `task test`
+- Run linter using `task lint`
+
 
 ## Members
 
