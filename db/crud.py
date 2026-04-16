@@ -38,6 +38,16 @@ def get_users():
         session.close()
 
 
+def get_user_by_email(email):
+    '''Fetch a single user by email'''
+    session = SessionLocal()
+    try:
+        return session.query(User).filter(User.email == email).first()
+    finally:
+        session.close()
+
+
+
 def update_password(email, new_password) -> tuple[bool, User | str]:
     session = SessionLocal()
     try:
