@@ -3,5 +3,5 @@ pythonpath = ["."]
 
 [tool.taskipy.tasks]
 run = "flask run"
-test = "pytest test/ -v"
+test = "pytest test/ -v --cov=. --cov-report=term-missing --cov-report=html"
 lint = "flake8 db/ test/ app.py db_test.py"
