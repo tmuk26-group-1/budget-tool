@@ -6,7 +6,10 @@ import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users
 from flask import Flask
-from db.database import init_db
+from db.database import init_db, SessionLocal
+from db.models import User
+
+
 
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
@@ -42,19 +45,30 @@ init_db()
 def home():
     return render_template("login.html")
 
-
+# login
 @app.route("/login", methods=["POST"])
 def login_post():
     email = request.form.get("email")
     password = request.form.get("password")
 
-    print("Recieved login:", email, password)
-    
-    # simulate a logged in user
-    session["user_id"] = 1
-    session["login_time"] = time.time() 
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter(User.email == email).first()
+    finally: 
+        db.close()
 
-    return redirect (url_for("dashboard"))
+    # wrong e-mail or password
+    if not user or user.password != password:
+        return render_template(
+            "login.html",
+            error="Invalid email or password"
+        )
+
+    # login succeeded
+    session["user_id"] = user.id
+    session["login_time"] = time.time()
+
+    return redirect(url_for("dashboard"))
 
 # register
 @app.route("/register", methods=["POST"])
