@@ -1,10 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgetverktyg Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="budget-hero">
+            <h2>Kvarstående Budget</h2>
+            <h1 class="budget-amount">24 500 kr</h1>
+        </header>
 
-<!-- Added by Ellen to store userID after successful login, please review and merge. -->
-<p>Logged in as user ID: {{ user_id }}</p>
+        <div class="action-buttons">
+            <button class="btn btn-income">+ Lägg till inkomst</button>
+            <button class="btn btn-expense">- Lägg till utgift</button>
+        </div>
 
-<p>Dashboard placeholder.</p>
+        <div class="transaction-form">
+            <h3>Ny Transaktion</h3>
+            
+            <div class="form-group">
+                <label for="category">Kategori</label>
+                <select id="category" name="category">
+                    <option value="" disabled selected>Välj kategori...</option>
+                    <option value="salary">Lön</option>
+                    <option value="food">Mat & Livsmedel</option>
+                    <option value="rent">Hyra & Boende</option>
+                    <option value="entertainment">Nöje</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Beskrivning / Kommentar</label>
+                <input type="text" id="description" placeholder="T.ex. ICA Maxi eller Månadslön">
+            </div>
+
+            <button class="btn btn-submit">OK</button>
+        </div>
+    </div>
+</body>
+</html>
 {% endblock %}
 

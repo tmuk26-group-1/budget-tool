@@ -1,2 +1,7 @@
 [tool.pytest.ini_options]
 pythonpath = ["."]
+
+[tool.taskipy.tasks]
+run = "flask run"
+test = "pytest test/ -v"
+
