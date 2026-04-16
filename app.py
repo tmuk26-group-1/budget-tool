@@ -48,6 +48,41 @@ def register_get():
     return render_template("registration.html")
 
 
+@app.route("/forgot-password", methods=["GET"])
+def forgot_password():
+    return render_template("forgot-password.html")
+
+
+@app.route("/check-email", methods=["POST"])
+def check_email():
+    data = request.get_json()
+    email = data.get("email")
+
+    from db.crud import get_users
+    users = get_users()
+    exists = any(u.email == email for u in users)
+
+    return jsonify({"exists": exists})
+
+
+@app.route("/reset-password", methods=["POST"])
+def reset_password():
+    email = request.form.get("email")
+    new_password = request.form.get("new_password")
+    confirm_password = request.form.get("confirm_password")
+
+    if new_password != confirm_password:
+        return render_template("forgot-password.html", error="Passwords do not match")
+
+    from db.crud import update_password
+    success, result = update_password(email, new_password)
+
+    if success:
+        return redirect(url_for("home"))
+    else:
+        return render_template("forgot-password.html", error=result)
+
+
 # dashboard
 @app.route("/dashboard")
 def dashboard():
