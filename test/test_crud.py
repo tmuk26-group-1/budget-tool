@@ -127,6 +127,7 @@ def test_get_user_by_email():
     assert user is not None
     assert user.username == "gresah"
     assert user.password == "mypassword"
+<<<<<<< HEAD
 
 
 def test_get_users():
@@ -136,3 +137,17 @@ def test_get_users():
     assert len(users) == 2
     assert users[0].username == "Messiah"
     assert users[1].password == "smile"
+=======
+# Exsisting category
+
+def test_create_transaction_invalid_category():
+    success, msg = crud.create_transaction(
+        user_id = 1,
+        amount = 50,
+        category_id = 999,  
+        date=date(2024, 1, 1),
+        description = "Invalid category test"
+    )
+
+    assert success is False
+>>>>>>> 92c8e15 (Merge for branch)

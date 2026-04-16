@@ -48,6 +48,8 @@ def get_user_by_email(email):
         session.close()
 
 
+
+#function for updating your password
 def update_password(email, new_password) -> tuple[bool, User | str]:
     session = SessionLocal()
     try:
