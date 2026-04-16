@@ -18,21 +18,6 @@ SESSION_TIMEOUT = 300
 # initialize database tables
 init_db()
 
-# dashboard
-@app.route("/dashboard")
-def dashboard():
-    user_id = session.get("user_id")
-    login_time = session.get("login_time")
-
-    # Not logged in
-    if not user_id or not login_time:
-        return redirect (url_for("home"))
-    
-    if time.time() - login_time > SESSION_TIMEOUT:
-        session.clear()
-        return redirect (url_for("home"))
-    
-    return render_template("dashboard.html")
 
 # home is login page
 # Initialize database
@@ -57,21 +42,48 @@ def login_post():
 
     return redirect (url_for("dashboard"))
 
+
+@app.route("/register", methods=["GET"])
+def register_get():
+    return render_template("registration.html")
+
+
+# dashboard
+@app.route("/dashboard")
+def dashboard():
+    user_id = session.get("user_id")
+    login_time = session.get("login_time")
+
+    # Not logged in
+    if not user_id or not login_time:
+        return redirect (url_for("home"))
+    
+    if time.time() - login_time > SESSION_TIMEOUT:
+        session.clear()
+        return redirect (url_for("home"))
+    
+    return render_template("dashboard.html")
+
+
 # register
 @app.route("/register", methods=["POST"])
 def register():
-    data = request.json     # froentend must send JSON
     
-    email = data.get("email")
-    firstname = data.get("firstname")
-    lastname = data.get("lastname")
-    username = data.get("username")
-    password = data.get("password")
+    email = request.form.get("email")
+    firstname = request.form.get("firstname")
+    lastname = request.form.get("lastname")
+    username = request.form.get("username")
+    password = request.form.get("password")
 
     # Call CRUD function
-    create_user(email, firstname, lastname, username, password)
+    success, result = create_user(email, firstname, lastname, username, password)
 
-    return jsonify({"message": "User created succesfully"}), 201
+    if success:
+        # On success, redirect to login page
+        return redirect(url_for("home"))
+    else:
+        # on failure, show registration page again with error message
+        return render_template("registration.html", error=result)
 
 
 # users

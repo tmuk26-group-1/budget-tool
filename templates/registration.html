@@ -5,28 +5,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Your Account</title>
+    <title>Register Account</title>
 </head>
 <body>
 
     <div class="container">
         <div class="back-button">
-            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+            </svg>
         </div>
 
-        <h2>Find your account</h2>
-        <p class="subtitle">Enter your email</p>
+        <h2>Create your account</h2>
+        <p class="subtitle">Fill in your details below</p>
 
-        <form>
+        <!-- Error message block -->
+        {% if error %}
+            <div class="error-message">
+                <p style="color:red;">{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Registration form -->
+        <form method="POST" action="{{ url_for('register') }}">
             <div class="input-group">
-                <input type="email" placeholder="email" required>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="firstname" placeholder="First name" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="lastname" placeholder="Last name" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required>
             </div>
             
-            <button type="submit" class="btn-primary">Continue</button>
+            <button type="submit" class="btn-primary">Register</button>
         </form>
     </div>
 
 </body>
 </html>
-
 {% endblock %}
