@@ -87,6 +87,13 @@ Virtual environment setup:
 - Perform unit testing with code coverage report using `task test`
 - Run linter using `task lint`
 
+The HTML coverage report is generated in: 
+
+```htmlcov/index.html```
+
+### Third-Party Assets
+
+This project does not use any third-party assets such as external images, icons, or media files.
 
 ## Members
 

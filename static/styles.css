@@ -124,29 +124,30 @@ body {
 }
 
 /* Rubriker */
-h1 {
+h2 {
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 8px 0;
-    color: #000;
+    color: #ffffff;
 }
 
 .subtitle {
     font-size: 16px;
-    color: #1c1e21;
+    color: #f7f8f9;
     margin-bottom: 25px;
 }
 
 /* Inmatningsfält */
 .input-group {
     margin-bottom: 20px;
+    
 }
 
 input[type="text"] {
     width: 100%;
     padding: 16px;
     font-size: 16px;
-    border: 1px solid #dddfe2;
+    border: 1px solid #000000;
     border-radius: 12px; 
     box-sizing: border-box;
     outline: none;

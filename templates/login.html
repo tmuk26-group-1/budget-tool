@@ -9,6 +9,13 @@
         <form class="login-box" method="POST" action="/login">
         <h1>Login</h1>
 
+        <!-- Error message block -->
+        {% if error %}
+            <div class="error-message">
+                <p style="color:red;">{{ error }}</p>
+            </div>
+        {% endif %}
+
         <div class="input-group">
             <input type="email" name="email" placeholder="Email" required>
         </div>
@@ -21,7 +28,7 @@
             <label>
                 <input type="checkbox"> remember me
             </label>
-            <a href="#">forgot password?</a>
+            <a href="{{ url_for('forgot_password') }}">forgot password?</a>
         </div>
 
         <button type="submit" class="login-button">Login</button>
