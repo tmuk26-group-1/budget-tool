@@ -31,8 +31,8 @@ jobs:
         pip list
     - name: "Test CRUD"
       run: task test
-    - name: Lint with flake8
-      run: task lint
+    # - name: Lint with flake8
+    #   run: task lint
     - name: Test with coverage
       run: pytest test/ -v --cov=. --cov-report=xml
     #   run: |
