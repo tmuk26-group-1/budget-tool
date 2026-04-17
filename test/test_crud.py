@@ -92,6 +92,19 @@ def test_create_transaction_success():
     assert transaction.category_id == cat_id
 
 
+# Exsisting category
+def test_create_transaction_invalid_category():
+    success, msg = crud.create_transaction(
+        user_id = 1,
+        amount = 50,
+        category_id = 999,  
+        date=date(2024, 1, 1),
+        description = "Invalid category test"
+    )
+
+    assert success is False
+
+
 def test_update_password_success():
     crud.create_user("pw@test.com", "A", "B", "pwuser", "oldpassword")
 
@@ -107,7 +120,6 @@ def test_update_password_user_not_found():
     assert success is False
     assert msg == "No account with that email"
 
-<<<<<<< HEAD
 
 def test_get_user_by_email():
     crud.create_user("gresa@test.com", "Gresa", "Hoxha", "gresah", "mypassword")
@@ -116,16 +128,4 @@ def test_get_user_by_email():
     assert user is not None
     assert user.username == "gresah"
     assert user.password == "mypassword"
-=======
-# Exsisting category
-def test_create_transaction_invalid_category():
-    success, msg = crud.create_transaction(
-        user_id = 1,
-        amount = 50,
-        category_id = 999,  
-        date=date(2024, 1, 1),
-        description = "Invalid category test"
-    )
 
-    assert success is False
->>>>>>> fe4417e1f08e6ef8f4bb8ba7b8f35eb6acfe2b9c
