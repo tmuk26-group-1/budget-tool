@@ -85,11 +85,10 @@ Virtual environment setup:
 ### How to perform tests 
 
 - Perform unit testing with code coverage report using `task test`
+    - The HTML coverage report is generated in: `htmlcov/index.html`
 - Run linter using `task lint`
 
-The HTML coverage report is generated in: 
 
-```htmlcov/index.html```
 
 ### Third-Party Assets
 
