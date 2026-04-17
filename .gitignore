@@ -24,6 +24,8 @@ desktop.ini
 db/budget.db
 *.db
 
-# coverage report files
+#html files 
 htmlcov/
+
+# coverage 
 .coverage
