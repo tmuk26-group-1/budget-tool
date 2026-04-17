@@ -106,3 +106,15 @@ def test_update_password_user_not_found():
 
     assert success is False
     assert msg == "No account with that email"
+
+# Exsisting category
+def test_create_transaction_invalid_category():
+    success, msg = crud.create_transaction(
+        user_id = 1,
+        amount = 50,
+        category_id = 999,  
+        date=date(2024, 1, 1),
+        description = "Invalid category test"
+    )
+
+    assert success is False
