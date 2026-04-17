@@ -83,9 +83,37 @@ Virtual environment setup:
 6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
 
 ### How to do unit-testing 
-```
-task test
-```
+Unit tests are written using `pytest` and focus on the CRUD and database layer.
+
+Run the unit tests with: 
+
+```task test```
+
+or directly with: 
+
+```pytest```
+
+### Code Coverage
+Code coverage information is generated using `coverage.py`.
+
+Run: 
+
+```coverage run -m pytest coverage html```
+
+The HTML coverage report is generated in: 
+
+```htmlcov/index.html```
+
+### Linting
+The project uses `flake8` for linting and static code analysis.
+
+Run the linter with: 
+
+```flake8 .```
+
+### Third-Party Assets
+
+This project does not use any third-party assets such as external images, icons, or media files.
 
 ## Members
 
