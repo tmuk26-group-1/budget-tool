@@ -29,7 +29,10 @@
 
 - Next: Implement password hashing for secure authentication and begin writing unit tests for CRUD functions.  
 
-- Blockers: None for the time being.   
+- Blockers: None for the time being.
+
+17/4
+- Did: unit testing for get_user_by_email. Test passed without bugs or conflicts.
 
 ## Jafar Gohari
 
