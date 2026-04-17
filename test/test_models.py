@@ -3,11 +3,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import date
 
-# Importera dina modeller och Base
+
 from db.database import Base
 from db.models import User, Transaction, Category
 
-# Sätt upp en test-databas i minnet
+
 engine = create_engine("sqlite:///:memory:")
 TestingSessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
 
@@ -20,7 +20,7 @@ def db_session():
     session.close()
     Base.metadata.drop_all(engine)
 
-# --- TESTER --- #
+# --- TESTS --- #
 
 def test_user_model_creation(db_session):
     """Testar att User-modellen sparar data korrekt."""
@@ -41,14 +41,13 @@ def test_user_model_creation(db_session):
 
 def test_category_and_transaction_relationship(db_session):
     """Testar att transaktioner kan kopplas till kategorier."""
-    # 1. Skapa kategori
+
     food_cat = Category(name="Mat")
     db_session.add(food_cat)
     db_session.commit()
 
-    # 2. Skapa transaktion kopplad till kategorin
     new_trans = Transaction(
-        user_id=1,  # Antar att användare 1 finns
+        user_id=1,  
         amount=200,
         category_id=food_cat.category_id,
         date=date(2026, 4, 17),
@@ -57,7 +56,7 @@ def test_category_and_transaction_relationship(db_session):
     db_session.add(new_trans)
     db_session.commit()
 
-    # Kontrollera kopplingen
+    
     saved_trans = db_session.query(Transaction).first()
     assert saved_trans.amount == 200
     assert saved_trans.category_id == food_cat.category_id
@@ -66,7 +65,6 @@ def test_user_nullable_constraints(db_session):
     """Testar att databasen kastar fel om obligatoriska fält saknas."""
     from sqlalchemy.exc import IntegrityError
     
-    # Försök skapa användare utan email (nullable=False)
     broken_user = User(firstname="Fel", lastname="Namn", username="noemail", password="123")
     db_session.add(broken_user)
     
