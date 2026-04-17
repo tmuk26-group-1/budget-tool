@@ -84,7 +84,7 @@ Virtual environment setup:
 
 ### How to perform tests 
 
-- Perform unit testing using `task test`
+- Perform unit testing with code coverage report using `task test`
 - Run linter using `task lint`
 
 
