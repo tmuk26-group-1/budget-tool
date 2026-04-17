@@ -73,6 +73,11 @@ def create_transaction(user_id, amount, category_id, date, description = None) -
     session = SessionLocal()
 
     try:
+
+        category = session.query(Category).filter(Category.category_id == category_id).first() 
+        if not category:
+            return False, "Category does not exist"
+        
         transaction = Transaction(user_id=user_id, amount=amount, category_id=category_id, date=date, description=description)
         session.add(transaction)
         session.commit()
