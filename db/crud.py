@@ -38,6 +38,37 @@ def get_users():
         session.close()
 
 
+def get_user_by_email(email):
+    '''Fetch a single user by email'''
+    session = SessionLocal()
+    try:
+        return session.query(User).filter(User.email == email).first()
+    finally:
+        session.close()
+
+
+
+def update_password(email, new_password) -> tuple[bool, User | str]:
+    session = SessionLocal()
+    try:
+        user = session.query(User).filter(User.email == email).first()
+
+        if not user:
+            return False, "No account with that email"
+        
+        user.password = new_password
+        session.commit()
+        return True, user
+    
+    except Exception as e:
+        session.rollback()
+        return False, "Somthing, went wrong"
+    
+    finally:
+        session.close()
+
+
+
 def create_transaction(user_id, amount, category_id, date, description = None) -> tuple[bool, Transaction | str]:
     session = SessionLocal()
 

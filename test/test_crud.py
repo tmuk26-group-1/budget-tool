@@ -89,9 +89,6 @@ def test_create_transaction_success():
 
     assert success is True
     assert transaction.amount == 100
-
-    assert transaction.category_id == cat_id
-
     assert transaction.category_id == cat_id
 
 
@@ -109,7 +106,6 @@ def test_update_password_user_not_found():
 
     assert success is False
     assert msg == "No account with that email"
-
 
 def test_get_user_by_email():
     crud.create_user("gresa@test.com", "Gresa", "Hoxha", "gresah", "mypassword")
