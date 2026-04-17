@@ -47,7 +47,17 @@
 13/4
 - Did: Looked through issues for things that could be prioritized/closed. Thought about next steps.
 - Blockers: None
-- Start working on issues #83 and #75.
+- Next: Start working on issues #83 and #75.
+
+15/4
+- Did: Started implementing CI and Unit Testing with Simon.
+- Blockers: None.
+- Next: Finish CI and issues.
+
+17/4
+- Did: Got CI working, set up taskipy to use for linting and testing.
+- Blockers: Some merge issues prevented CI from running right, easily fixed.
+- Next: Set expectations and priorities for next sprint.
 
 ## Simon Rignell 
 13/4
