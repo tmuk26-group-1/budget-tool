@@ -106,3 +106,12 @@ def test_update_password_user_not_found():
 
     assert success is False
     assert msg == "No account with that email"
+
+
+def test_get_user_by_email():
+    crud.create_user("gresa@test.com", "Gresa", "Hoxha", "gresah", "mypassword")
+    user = crud.get_user_by_email("gresa@test.com")
+
+    assert user is not None
+    assert user.username == "gresah"
+    assert user.password == "mypassword"
