@@ -6,4 +6,4 @@
 
 ## Sprint-2 13/4 - 17/4
 
- - The big tasks for the week was to be able to log in with a real user and make reset password work. Both of which we did, which was a good job of us. The Velocity calculation this week was 9/14 which is about 62%. Which definetly can be better for the next week. Two of the unfinished tasks was low - prio #83 #90 and moved to sprint-3.
+ - The big tasks for the week was to be able to log in with a real user and make reset password work. Both of which we did, which was a good job of us. The Velocity calculation this week was 9/14 which is about 62%. Which definetly can be better for the next week. Two of the unfinished tasks was low - prio [#83](https://github.com/tmuk26-group-1/budget-tool/issues/83) [#90](https://github.com/tmuk26-group-1/budget-tool/issues/90) and moved to sprint-3.
