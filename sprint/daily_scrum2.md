@@ -6,6 +6,14 @@
     - Reset password functionality.
 - Discussed what we can perform unit testing on. For now, we can do one test per person inside db/crud.py.
 
+15/4
+- Brief discussion on how CI / unit testing should be performed, Albin and Simon will take on the initial set-up.
+
+17/4
+- Made sure everyone was done or close to done with their unit tests.
+- Cleared up some merge conflicts that were not resolved accurately.
+
+
 ## Ellen Pennebratt
 
 12/4
@@ -22,6 +30,7 @@
 
 - Blockers: none
 
+
 ## Gresa Hoxha
 
 16/4
@@ -33,6 +42,7 @@
 
 17/4
 - Did: unit testing for get_user_by_email. Test passed without bugs or conflicts.
+
 
 ## Jafar Gohari
 
