@@ -30,6 +30,10 @@
 
 - Blockers: none
 
+17/4
+- Did: Worked on backend unit tests for the CRUD/database layer and added an edge‑case test that revealed a data integrity issue related to transaction category validation. Created a GitHub issue and handed it over to the database team for investigation and fixing. Also updated the README with backend‑related instructions for unit tests, code coverage, and linting.
+- Next: Continue backend work where possible and review/integrate the database team’s fix once it is available.
+- Blockers: Waiting for the database team to fix the reported transaction category validation bug. (Which they did the same day.)
 
 ## Gresa Hoxha
 
