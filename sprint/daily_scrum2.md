@@ -47,11 +47,39 @@
 13/4
 - Did: Looked through issues for things that could be prioritized/closed. Thought about next steps.
 - Blockers: None
-- Start working on issues #83 and #75.
+- Next: Start working on issues #83 and #75.
+
+15/4
+- Did: Started implementing CI and Unit Testing with Simon.
+- Blockers: None.
+- Next: Finish CI and issues.
+
+17/4
+- Did: Got CI working, set up taskipy to use for linting and testing.
+- Blockers: Some merge issues prevented CI from running right, easily fixed.
+- Next: Set expectations and priorities for next sprint.
+
 
 ## Simon Rignell 
 13/4
 - Did: planned issues for sprint-2
 - Blockers: None
-- Start working on issues #89 and #75.
+- Next: working on issues #89 and #75.
+
+15/4
+- Did: Fixed [#89](https://github.com/tmuk26-group-1/budget-tool/issues/89) , added unit test for [#93](https://github.com/tmuk26-group-1/budget-tool/issues/93), updating eqivalent to makefile and added function for updating password and relevant test [978d54d](https://github.com/tmuk26-group-1/budget-tool/commit/978d54d) , [6fa5b9d](https://github.com/tmuk26-group-1/budget-tool/commit/6fa5b9d), [44c9278](https://github.com/tmuk26-group-1/budget-tool/commit/44c9278), [c2f6807](https://github.com/tmuk26-group-1/budget-tool/commit/c2f6807)
+- Blockers: None
+- Next: working on code coverage and lint
+  
+
+16/7
+- Did: Added code covarage and flake8 [0721596](https://github.com/tmuk26-group-1/budget-tool/commit/0721596), [e7105e9
+](https://github.com/tmuk26-group-1/budget-tool/commit/e7105e9)
+- Blockers: None
+- Next: planning sprint-3
+
+17/4
+- Did: Fixed bug with create_transaction, added a check to see if a category exist [bc83a35](https://github.com/tmuk26-group-1/budget-tool/commit/bc83a35), fixing issue [#118](https://github.com/tmuk26-group-1/budget-tool/issues/118)
+- Blockers: Merge conflict between branches. But we fixed it pretty quickly
+- Next: planning sprint-3
 

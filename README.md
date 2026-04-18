@@ -89,7 +89,6 @@ Virtual environment setup:
 - Run linter using `task lint`
 
 
-
 ### Third-Party Assets
 
 This project does not use any third-party assets such as external images, icons, or media files.

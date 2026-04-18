@@ -2,6 +2,7 @@ from sqlalchemy.exc import IntegrityError
 from .database import SessionLocal
 from .models import User, Transaction, Category
 
+
 def create_user(email, firstname, lastname, username, password) -> tuple[bool, User | str]:
     '''
     Method to create (add) a user to the DB.  
@@ -47,7 +48,6 @@ def get_user_by_email(email):
         session.close()
 
 
-
 def update_password(email, new_password) -> tuple[bool, User | str]:
     session = SessionLocal()
     try:
@@ -66,7 +66,6 @@ def update_password(email, new_password) -> tuple[bool, User | str]:
     
     finally:
         session.close()
-
 
 
 def create_transaction(user_id, amount, category_id, date, description = None) -> tuple[bool, Transaction | str]:

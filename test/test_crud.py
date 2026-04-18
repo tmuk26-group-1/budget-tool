@@ -70,7 +70,6 @@ def test_create_user_duplicate_username():
     assert msg == "Username already taken"
 
 
-
 def test_create_transaction_success():
     # Create Category for transaction test 
     success, category = crud.create_category("Food")
@@ -92,7 +91,7 @@ def test_create_transaction_success():
     assert transaction.category_id == cat_id
 
 
-# Exsisting category
+# Non exsisting category
 def test_create_transaction_invalid_category():
     success, msg = crud.create_transaction(
         user_id = 1,
@@ -129,3 +128,11 @@ def test_get_user_by_email():
     assert user.username == "gresah"
     assert user.password == "mypassword"
 
+
+def test_get_users():
+    crud.create_user("messi@goat.com", "Lionel", "Messi", "Messiah", "goal")
+    crud.create_user("ronaldinho@goat.com", "Ronaldo", "Moreira", "Ronaldinho", "smile")
+    users = crud.get_users()
+    assert len(users) == 2
+    assert users[0].username == "Messiah"
+    assert users[1].password == "smile"
