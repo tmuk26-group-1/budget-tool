@@ -15,9 +15,9 @@
 
 ## Ellen Pennebratt
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Created backend‑related GitHub issues outlining the required transaction flow and integration between frontend and database. Documented the dependency on the database team for transaction handling functionality and clarified expectations through the issues.
+- Blockers: Waiting for the database team to implement the transaction handling function required by the backend.
+- Next: Wait for the database team to implement the transaction handling function. Once available, proceed with backend integration and connect the frontend to the database logic.
 
 22/4
 - Did:
