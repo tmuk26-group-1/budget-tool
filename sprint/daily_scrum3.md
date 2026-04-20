@@ -1,19 +1,16 @@
 ## Meeting
 
-20/4
-- Clarified meeting structure and purpose. Suggested to have meetings:
-  - Mondays (planning)
-  - Wednesdays (preparation for lab)
-  - Fridays (sprint review).
+20/4 (planning)
+- Clarified meeting structure and purpose. Suggested to have meetings on Mondays, Wednesdays and Fridays.
 - Discussed major goals for the sprint.
   - Frontend: Dashboard to show balance, add transactions via sparate page.
   - Backend: Connect the frontend and database.
   - Database: Make sure transactions are stored correctly and balance gets calculated.
 
-22/4
+22/4 (preparation for lab)
 - 
 
-24/4
+24/4 (sprint review)
 - 
 
 ## Ellen Pennebratt
