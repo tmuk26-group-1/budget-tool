@@ -47,6 +47,10 @@ def delete_user(email, password) -> tuple[bool, str]:
         session.commit()
         return True, "User deleted"
     
+    except IntegrityError:
+        session.rollback()
+        return False, "Could not delete user"
+    
     finally:
         session.close()
 
