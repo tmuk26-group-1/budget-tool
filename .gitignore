@@ -29,3 +29,6 @@ htmlcov/
 
 # coverage 
 .coverage
+
+# Frontend testing static html files folder
+frontend(for_testing)/
