@@ -100,9 +100,9 @@
 
 ## Simon Rignell 
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Created fucntion that adds predetermined categories on startup 
+- Blockers: none 
+- Next: add fucntion that calculate and subtract salary when transaction is added 
 
 22/4
 - Did:
