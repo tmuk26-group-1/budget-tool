@@ -85,7 +85,7 @@
 20/4
 - Did: Code review for Simon's PR [#128](https://github.com/tmuk26-group-1/budget-tool/pull/128). Found small issue in coverage report calculations, starting work on fix.
 - Blockers: None
-- Next: Make sure CRUD-functions for adding income/expense are designed in a way that fits the Backend team.
+- Next: Make sure CRUD-functions for adding income/expense are designed in a way that suits the other teams.
 
 22/4
 - Did:
