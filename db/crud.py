@@ -28,6 +28,29 @@ def create_user(email, firstname, lastname, username, password) -> tuple[bool, U
         session.close()
 
 
+def delete_user(email, password) -> tuple[bool, str]:
+    '''
+    Function to permanently delete a user from the database. Password required for safety.
+    '''
+    session = SessionLocal()
+
+    try:
+        user = session.query(User).filter(User.email == email).first()
+        if not user:
+            return False, "No account with that email"
+        
+        if user.password != password:
+            return False, "Wrong password"
+        
+        session.delete(user)
+        
+        session.commit()
+        return True, "User deleted"
+    
+    finally:
+        session.close()
+
+
 def get_users():
     '''
     Method that returns all rows from the user table
