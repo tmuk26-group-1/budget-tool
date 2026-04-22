@@ -1,6 +1,4 @@
-/* =========================================
-   BASE.CSS - Globala stilar och variabler
-   ========================================= */
+/* Globala stilar och variabler */
 
 :root {
     --bg-color: #f1f5f9;         
@@ -26,7 +24,7 @@ body {
     /* Vi väljer den moderna font-stacken från din dashboard */
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     color: var(--text-primary);
-    background-color: var(--bg-color); /* Standardbakgrund */
+    background-color: var(--bg-color); 
     min-height: 100vh;
     display: flex;
     justify-content: center;

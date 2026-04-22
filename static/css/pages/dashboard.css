@@ -1,6 +1,4 @@
-/* =========================================
-   DASHBOARD.CSS - Dashboard-sidans specifika stilar
-   ========================================= */
+/* Dashboard sidans specifika stilar */
 
 body {
     background-color: var(--bg-color);
@@ -14,7 +12,7 @@ body {
     padding: 20px;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .dashboard-header {
     background-color: var(--card-bg);
     padding: 20px;
@@ -36,7 +34,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* ===== GRID LAYOUT ===== */
+/*  GRID LAYOUT  */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -75,7 +73,7 @@ body {
     color: var(--text-secondary);
 }
 
-/* ===== SIDEBAR ===== */
+/*  SIDEBAR  */
 .dashboard-sidebar {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -119,7 +117,7 @@ body {
     color: white;
 }
 
-/* ===== CHARTS & STATISTICS ===== */
+/*  CHARTS & STATISTICS  */
 .chart-container {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -167,7 +165,7 @@ body {
     opacity: 0.9;
 }
 
-/* ===== TABLE ===== */
+/*  TABLE  */
 .table-container {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -202,7 +200,7 @@ table tbody tr:hover {
     background-color: var(--bg-color);
 }
 
-/* ===== RESPONSIVE ===== */
+/*  RESPONSIVE  */
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

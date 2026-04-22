@@ -7,8 +7,6 @@
 {% block content %}
     
         <div class="login-container">
-        <!-- lagt till method="POST" for att login ska kunna SKICKA data -->
-        <!-- lagt till action="/login" för att login ska vet VART den ska skicka datan -->
         <form class="login-box" method="POST" action="/login">
         <img src="{{ url_for('static', filename='images/grr.png') }}" alt="Vårt projekts snygga logotyp">
         <h1>Login</h1>

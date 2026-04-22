@@ -1,6 +1,3 @@
-/* =========================================
-   REGISTRATION.CSS - Registration-sidans specifika stilar
-   ========================================= */
 
 body {
     background: linear-gradient(-45deg, #05d254, #09000c, #110120);
@@ -48,7 +45,7 @@ body {
     font-size: 14px;
 }
 
-/* ===== REGISTRATION INPUT-FÄLT ===== */
+/*  REGISTRATION INPUT-FÄLT  */
 .register-box .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -83,7 +80,7 @@ body {
     box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
 }
 
-/* ===== TERMS CHECKBOX ===== */
+/*  TERMS CHECKBOX  */
 .register-box .terms-group {
     margin-bottom: 20px;
     text-align: left;
@@ -111,7 +108,7 @@ body {
     color: #4CAF50;
 }
 
-/* ===== REGISTER BUTTON ===== */
+/*  REGISTER BUTTON  */
 .register-button {
     margin-top: 25px;
     background-color: #4CAF50;
@@ -123,7 +120,7 @@ body {
     background-color: #45a049;
 }
 
-/* ===== LOGIN LINK ===== */
+/*  LOGIN LINK  */
 .register-box .login-link {
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
@@ -139,7 +136,7 @@ body {
     text-decoration: underline;
 }
 
-/* ===== ERROR MESSAGE ===== */
+/*  ERROR MESSAGE  */
 .register-box .error-message {
     background-color: rgba(239, 68, 68, 0.2);
     border-left-color: rgba(239, 68, 68, 0.5);
@@ -152,7 +149,7 @@ body {
     margin: 0;
 }
 
-/* ===== RESPONSIVE ===== */
+/*  RESPONSIVE  */
 @media (max-width: 480px) {
     .register-box {
         padding: 30px 20px;
