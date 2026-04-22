@@ -1,0 +1,74 @@
+/* =========================================
+   BASE.CSS - Globala stilar och variabler
+   ========================================= */
+
+:root {
+    --bg-color: #f1f5f9;         
+    --card-bg: #ffffff;          
+    --text-primary: #1e293b;     
+    --text-secondary: #64748b;   
+    --accent-blue: #3b82f6;      
+    --accent-blue-hover: #2563eb;
+    --success-green: #10b981;    
+    --success-green-hover: #059669;
+    --danger-red: #ef4444;       
+    --danger-red-hover: #dc2626;
+    --border-color: #e2e8f0;     
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+img {
+    width: 100%;
+    max-width: 300px; 
+    display: block;
+}
+
+/* ===== TYPOGRAFI ===== */
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent-blue-hover);
+}

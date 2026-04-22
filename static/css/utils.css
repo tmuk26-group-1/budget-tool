@@ -1,0 +1,106 @@
+/* =========================================
+   UTILS.CSS - Animationer och utility-klasser
+   ========================================= */
+
+/* ===== ANIMATIONS ===== */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== UTILITY-KLASSER ===== */
+
+/* Display */
+.hidden {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Margin utilities */
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-auto { margin-top: auto; margin-bottom: auto; }
+
+/* Padding utilities */
+.p-10 { padding: 10px; }
+.p-20 { padding: 20px; }
+.p-30 { padding: 30px; }
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.flex-column { display: flex; flex-direction: column; }
+.flex-space-between { display: flex; justify-content: space-between; align-items: center; }
+
+/* Width/Height utilities */
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+.min-h-100vh { min-height: 100vh; }
+
+/* Text utilities */
+.text-bold { font-weight: bold; }
+.text-muted { color: var(--text-secondary); }
+.text-danger { color: var(--danger-red); }
+.text-success { color: var(--success-green); }
+
+/* Border utilities */
+.border-top {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+/* Cursor utilities */
+.cursor-pointer { cursor: pointer; }
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 15px;
+    }
+}

@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BudgetBuddy</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    
+    <!-- Globala stilar -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utils.css') }}">
+    
+    <!-- Sidspecifika stilar (läggs till av varje sida) -->
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     {% block content %}{% endblock %}

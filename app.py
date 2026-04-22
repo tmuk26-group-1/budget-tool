@@ -29,6 +29,11 @@ def home():
     return render_template("login.html")
 
 
+@app.route("/login", methods=["GET"])
+def login_get():
+    return render_template("login.html")
+
+
 @app.route("/login", methods=["POST"])
 def login_post():
     email = request.form.get("email")

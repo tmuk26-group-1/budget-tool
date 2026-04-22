@@ -1,22 +1,13 @@
 {% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/registration.css') }}">
+{% endblock %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Account</title>
-</head>
-<body>
-
-    <div class="container">
-        <div class="back-button">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
-            </svg>
-        </div>
-
-        <h2>Create your account</h2>
+    <div class="register-container">
+        <div class="register-box">
+        <h1>Create your account</h1>
         <p class="subtitle">Fill in your details below</p>
 
         <!-- Error message block -->
@@ -44,10 +35,10 @@
                 <input type="password" name="password" placeholder="Password" required>
             </div>
             
-            <button type="submit" class="btn-primary">Register</button>
+            <button type="submit" class="register-button">Register</button>
+            
+            <p class="login-link">Already have an account? <a href="{{ url_for('login_get') }}">Login here</a></p>
         </form>
+        </div>
     </div>
-
-</body>
-</html>
 {% endblock %}
