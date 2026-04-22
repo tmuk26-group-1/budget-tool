@@ -5,7 +5,7 @@
 
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
-from db.crud import create_user, get_users, get_user_by_email
+from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expense
 from db.database import init_db
 
 app = Flask(__name__)
@@ -13,6 +13,8 @@ app.secret_key = "super-secret-key"
 
 # 5 minutes timeout
 SESSION_TIMEOUT = 300
+
+init_db()
 
 # home is login page
 
@@ -79,23 +81,6 @@ def reset_password():
         return render_template("forgot-password.html", error=result)
 
 
-# dashboard
-@app.route("/dashboard")
-def dashboard():
-    user_id = session.get("user_id")
-    login_time = session.get("login_time")
-
-    # Not logged in
-    if not user_id or not login_time:
-        return redirect (url_for("home"))
-    
-    if time.time() - login_time > SESSION_TIMEOUT:
-        session.clear()
-        return redirect (url_for("home"))
-    
-    return render_template("dashboard.html")
-
-
 # register
 @app.route("/register", methods=["POST"])
 def register():
@@ -128,6 +113,83 @@ def users():
         "lastname": u.lastname,
         "username": u.username
     } for u in users])
+
+
+# dashboard
+@app.route("/dashboard")
+def dashboard():
+    user_id = session.get("user_id")
+    login_time = session.get("login_time")
+
+    # Not logged in
+    if not user_id or not login_time:
+        return redirect (url_for("home"))
+    
+    if time.time() - login_time > SESSION_TIMEOUT:
+        session.clear()
+        return redirect (url_for("home"))
+    
+    balance = get_balance(user_id)
+    return render_template("dashboard.html", balance=balance)
+
+
+#GET route for adding transaction
+@app.route("/add_transaction", methods=["GET"])
+def add_transaction():
+    user_id = session.get("user_id")
+    login_time = session.get("login_time")
+
+    if not user_id or not login_time:
+        return redirect(url_for("home"))
+    
+    if time.time() - login_time > SESSION_TIMEOUT:
+        session.clear()
+        return redirect(url_for("home"))
+    
+    #Fetch categories for dropdown
+    categories = get_category()
+    return render_template("add_transaction.html", categories=categories)
+
+#POST route for adding transaction
+@app.route("/add_transaction", methods=["POST"])
+def add_transaction_post():
+    user_id = session.get("user_id")
+
+    if not user_id:
+        return redirect(url_for("home"))
+
+    amount = request.form.get("amount")
+    category_id = request.form.get("category_id")
+    transaction_type = request.form.get("type")
+
+    # Basic validation
+    if not amount or not category_id or not transaction_type:
+        categories = get_category()
+        return render_template(
+            "add_transaction.html",
+            categories=categories,
+            error="All fields are required."
+        )
+
+    amount = float(amount)
+    import datetime
+    date = datetime.date.today()
+
+    if transaction_type == "income":
+        success, result = add_income(user_id, amount, category_id, date)
+    else:  # "expense"
+        success, result = add_expense(user_id, amount, category_id, date)
+
+    if success:
+        return redirect(url_for("dashboard"))
+    else:
+        categories = get_category()
+        return render_template(
+            "add_transaction.html",
+            categories=categories,
+            error=result
+        )
+
 
 
 if __name__ == "__main__":

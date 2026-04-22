@@ -3,6 +3,7 @@ from .database import SessionLocal
 from .models import User, Transaction, Category
 
 
+
 def create_user(email, firstname, lastname, username, password) -> tuple[bool, User | str]:
     '''
     Method to create (add) a user to the DB.  
