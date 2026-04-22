@@ -14,6 +14,8 @@ app.secret_key = "super-secret-key"
 # 5 minutes timeout
 SESSION_TIMEOUT = 300
 
+init_db()
+
 # home is login page
 
 ##home
