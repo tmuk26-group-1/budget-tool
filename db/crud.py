@@ -155,7 +155,7 @@ def get_category():
         session.close()
 
 def pre_categories():
-    categories = ["Salary", "Food & Groceries", "Rent & Housing", "Entertainment"]
+    categories = ["Salary", "Food & Groceries", "Rent & Housing", "Entertainment", "Other"]
     for name in categories:
         create_category(name)
 
@@ -168,9 +168,9 @@ def get_balance(user_id):
     finally:
         session.close()
 
-def add_salary(user_id, amount, category_id, date, description = None):
+def add_income(user_id, amount, category_id, date, description = None):
     return create_transaction(user_id, abs(amount), category_id, date, description)
 
 
-def add_expenses(user_id, amount, category_id, date, description=None):
+def add_expense(user_id, amount, category_id, date, description=None):
     return create_transaction(user_id, -abs(amount), category_id, date, description)
