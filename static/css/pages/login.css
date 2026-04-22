@@ -3,7 +3,7 @@
    ========================================= */
 
 body {
-    background: linear-gradient(-45deg, #0587d2, #012b5e, #110120);
+    background: linear-gradient(-45deg, #05d254, #09000c, #110120);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     display: flex;
