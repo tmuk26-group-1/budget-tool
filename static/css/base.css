@@ -32,10 +32,11 @@ body {
     min-height: 100vh;
 }
 
-img {
-    width: 100%;
-    max-width: 300px; 
+.login-logo {
+    width: 120px;
+    height: auto;
     display: block;
+    margin: 0 auto 20px auto;
 }
 
 /* TYPOGRAFI */
