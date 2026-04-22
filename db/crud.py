@@ -2,6 +2,8 @@ from sqlalchemy.exc import IntegrityError
 from .database import SessionLocal
 from .models import User, Transaction, Category
 
+
+
 def create_user(email, firstname, lastname, username, password) -> tuple[bool, User | str]:
     '''
     Method to create (add) a user to the DB.  
@@ -27,6 +29,33 @@ def create_user(email, firstname, lastname, username, password) -> tuple[bool, U
         session.close()
 
 
+def delete_user(email, password) -> tuple[bool, str]:
+    '''
+    Function to permanently delete a user from the database. Password required for safety.
+    '''
+    session = SessionLocal()
+
+    try:
+        user = session.query(User).filter(User.email == email).first()
+        if not user:
+            return False, "No account with that email"
+        
+        if user.password != password:
+            return False, "Wrong password"
+        
+        session.delete(user)
+        
+        session.commit()
+        return True, "User deleted"
+    
+    except IntegrityError:
+        session.rollback()
+        return False, "Could not delete user"
+    
+    finally:
+        session.close()
+
+
 def get_users():
     '''
     Method that returns all rows from the user table
@@ -48,6 +77,7 @@ def get_user_by_email(email):
 
 
 
+#function for updating your password
 def update_password(email, new_password) -> tuple[bool, User | str]:
     session = SessionLocal()
     try:
@@ -68,11 +98,15 @@ def update_password(email, new_password) -> tuple[bool, User | str]:
         session.close()
 
 
-
 def create_transaction(user_id, amount, category_id, date, description = None) -> tuple[bool, Transaction | str]:
     session = SessionLocal()
 
     try:
+
+        category = session.query(Category).filter(Category.category_id == category_id).first() 
+        if not category:
+            return False, "Category does not exist"
+        
         transaction = Transaction(user_id=user_id, amount=amount, category_id=category_id, date=date, description=description)
         session.add(transaction)
         session.commit()
@@ -120,3 +154,24 @@ def get_category():
         return session.query(Category).all()
     finally:
         session.close()
+
+def pre_categories():
+    categories = ["Salary", "Food & Groceries", "Rent & Housing", "Entertainment", "Other"]
+    for name in categories:
+        create_category(name)
+
+
+def get_balance(user_id):
+    session = SessionLocal()
+    try:
+        transactions = session.query(Transaction).filter(Transaction.user_id == user_id).all()
+        return sum(t.amount for t in transactions)
+    finally:
+        session.close()
+
+def add_income(user_id, amount, category_id, date, description = None):
+    return create_transaction(user_id, abs(amount), category_id, date, description)
+
+
+def add_expense(user_id, amount, category_id, date, description=None):
+    return create_transaction(user_id, -abs(amount), category_id, date, description)

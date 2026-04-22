@@ -23,3 +23,12 @@ desktop.ini
 # Database file (temporarily)
 db/budget.db
 *.db
+
+#html files 
+htmlcov/
+
+# coverage 
+.coverage
+
+# Frontend testing static html files folder
+frontend(for_testing)/

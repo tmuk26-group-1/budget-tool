@@ -4,14 +4,13 @@ body {
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     min-height: 100vh; 
-    font-family: Arial, sans-serif; 
+    font-family: Arial, sans-serif;
 }
 
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-    
 }
 
 * {
@@ -69,7 +68,7 @@ h1 {
     padding: 10px;
     border: none;
     outline: none;
-    color:white;
+    color:black;
     font-size: 16px;
     outline:none;
 }
@@ -97,7 +96,34 @@ p {
     margin-top: 25px;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 
+#not-found {
+    margin-top: 20px;
+    color: #ffb3b3;
+}
+
+#not-found a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#reset-form {
+    margin-top: 20px;
+}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

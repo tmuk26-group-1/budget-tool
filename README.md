@@ -82,10 +82,16 @@ Virtual environment setup:
 5. Run the app: `task run`
 6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
 
-### How to do unit-testing 
-```
-task test
-```
+### How to perform tests 
+
+- Perform unit testing with code coverage report using `task test`
+    - The HTML coverage report is generated in: `htmlcov/index.html`
+- Run linter using `task lint`
+
+
+### Third-Party Assets
+
+This project does not use any third-party assets such as external images, icons, or media files.
 
 ## Members
 
