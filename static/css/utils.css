@@ -1,8 +1,6 @@
-/* =========================================
-   UTILS.CSS - Animationer och utility-klasser
-   ========================================= */
+/* Animationer och klasser*/
 
-/* ===== ANIMATIONS ===== */
+/* animationer */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -29,7 +27,7 @@
     }
 }
 
-/* ===== UTILITY-KLASSER ===== */
+/* verktyg(utility) och KLASSER */
 
 /* Display */
 .hidden {

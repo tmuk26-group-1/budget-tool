@@ -43,7 +43,11 @@ body {
 }
 
 .login-box img {
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 30px;
+    display: block;
+    border-radius: 10px;
 }
 
 /* ===== LOGIN INPUT-FÄLT ===== */

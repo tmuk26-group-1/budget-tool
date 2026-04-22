@@ -1,8 +1,6 @@
-/* =========================================
-   COMPONENTS.CSS - Återanvändbara komponenter
-   ========================================= */
+/* Återanvändbara komponenter */
 
-/* ===== KNAPPAR ===== */
+/* btn */
 button, .btn-primary, .btn-secondary, .login-button {
     border: none;
     padding: 12px 24px;
@@ -34,7 +32,7 @@ button, .btn-primary, .btn-secondary, .login-button {
     background-color: var(--accent-blue-hover);
 }
 
-/* ===== INPUT-FÄLT ===== */
+/* input fält */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -61,7 +59,7 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* ===== INPUT-GRUPPER ===== */
+/* INPUT-GRUPPER */
 .input-group {
     margin-bottom: 20px;
     display: flex;
@@ -75,7 +73,7 @@ select:focus {
     font-weight: 600;
 }
 
-/* ===== CHECKBOX & RADIO ===== */
+/* CHECKBOX & RADIO */
 input[type="checkbox"],
 input[type="radio"] {
     cursor: pointer;
@@ -89,7 +87,7 @@ label {
     font-size: 14px;
 }
 
-/* ===== MEDDELANDEN ===== */
+/* message */
 .error-message {
     background-color: #fee2e2;
     color: #991b1b;
@@ -118,7 +116,7 @@ label {
     color: #166534;
 }
 
-/* ===== CONTAINERS & FORMS ===== */
+/* CONTAINERS & FORMS*/
 .container {
     width: 100%;
     max-width: 450px;
@@ -138,7 +136,7 @@ form {
     width: 100%;
 }
 
-/* ===== OPTION-GRUPP ===== */
+/* OPTION-GRUPP */
 .option-group {
     display: flex;
     justify-content: space-between;
@@ -155,7 +153,7 @@ form {
     font-size: 14px;
 }
 
-/* ===== TEXT-UTILITES ===== */
+/* TEXT och TILITES */
 .register-text {
     margin-top: 20px;
     text-align: center;
