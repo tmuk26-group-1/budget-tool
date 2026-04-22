@@ -6,7 +6,6 @@
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users, get_user_by_email
-from flask import Flask
 from db.database import init_db
 
 app = Flask(__name__)
@@ -15,13 +14,7 @@ app.secret_key = "super-secret-key"
 # 5 minutes timeout
 SESSION_TIMEOUT = 300
 
-# initialize database tables
-init_db()
-
-
 # home is login page
-# Initialize database
-init_db()
 
 ##home
 @app.route("/")

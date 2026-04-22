@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+    <h2>Add Transaction</h2>
+    
+    <form method="POST" action="{{ url_for('add_transaction')}}" class="transaction-form">
+
+        <!-- Type -->
+         <div class="form-group">
+            <label for="type">Type</label>
+            <select name="type" id="type" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+         </div>
+
+         <!-- Category -->
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select name="category" id="category" required>
+                <option value="" disabled selected>Select category</option>
+                <option value="salary">Salary</option>
+                <option value="salary">Food & Groceries</option>
+                <option value="salary">Rent & Housing</option>
+                <option value="salary">Entertainment</option>
+                <!-- Add other? -->
+            </select>
+          </div>
+
+          <!-- Amount -->
+           <div class="form-group">
+            <label for="amount">Amount (SEK)</label>
+            <input type="number" name="amount" id="amount" placeholder="e.g. 1000" required>
+           </div>
+
+           <!-- Submit -->
+            <button type="submit" class="btn btn-submit">Add Transaction</button>
+    </form>
+</div>
+
+{% endblock %}
