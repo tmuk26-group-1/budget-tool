@@ -45,14 +45,14 @@
 - Database Team: (Next week)
   - Extend the data model to support:
     - A savings counter.
-    - A field/value for saved from previous month.
+    - A field/value for saved from previous month. [141](https://github.com/tmuk26-group-1/budget-tool/issues/141)
 
   - Decide and implement monthly reset logic, e.g.:
     - Scheduled reset.
     - Reset on first transaction of a new month.
 
   - Ensure:
-    - “Other” exists as a valid category.
+    - “Other” exists as a valid category. [128](github.com/tmuk26-group-1/budget-tool/pull/128)
     - Carry‑over value is preserved correctly between months.
 
   - Expose or update CRUD functions so backend can:
