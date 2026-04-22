@@ -20,6 +20,8 @@ def setup_db(monkeypatch):
     # override SessionLocal in crud
     monkeypatch.setattr(crud, "SessionLocal", TestingSessionLocal)
 
+    crud.pre_categories()
+
     yield
 
     Base.metadata.drop_all(engine)
@@ -81,7 +83,7 @@ def test_create_transaction_success():
     success, transaction = crud.create_transaction(
         user_id=1,
         amount=100,
-        category_id=1,
+        category_id=cat_id,
         date=date(2024, 1, 1),
         description="Lunch"
     )
@@ -136,3 +138,12 @@ def test_get_users():
     assert len(users) == 2
     assert users[0].username == "Messiah"
     assert users[1].password == "smile"
+
+def test_get_balance():
+
+    crud.create_transaction(user_id=1, amount=25000, category_id=1, date=date(2024, 1, 1))
+    crud.create_transaction(user_id=1, amount=-500, category_id=2, date=date(2024, 1, 2))
+
+    balance = crud.get_balance(1)
+
+    assert balance == 24500

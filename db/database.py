@@ -16,3 +16,6 @@ def init_db():
     Adds all missing tables.
     '''
     Base.metadata.create_all(engine)
+    from db.crud import pre_categories
+    pre_categories()
+    
