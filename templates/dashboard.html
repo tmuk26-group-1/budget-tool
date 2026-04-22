@@ -1,4 +1,23 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+    <header class="budget-hero">
+        <h2>Remaining Budget</h2>
+        <h1 class="budget-amount">{{ balance }} kr</h1>
+    </header>
+
+    <div class="action-buttons">
+        <a href="{{ url_for('add_transaction')}}">+ Add transaction</a>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+<!-- {% extends "base.html" %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -44,4 +63,4 @@
 </body>
 </html>
 {% endblock %}
-
+ -->
