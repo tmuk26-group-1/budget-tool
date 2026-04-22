@@ -141,8 +141,8 @@ def test_get_users():
 
 def test_get_balance():
 
-    crud.create_transaction(user_id=1, amount=25000, category_id=1, date=date(2024, 1, 1))
-    crud.create_transaction(user_id=1, amount=-500, category_id=2, date=date(2024, 1, 2))
+    crud.add_income(user_id=1, amount=25000, category_id=1, date=date(2024, 1, 1))
+    crud.add_expense(user_id=1, amount=500, category_id=2, date=date(2024, 1, 2))
 
     balance = crud.get_balance(1)
 
