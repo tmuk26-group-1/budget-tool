@@ -3,6 +3,7 @@ from .database import SessionLocal
 from .models import User, Transaction, Category
 
 
+
 def create_user(email, firstname, lastname, username, password) -> tuple[bool, User | str]:
     '''
     Method to create (add) a user to the DB.  
@@ -168,7 +169,7 @@ def get_balance(user_id):
     finally:
         session.close()
 
-def add_salary(user_id, amount, category_id, date, description = None):
+def add_income(user_id, amount, category_id, date, description = None):
     return create_transaction(user_id, abs(amount), category_id, date, description)
 
 

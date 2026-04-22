@@ -5,7 +5,7 @@
 
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
-from db.crud import create_user, get_users, get_user_by_email
+from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expenses
 from db.database import init_db
 
 app = Flask(__name__)
@@ -127,9 +127,11 @@ def dashboard():
         session.clear()
         return redirect (url_for("home"))
     
-    return render_template("dashboard.html")
+    balance = get_balance(user_id)
+    return render_template("dashboard.html", balance=balance)
 
 
+#GET route for adding transaction
 @app.route("/add_transaction", methods=["GET"])
 def add_transaction():
     user_id = session.get("user_id")
@@ -142,7 +144,50 @@ def add_transaction():
         session.clear()
         return redirect(url_for("home"))
     
-    return render_template("add_transaction.html")
+    #Fetch categories for dropdown
+    categories = get_category()
+    return render_template("add_transaction.html", categories=categories)
+
+#POST route for adding transaction
+@app.route("/add_transaction", methods=["POST"])
+def add_transaction_post():
+    user_id = session.get("user_id")
+
+    if not user_id:
+        return redirect(url_for("home"))
+
+    amount = request.form.get("amount")
+    category_id = request.form.get("category_id")
+    transaction_type = request.form.get("type")
+
+    # Basic validation
+    if not amount or not category_id or not transaction_type:
+        categories = get_category()
+        return render_template(
+            "add_transaction.html",
+            categories=categories,
+            error="All fields are required."
+        )
+
+    amount = float(amount)
+    import datetime
+    date = datetime.date.today()
+
+    if transaction_type == "income":
+        success, result = add_income(user_id, amount, category_id, date)
+    else:  # "expense"
+        success, result = add_expenses(user_id, amount, category_id, date)
+
+    if success:
+        return redirect(url_for("dashboard"))
+    else:
+        categories = get_category()
+        return render_template(
+            "add_transaction.html",
+            categories=categories,
+            error=result
+        )
+
 
 
 if __name__ == "__main__":
