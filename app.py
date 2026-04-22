@@ -5,7 +5,7 @@
 
 import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
-from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expenses
+from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expense
 from db.database import init_db
 
 app = Flask(__name__)
@@ -176,7 +176,7 @@ def add_transaction_post():
     if transaction_type == "income":
         success, result = add_income(user_id, amount, category_id, date)
     else:  # "expense"
-        success, result = add_expenses(user_id, amount, category_id, date)
+        success, result = add_expense(user_id, amount, category_id, date)
 
     if success:
         return redirect(url_for("dashboard"))
