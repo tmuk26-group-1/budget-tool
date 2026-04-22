@@ -82,14 +82,14 @@
 
 ## Gresa Hoxha
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Meeting. Took a look at issues.
+- Blockers: Had to wait for frontend and database to create their stuff regarding "add-transaction".
+- Next: make the backend connection.
 
 22/4
-- Did:
-- Blockers:
-- Next:
+- Did: Connected the dashboard design and the add transaction page to the database logic behind it. At this stage it works to alter the balance based on each individual user. 
+- Blockers: problems occured due to the many pull requests and branches. Sugessted that we all be a little more careful when creating new pull requests, meaning that we make sure none are sitting from earlier. Problem was fixed by hard-merging the branches as for now. Otherwise no blockers.
+- Next: See list we discussed during Wednesday meeting.
 
 24/4
 - Did:
