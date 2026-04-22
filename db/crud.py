@@ -128,7 +128,7 @@ def get_category():
         session.close()
 
 def pre_categories():
-    categories = ["Salary", "Food & Groceries", "Rent & Housing", "Entertainment"]
+    categories = ["Salary", "Food & Groceries", "Rent & Housing", "Entertainment", "Other"]
     for name in categories:
         create_category(name)
 
