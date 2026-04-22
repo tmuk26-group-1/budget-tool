@@ -79,23 +79,6 @@ def reset_password():
         return render_template("forgot-password.html", error=result)
 
 
-# dashboard
-@app.route("/dashboard")
-def dashboard():
-    user_id = session.get("user_id")
-    login_time = session.get("login_time")
-
-    # Not logged in
-    if not user_id or not login_time:
-        return redirect (url_for("home"))
-    
-    if time.time() - login_time > SESSION_TIMEOUT:
-        session.clear()
-        return redirect (url_for("home"))
-    
-    return render_template("dashboard.html")
-
-
 # register
 @app.route("/register", methods=["POST"])
 def register():
@@ -128,6 +111,38 @@ def users():
         "lastname": u.lastname,
         "username": u.username
     } for u in users])
+
+
+# dashboard
+@app.route("/dashboard")
+def dashboard():
+    user_id = session.get("user_id")
+    login_time = session.get("login_time")
+
+    # Not logged in
+    if not user_id or not login_time:
+        return redirect (url_for("home"))
+    
+    if time.time() - login_time > SESSION_TIMEOUT:
+        session.clear()
+        return redirect (url_for("home"))
+    
+    return render_template("dashboard.html")
+
+
+@app.route("/add_transaction", methods=["GET"])
+def add_transaction():
+    user_id = session.get("user_id")
+    login_time = session.get("login_time")
+
+    if not user_id or not login_time:
+        return redirect(url_for("home"))
+    
+    if time.time() - login_time > SESSION_TIMEOUT:
+        session.clear()
+        return redirect(url_for("home"))
+    
+    return render_template("add_transaction.html")
 
 
 if __name__ == "__main__":
