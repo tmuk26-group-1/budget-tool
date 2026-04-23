@@ -1,0 +1,111 @@
+/* Add Transaction – auth-style (matches registration page) */
+
+body {
+    background: linear-gradient(-45deg, #05d254, #09000c, #110120);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Center container like register/login */
+.dashboard-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glassmorphism card */
+.transaction-form {
+    background: rgba(95, 8, 78, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease;
+}
+
+/* Title */
+.dashboard-container h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* Form groups */
+.transaction-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.transaction-form label {
+    display: block;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* Inputs & selects */
+.transaction-form input,
+.transaction-form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.transaction-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+    border-color: rgba(76, 175, 80, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Select arrow visibility fix */
+.transaction-form select {
+    cursor: pointer;
+}
+
+/* Submit button – same as register/login */
+.btn-submit {
+    margin-top: 25px;
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    box-shadow: 0 0 10px 2px rgba(76, 175, 80, 0.5);
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+    box-shadow: 0 0 15px 3px rgba(76, 175, 80, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .transaction-form {
+        padding: 30px 20px;
+    }
+
+    .dashboard-container h2 {
+        font-size: 22px;
+    }
+}
