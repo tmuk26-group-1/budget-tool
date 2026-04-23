@@ -1,0 +1,178 @@
+/* Återanvändbara komponenter */
+
+/* btn */
+button, .btn-primary, .btn-secondary, .login-button {
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-primary, .login-button {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 0 10px 2px rgba(76, 175, 80, 0.5);
+}
+
+.btn-primary:hover, .login-button:hover {
+    background-color: #45a049;
+    box-shadow: 0 0 15px 3px rgba(76, 175, 80, 0.7);
+}
+
+.btn-secondary {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-blue-hover);
+}
+
+/* input fält */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* INPUT-GRUPPER */
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* CHECKBOX & RADIO */
+input[type="checkbox"],
+input[type="radio"] {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* message */
+.error-message {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--danger-red);
+}
+
+.error-message p {
+    margin: 0;
+    color: #991b1b;
+}
+
+.success-message {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--success-green);
+}
+
+.success-message p {
+    margin: 0;
+    color: #166534;
+}
+
+/* CONTAINERS & FORMS*/
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    width: 100%;
+}
+
+/* OPTION-GRUPP */
+.option-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.option-group label {
+    margin: 0;
+}
+
+.option-group a {
+    font-size: 14px;
+}
+
+/* TEXT och TILITES */
+.register-text {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
