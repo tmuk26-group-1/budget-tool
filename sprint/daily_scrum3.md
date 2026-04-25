@@ -75,9 +75,9 @@
 - Next:
 
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: ntegration testing was added to verify the interaction between Flask routes, session handling, and the database layer using an isolated in‑memory SQLite database.
+- Blockers: None
+- Next: Continue with issues. 
 
 
 ## Gresa Hoxha
