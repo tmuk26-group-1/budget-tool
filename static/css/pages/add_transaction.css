@@ -55,8 +55,21 @@ body {
     margin-bottom: 6px;
 }
 
-/* Inputs & selects */
-.transaction-form input,
+.transaction-form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    transition: all 0.2s ease;
+    appearance: textfield;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+}
+
 .transaction-form select {
     width: 100%;
     padding: 12px;
@@ -65,8 +78,9 @@ body {
     outline: none;
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
+    color: black;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .transaction-form input::placeholder {
@@ -80,9 +94,23 @@ body {
     box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
 }
 
-/* Select arrow visibility fix */
-.transaction-form select {
-    cursor: pointer;
+.transaction-form select.type-select {
+    color: white !important;
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* Custom dropdown arrow */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 40px; /* space for arrow */
+}
+
+.transaction-form select.type-select:hover {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%2305d254' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
 }
 
 /* Submit button – same as register/login */
@@ -97,6 +125,15 @@ body {
 .btn-submit:hover {
     background-color: #45a049;
     box-shadow: 0 0 15px 3px rgba(76, 175, 80, 0.7);
+}
+
+.type-select option {
+  color: black;                 /* text inside dropdown */
+  background-color: white;      /* dropdown background */
+}
+
+.type-select option[disabled] {
+  color: gray;                  /* placeholder inside dropdown */
 }
 
 /* Responsive */
