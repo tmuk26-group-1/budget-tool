@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>BudgetBuddy</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utils.css') }}">
+    {% block styles %}{% endblock %}
 </head>
 <body>
     {% block content %}{% endblock %}

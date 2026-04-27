@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/dashboard.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <div class="dashboard-container">
-    <header class="budget-hero">
-        <h2>Remaining Budget</h2>
-        <h1 class="budget-amount">{{ balance }} kr</h1>
-    </header>
+    <div class="dashboard-box">
+        <header class="budget-hero">
+            <h2>Remaining Budget</h2>
+            <h1 class="budget-amount">{{ balance }} kr</h1>
+        </header>
 
-    <div class="action-buttons">
-        <a href="{{ url_for('add_transaction')}}" class="btn btn-income">+ Add transaction</a>
+        <div class="action-buttons">
+            <a href="{{ url_for('add_transaction')}}" class="btn btn-income">+ Add transaction</a>
+        </div>
     </div>
 </div>
 
 {% endblock %}
-
-
-
