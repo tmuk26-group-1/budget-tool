@@ -97,3 +97,18 @@
 - Blockers: Merge conflict between branches. But we fixed it pretty quickly
 - Next: planning sprint-3
 
+## Vasilis Segersköld
+14/4
+- Did: Completed the forgot-password page structure [#105](https://github.com/tmuk26-group-1/budget-tool/commit/10aaeab6517d78d9e2d3208f67d06169435ce733)
+- Blockers: None
+- Next: Stylize the forgot-password page
+
+15/4
+- Did: Stylized the forgot-password page [#120](https://github.com/tmuk26-group-1/budget-tool/commit/b5babea4d57303ed007a9b454a197cfa6608138d)
+- Blockers: None
+- Next: Unit testing
+
+17/4
+- Did: Created a unit test
+- Blockers: None
+- Next: Build dashboard.html
