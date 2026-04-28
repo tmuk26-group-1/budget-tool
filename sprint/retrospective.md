@@ -23,7 +23,7 @@ __What went well__
 __What went bad__
 - Some of our code in main was not ready for presenting when we came to the lab. We need to make sure to have _all_ of the code ready in main one hour before the lab sessions. All of the _major_ parts at least the night before.
 
-# Sprint-3 
+ # Sprint-3 
 
 __What went well__
 - The team was better prepared for the lab this week, which made the lab session smoother and more efficient.
