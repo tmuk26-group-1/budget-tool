@@ -191,6 +191,13 @@ def add_transaction_post():
         )
 
 
+# route for logout button
+@app.route("/logout")
+def logout():
+    session.clear() # removes user_id and login_time
+
+    return redirect(url_for("home"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
