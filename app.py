@@ -7,6 +7,7 @@ import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expense
 from db.database import init_db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
@@ -31,7 +32,7 @@ def login_post():
 
     user = get_user_by_email(email)
 
-    if user and user.password == password:
+    if user and check_password_hash(user.password, password):
         # Successful login
         session["user_id"] = user.user_id
         session["login_time"] = time.time()
@@ -91,8 +92,16 @@ def register():
     username = request.form.get("username")
     password = request.form.get("password")
 
+    # Hash password
+    hashed_password = generate_password_hash(password)
     # Call CRUD function
-    success, result = create_user(email, firstname, lastname, username, password)
+    success, result = create_user(
+        email,
+        firstname,
+        lastname,
+        username,
+        hashed_password
+    )
 
     if success:
         # On success, redirect to login page
@@ -149,6 +158,7 @@ def add_transaction():
     #Fetch categories for dropdown
     categories = get_category()
     return render_template("add_transaction.html", categories=categories)
+
 
 #POST route for adding transaction
 @app.route("/add_transaction", methods=["POST"])
