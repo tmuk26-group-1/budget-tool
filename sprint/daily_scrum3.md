@@ -133,19 +133,19 @@
 
 ## Albin Törnberg
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added daily scrum notes template for sprint 3. Added coverage omit configuration in `pyproject.toml`.
+- Blockers: None
+- Next: Add function for deleting a user (old, low priority issue [#83](https://github.com/tmuk26-group-1/budget-tool/issues/83)). Look into excluding files from coverage report.
 
 22/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added function for deleting a user. Finalized and merged PRs [#134](https://github.com/tmuk26-group-1/budget-tool/pull/134) and [#138](https://github.com/tmuk26-group-1/budget-tool/pull/138) into main.
+- Blockers: None
+- Next: Structure database tasks for the coming sprint.
 
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added issue [#146](https://github.com/tmuk26-group-1/budget-tool/issues/146). Finalized and merged [PR #143 (CRUD fixes after meeting)](https://github.com/tmuk26-group-1/budget-tool/pull/143).
+- Blockers: None
+- Next: Prepare and plan for next sprint.
 
 
 ## Simon Rignell 
