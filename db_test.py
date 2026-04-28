@@ -44,7 +44,9 @@ def add_transaction():
 
 def print_transactions():
     user_id = input("User ID: ")
-    transactions = get_transaction(user_id)
+    year = input("Year: ")
+    month = input("Month: ")
+    transactions = get_transaction(user_id, year, month)
     if not transactions:
         print("\nNo transactions found")
     for t in transactions:
