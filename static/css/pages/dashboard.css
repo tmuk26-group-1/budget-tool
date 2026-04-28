@@ -1,0 +1,83 @@
+/* Dashboard sidans specifika stilar */
+body {
+    background: linear-gradient(-45deg, #05d254, #09000c, #110120);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Centrerar allt precis som på login-sidan */
+.dashboard-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Samma glas-effekt och styling som .login-box */
+.dashboard-box {
+    background: rgba(95, 8, 78, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 380px; /* Samma maxbredd som login */
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease;
+}
+
+/* Styling för texten i boxen */
+.budget-hero h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8); /* Lite dämpad vit, likt labels på login */
+    font-weight: normal;
+}
+
+.budget-hero .budget-amount {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+/* Gör att knappen ser ut som login-knappen */
+.btn-income {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px; /* Justera om din inloggningsknapp har runda hörn via base.css */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn-income:hover {
+    background-color: #45a049;
+}
+
+/* Responsivitet för små skärmar */
+@media (max-width: 480px) {
+    .dashboard-box {
+        padding: 30px 20px;
+    }
+
+    .budget-hero .budget-amount {
+        font-size: 28px;
+    }
+}

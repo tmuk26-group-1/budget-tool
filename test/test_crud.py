@@ -147,3 +147,31 @@ def test_get_balance():
     balance = crud.get_balance(1)
 
     assert balance == 24500
+
+
+def test_delete_user_success():
+    crud.create_user("del@test.com", "A", "B", "deluser", "pass")
+    success, msg = crud.delete_user("del@test.com", "pass")
+    assert success is True
+    assert crud.get_user_by_email("del@test.com") is None
+
+
+def test_delete_user_failures():
+    crud.create_user("del2@test.com", "A", "B", "deluser2", "pass")
+    success, msg = crud.delete_user("del2@test.com", "wrongpass") ## test for wrong passoword
+    assert msg == "Wrong password" 
+    success, msg = crud.delete_user("none@test.com", "pass") ##test if no user with that email exist
+    assert msg == "No account with that email"
+
+
+def test_get_transactions():
+    crud.create_transaction(user_id=1, amount=100, category_id=1, date=date(2024, 1, 1))
+    crud.create_transaction(user_id=1, amount=200, category_id=2, date=date(2024, 1, 2))
+    transactions = crud.get_transaction(1)
+    assert len(transactions) == 2
+
+
+def test_get_category():
+    categories = crud.get_category()
+    assert len(categories) == 5
+    assert categories[0].name == "Salary"

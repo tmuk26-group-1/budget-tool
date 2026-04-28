@@ -1,11 +1,15 @@
 {% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/login.css') }}">
+{% endblock %}
  
 {% block content %}
     
         <div class="login-container">
         <!-- lagt till method="POST" for att login ska kunna SKICKA data -->
         <!-- lagt till action="/login" för att login ska vet VART den ska skicka datan -->
-        <img src="grr.png" alt="Vårt projekts snygga logotyp">
+        <img src="{{ url_for('static', filename='images/grr.png') }}" alt="Vårt projekts snygga logotyp">
         <form class="login-box" method="POST" action="/login">
         <h1>Login</h1>
 

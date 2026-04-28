@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Meeting
 
 27/4 (Planning)
@@ -75,3 +76,10 @@
 - Blockers:
 - Next:
 
+=======
+Meeting Monday 27/4
+
+- Discussed plans for this week. Goals:
+    - Add logout function.
+    - Add "BudgetGoal" function".
+>>>>>>> 1adb28e73cfea38996256b4fa37aef82a95216c6

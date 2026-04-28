@@ -60,24 +60,16 @@
   - Fetch carry‑over.
   - Reset monthly values safely.
 
-24/4 (sprint review)
-- 
-
 ## Ellen Pennebratt
 20/4
 - Did: Created backend‑related GitHub issues outlining the required transaction flow and integration between frontend and database. Documented the dependency on the database team for transaction handling functionality and clarified expectations through the issues.
 - Blockers: Waiting for the database team to implement the transaction handling function required by the backend.
 - Next: Wait for the database team to implement the transaction handling function. Once available, proceed with backend integration and connect the frontend to the database logic.
 
-22/4
-- Did:
-- Blockers:
-- Next:
-
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: Integration testing was added to verify the interaction between Flask routes, session handling, and the database layer using an isolated in‑memory SQLite database.
+- Blockers: None
+- Next: Continue with issues. 
 
 
 ## Gresa Hoxha
@@ -90,12 +82,6 @@
 - Did: Connected the dashboard design and the add transaction page to the database logic behind it. At this stage it works to alter the balance based on each individual user. 
 - Blockers: problems occured due to the many pull requests and branches. Sugessted that we all be a little more careful when creating new pull requests, meaning that we make sure none are sitting from earlier. Problem was fixed by hard-merging the branches as for now. Otherwise no blockers.
 - Next: See list we discussed during Wednesday meeting.
-
-24/4
-- Did:
-- Blockers:
-- Next:
-
 
 ## Vasilis Segersköld
 20/4
@@ -133,33 +119,35 @@
 
 ## Albin Törnberg
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added daily scrum notes template for sprint 3. Added coverage omit configuration in `pyproject.toml`.
+- Blockers: None
+- Next: Add function for deleting a user (old, low priority issue [#83](https://github.com/tmuk26-group-1/budget-tool/issues/83)). Look into excluding files from coverage report.
 
 22/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added function for deleting a user. Finalized and merged PRs [#134](https://github.com/tmuk26-group-1/budget-tool/pull/134) and [#138](https://github.com/tmuk26-group-1/budget-tool/pull/138) into main.
+- Blockers: None
+- Next: Structure database tasks for the coming sprint.
 
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added issue [#146](https://github.com/tmuk26-group-1/budget-tool/issues/146). Finalized and merged [PR #143 (CRUD fixes after meeting)](https://github.com/tmuk26-group-1/budget-tool/pull/143).
+- Blockers: None
+- Next: Prepare and plan for next sprint.
 
 
 ## Simon Rignell 
 20/4
-- Did: Created fucntion that adds predetermined categories on startup 
+- Did: Created function that adds predetermined categories on startup 
 - Blockers: none 
-- Next: add fucntion that calculate and subtract salary when transaction is added 
+- Next: add function that calculate and subtract salary when transaction is added 
 
 22/4
-- Did:
-- Blockers:
-- Next:
+- Did: commit the functions to the PR and merge the branch to main 
+- Blockers: none
+- Next: Create more Crud-tests
 
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: Creating more Crud-tests, example test_get_balance
+- Blockers: None 
+- Next: create Filter for CRUD-functions by month
+
+
