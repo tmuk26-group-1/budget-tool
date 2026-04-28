@@ -150,16 +150,18 @@
 
 ## Simon Rignell 
 20/4
-- Did: Created fucntion that adds predetermined categories on startup 
+- Did: Created function that adds predetermined categories on startup 
 - Blockers: none 
-- Next: add fucntion that calculate and subtract salary when transaction is added 
+- Next: add function that calculate and subtract salary when transaction is added 
 
 22/4
-- Did:
-- Blockers:
-- Next:
+- Did: commit the functions to the PR and merge the branch to main 
+- Blockers: none
+- Next: Create more Crud-tests
 
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: Creating more Crud-tests, example test_get_balance
+- Blockers: None 
+- Next: create Filter for CRUD-functions by month
+
+
