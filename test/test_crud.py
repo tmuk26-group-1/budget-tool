@@ -144,7 +144,7 @@ def test_get_balance():
     crud.add_income(user_id=1, amount=25000, category_id=1, date=date(2024, 1, 1))
     crud.add_expense(user_id=1, amount=500, category_id=2, date=date(2024, 1, 2))
 
-    balance = crud.get_balance(1)
+    balance = crud.get_balance(1, year=2024, month =1)
 
     assert balance == 24500
 
@@ -167,7 +167,7 @@ def test_delete_user_failures():
 def test_get_transactions():
     crud.create_transaction(user_id=1, amount=100, category_id=1, date=date(2024, 1, 1))
     crud.create_transaction(user_id=1, amount=200, category_id=2, date=date(2024, 1, 2))
-    transactions = crud.get_transaction(1)
+    transactions = crud.get_transaction(1, year =2024, month = 1)
     assert len(transactions) == 2
 
 
