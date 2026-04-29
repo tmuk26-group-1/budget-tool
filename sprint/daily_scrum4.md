@@ -33,9 +33,9 @@ Meeting Monday 27/4
 - Next: 
 
 29/4
-- Did:
-- Blockers:
-- Next:
+- Did: Fixed issue #58 and also PR #156
+- Blockers: Waiting for other teams to implement features.
+- Next: issue #163
 
 ## Vasilis Segersköld
 27/4
