@@ -8,7 +8,7 @@
 
     <div class="dashboard-wrapper">
     <header class="dashboard-topbar">
-        <a href="#" class="btn-logout">Log out</a>
+        <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
     </header>
 
     <div class="dashboard-grid">
@@ -27,8 +27,8 @@
 
             <div class="dashboard-box">
                 <header class="budget-hero">
-                    <h2>Månadens mål</h2>
-                    <h1 class="budget-amount">2000 kr</h1>
+                    <h2>Monthly goal</h2>
+                    <h1 class="budget-amount">{{ monthly_goal }} kr</h1>
                 </header>
             </div>
 
