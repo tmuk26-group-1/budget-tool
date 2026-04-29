@@ -93,6 +93,9 @@ Virtual environment setup:
 
 This project does not use any third-party assets such as external images, icons, or media files.
 
+## License
+This project is licensed under the MIT License.
+
 ## Members
 
 | Name               | JU Email               | GitHub Username |
