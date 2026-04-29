@@ -1,6 +1,7 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from werkzeug.security import generate_password_hash
 
 from app import app
 from db.database import Base
@@ -37,7 +38,7 @@ def test_login_and_access_dashboard(client):
         "Test",
         "User",
         "testuser",
-        "password"
+        generate_password_hash("password") 
     )
     assert success is True
 
