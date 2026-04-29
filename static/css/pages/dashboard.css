@@ -3,62 +3,121 @@ body {
     background: linear-gradient(-45deg, #05d254, #09000c, #110120);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     margin: 0;
+    font-family: sans-serif;
+    color: white;
 }
 
-/* Centrerar allt precis som på login-sidan */
-.dashboard-container {
-    min-height: 100vh;
-    width: 100%;
+/* HUVUDWRAPPER */
+.dashboard-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* TOPPMENY (ALEX & Log out) */
+.dashboard-topbar {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
-/* Samma glas-effekt och styling som .login-box */
+.avatar svg {
+    width: 30px;
+    height: 30px;
+}
+
+.username {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-logout {
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+/* GRID LAYOUTEN */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr; /* Vänstra spalten får exakt login-boxens gamla bredd, högra tar resten */
+    gap: 30px;
+    align-items: start;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* DEN GEMENSAMMA GLAS-BOXEN */
 .dashboard-box {
     background: rgba(95, 8, 78, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px;
     width: 100%;
-    max-width: 380px; /* Samma maxbredd som login */
-    text-align: center;
+    box-sizing: border-box;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.5s ease;
+    text-align: center;
 }
 
-/* Styling för texten i boxen */
+/* --- EXISTERANDE STYLING FÖR BUDGET OCH KNAPP --- */
 .budget-hero h2 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.8); /* Lite dämpad vit, likt labels på login */
+    color: rgba(255, 255, 255, 0.8);
     font-weight: normal;
 }
 
 .budget-hero .budget-amount {
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-size: 36px;
     color: #ffffff;
 }
 
-/* Gör att knappen ser ut som login-knappen */
 .btn-income {
     display: block;
     background-color: #4CAF50;
     color: white;
     width: 100%;
     padding: 12px 0;
-    border-radius: 8px; /* Justera om din inloggningsknapp har runda hörn via base.css */
+    border-radius: 8px;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
@@ -71,13 +130,98 @@ body {
     background-color: #45a049;
 }
 
-/* Responsivitet för små skärmar */
-@media (max-width: 480px) {
-    .dashboard-box {
-        padding: 30px 20px;
-    }
+/* --- NY STYLING: DIAGRAM --- */
+.chart-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
 
-    .budget-hero .budget-amount {
-        font-size: 28px;
+
+
+/* --- NY STYLING: HISTORIK --- */
+.history-box {
+    text-align: left;
+    height: 100%; /* Sträcker ut boxen */
+    min-height: 500px; /* Ser till att den matchar skissens höjd */
+    display: flex;
+    flex-direction: column;
+}
+
+.history-header {
+    margin-bottom: 20px;
+}
+
+.history-header h2 {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+}
+
+.month-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+.month-selector a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.month-selector a:hover {
+    color: white;
+}
+
+.current-month {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Listan med scroll */
+.transaction-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 400px;
+    padding-right: 10px;
+}
+
+/* Custom scrollbar för historiken */
+.transaction-list::-webkit-scrollbar {
+    width: 8px;
+}
+.transaction-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+.transaction-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: 80px 60px 1fr;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+}
+
+.t-amount { font-weight: bold; }
+.t-amount.negative { color: #fca5a5; }
+.t-amount.positive { color: #86efac; }
+.t-date { color: rgba(255, 255, 255, 0.6); }
+
+/* --- RESPONSIVITET FÖR MINDRE SKÄRMAR --- */
+@media (max-width: 850px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Staplar allt under varandra på mobilen */
+    }
+    .history-box {
+        min-height: 400px;
     }
 }
