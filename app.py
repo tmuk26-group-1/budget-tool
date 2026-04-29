@@ -7,6 +7,7 @@ import time
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expense
 from db.database import init_db
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -134,11 +135,18 @@ def dashboard():
     if not user_id or not login_time:
         return redirect (url_for("home"))
     
+    # session timeout
+    
     if time.time() - login_time > SESSION_TIMEOUT:
         session.clear()
         return redirect (url_for("home"))
     
-    balance = get_balance(user_id)
+    # get current year and month
+    now = datetime.now()
+    year = now.year
+    month = now.month
+    
+    balance = get_balance(user_id, year, month)
     return render_template("dashboard.html", balance=balance)
 
 

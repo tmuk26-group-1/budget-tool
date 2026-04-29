@@ -1,4 +1,5 @@
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy import extract
 from .database import SessionLocal
 from .models import User, Transaction, Category
 
@@ -120,10 +121,14 @@ def create_transaction(user_id, amount, category_id, date, description = None) -
         session.close()
 
 
-def get_transaction(user_id):
+def get_transaction(user_id, year, month):
     session = SessionLocal()
     try:
-        return session.query(Transaction).filter(Transaction.user_id == user_id).all()
+        return session.query(Transaction).filter(
+            Transaction.user_id == user_id,
+            extract("year", Transaction.date) == year,
+            extract("month", Transaction.date) == month
+        ).all()
     finally:
         session.close()
 
@@ -161,10 +166,10 @@ def pre_categories():
         create_category(name)
 
 
-def get_balance(user_id):
+def get_balance(user_id, year, month):
     session = SessionLocal()
     try:
-        transactions = session.query(Transaction).filter(Transaction.user_id == user_id).all()
+        transactions = get_transaction(user_id, year, month)
         return sum(t.amount for t in transactions)
     finally:
         session.close()
