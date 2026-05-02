@@ -99,6 +99,30 @@ def update_password(email, new_password) -> tuple[bool, User | str]:
         session.close()
 
 
+def update_goal(email, amount) -> tuple[bool, User | str]:
+    '''
+    Update a single users monthly goal.\n
+    If we want to remove the goal we can use None for the amount, as the field is nullable in the DB.
+    '''
+    session = SessionLocal()
+    try:
+        user = session.query(User).filter(User.email == email).first()
+
+        if not user:
+            return False, "No account with that email"
+        
+        user.goal = amount
+        session.commit()
+        return True, user
+    
+    except IntegrityError as e:
+        session.rollback()
+        return False, "Could not update goal"   # fallback
+
+    finally:
+        session.close()
+
+
 def create_transaction(user_id, amount, category_id, date, description = None) -> tuple[bool, Transaction | str]:
     session = SessionLocal()
 

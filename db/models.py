@@ -15,6 +15,7 @@ class User(Base):
     lastname = Column(String, nullable=False)
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
+    goal = Column(Integer, nullable=True)
 
 
 class Transaction(Base): 
