@@ -175,3 +175,23 @@ def test_get_category():
     categories = crud.get_category()
     assert len(categories) == 5
     assert categories[0].name == "Salary"
+
+def test_update_goal_success():
+    crud.create_user("goal@test.com", "A", "B", "goaluser", "pass")
+    success, user = crud.update_goal("goal@test.com", 5000)
+    assert success is True
+    assert user.goal == 5000
+
+
+def test_update_goal_set_none():
+    crud.create_user("goal2@test.com", "A", "B", "goaluser2", "pass")
+    crud.update_goal("goal2@test.com", 5000)
+    success, user = crud.update_goal("goal2@test.com", None)
+    assert success is True
+    assert user.goal is None
+
+
+def test_update_goal_user_not_found():
+    success, msg = crud.update_goal("nonexistent@test.com", 5000)
+    assert success is False
+    assert msg == "No account with that email"
