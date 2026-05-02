@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Meeting
 
 27/4 (Planning)
@@ -61,14 +60,14 @@ Meeting Monday 27/4
 
 ## Albin Törnberg
 27/4
-- Did:
-- Blockers: 
-- Next: 
+- Did: Worked on artifact generation (coverage report)
+- Blockers: A test was failing due to new hashing of passwords, this is already being worked on. 
+- Next: Finalize above and work on transaction dates.
 
 29/4
-- Did:
-- Blockers:
-- Next:
+- Did: Worked on and finalized transaction dates, informed backend team of changed functions.
+- Blockers: None
+- Next: Start working on the next goal (monthly goal)
 
 ## Simon Rignell 
 27/4
