@@ -68,6 +68,14 @@ def get_users():
         session.close()
 
 
+def get_user_by_id(user_id):
+    session = SessionLocal()
+    try:
+        return session.query(User).filter(User.user_id == user_id).first()
+    finally:
+        session.close()
+
+
 def get_user_by_email(email):
     '''Fetch a single user by email'''
     session = SessionLocal()

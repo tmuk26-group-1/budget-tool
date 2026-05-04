@@ -7,18 +7,24 @@
 {% block content %}
 
 <div class="dashboard-container">
-    
+
+    {% if error %}
+        <div class="error-message" style="color: red; margin-bottom: 10px;">
+            {{ error }}
+        </div>
+    {% endif %}
+
     <form method="POST" action="{{ url_for('add_transaction')}}" class="transaction-form">
 
         <!-- Type -->
-         <div class="form-group">
+        <div class="form-group">
             <label for="type">Type</label>
             <select class="type-select" name="type" id="type" required>
                 <option value="" disabled selected>Select type</option>
                 <option value="income">Income</option>
                 <option value="expense">Expense</option>
             </select>
-         </div>
+        </div>
 
         <!-- Category -->
         <div class="form-group">
@@ -31,14 +37,14 @@
             </select>
         </div>
 
-          <!-- Amount -->
-           <div class="form-group">
+        <!-- Amount -->
+        <div class="form-group">
             <label for="amount">Amount (SEK)</label>
             <input type="number" name="amount" id="amount" placeholder="e.g. 1000" required>
-           </div>
+        </div>
 
-           <!-- Submit -->
-            <button type="submit" class="btn btn-submit">Add Transaction</button>
+        <!-- Submit -->
+        <button type="submit" class="btn btn-submit">Add Transaction</button>
     </form>
 </div>
 

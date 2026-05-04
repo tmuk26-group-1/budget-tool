@@ -4,11 +4,24 @@
 # Jaha men hallå där från frontend också
 
 import time
-from flask import Flask, request, jsonify, render_template, redirect, url_for, session
-from db.crud import create_user, get_users, get_user_by_email, get_balance, get_category, add_income, add_expense
-from db.database import init_db
+import logging
+from functools import wraps
 from datetime import datetime
+
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from db.crud import (
+    create_user,
+    get_users,
+    get_user_by_email,
+    get_balance,
+    get_category,
+    add_income,
+    add_expense,
+    get_user_by_id,
+)
+from db.database import init_db
 
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
@@ -16,7 +29,54 @@ app.secret_key = "super-secret-key"
 # 5 minutes timeout
 SESSION_TIMEOUT = 300
 
+# Basic logging
+logging.basicConfig(level=logging.INFO)
+
 init_db()
+
+
+def login_required(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if "user_id" not in session:
+            return redirect(url_for("home"))
+        return f(*args, **kwargs)
+    return wrapper
+
+
+def check_timeout():
+    """Return False if session is missing or expired, True otherwise."""
+    login_time = session.get("login_time")
+    if not login_time:
+        return False
+    if time.time() - login_time > SESSION_TIMEOUT:
+        logging.info("Session timeout, clearing session")
+        session.clear()
+        return False
+    return True
+
+
+def next_month(year, month):
+    if month == 12:
+        return year + 1, 1
+    return year, month + 1
+
+
+def prev_month(year, month):
+    if month == 1:
+        return year - 1, 12
+    return year, month - 1
+
+
+def format_transaction(t):
+    """Helper to format a Transaction object for display."""
+    return {
+        "amount": f"{t.amount} kr",
+        "is_positive": t.amount > 0,
+        "date": t.date.strftime("%d/%m"),
+        "desc": t.description or "",
+    }
+
 
 # home is login page
 
@@ -37,6 +97,7 @@ def login_post():
         # Successful login
         session["user_id"] = user.user_id
         session["login_time"] = time.time()
+        logging.info(f"User {user.user_id} logged in")
         return redirect(url_for("dashboard"))
     else:
         # Failed login
@@ -86,7 +147,6 @@ def reset_password():
 # register
 @app.route("/register", methods=["POST"])
 def register():
-    
     email = request.form.get("email")
     firstname = request.form.get("firstname")
     lastname = request.form.get("lastname")
@@ -101,11 +161,12 @@ def register():
         firstname,
         lastname,
         username,
-        hashed_password
+        hashed_password,
     )
 
     if success:
         # On success, redirect to login page
+        logging.info(f"New user registered: {email}")
         return redirect(url_for("home"))
     else:
         # on failure, show registration page again with error message
@@ -116,65 +177,75 @@ def register():
 @app.route("/users", methods=["GET"])
 def users():
     users = get_users()
-    return jsonify([{
-        "id": u.id,
-        "email": u.email,
-        "firstname": u.firstname,
-        "lastname": u.lastname,
-        "username": u.username
-    } for u in users])
+    return jsonify([
+        {
+            "id": u.user_id,
+            "email": u.email,
+            "firstname": u.firstname,
+            "lastname": u.lastname,
+            "username": u.username,
+        }
+        for u in users
+    ])
 
 
 # dashboard
 @app.route("/dashboard")
+@login_required
 def dashboard():
     user_id = session.get("user_id")
-    login_time = session.get("login_time")
 
-    # Not logged in
-    if not user_id or not login_time:
-        return redirect (url_for("home"))
-    
-    # session timeout
-    
-    if time.time() - login_time > SESSION_TIMEOUT:
-        session.clear()
-        return redirect (url_for("home"))
-    
-    # get current year and month
+    if not check_timeout():
+        return redirect(url_for("home"))
+
+    # get current year and month (with query override)
     now = datetime.now()
-    year = now.year
-    month = now.month
-    
+    year = request.args.get("year", now.year, type=int)
+    month = request.args.get("month", now.month, type=int)
+
+    user = get_user_by_id(user_id)
+    username = user.username
+
+    prev_y, prev_m = prev_month(year, month)
+    next_y, next_m = next_month(year, month)
+
     balance = get_balance(user_id, year, month)
-    return render_template("dashboard.html", balance=balance)
+
+    logging.info(f"User {user_id} opened dashboard for {month}/{year}")
+
+    return render_template(
+        "dashboard.html",
+        balance=balance,
+        username=username,
+        year=year,
+        month=month,
+        prev_y=prev_y,
+        prev_m=prev_m,
+        next_y=next_y,
+        next_m=next_m,
+    )
 
 
-#GET route for adding transaction
+# GET route for adding transaction
 @app.route("/add_transaction", methods=["GET"])
+@login_required
 def add_transaction():
-    user_id = session.get("user_id")
-    login_time = session.get("login_time")
+    if not check_timeout():
+        return redirect(url_for("home"))
 
-    if not user_id or not login_time:
-        return redirect(url_for("home"))
-    
-    if time.time() - login_time > SESSION_TIMEOUT:
-        session.clear()
-        return redirect(url_for("home"))
-    
-    #Fetch categories for dropdown
+    # Fetch categories for dropdown
     categories = get_category()
     return render_template("add_transaction.html", categories=categories)
 
 
-#POST route for adding transaction
+# POST route for adding transaction
 @app.route("/add_transaction", methods=["POST"])
+@login_required
 def add_transaction_post():
-    user_id = session.get("user_id")
-
-    if not user_id:
+    if not check_timeout():
         return redirect(url_for("home"))
+
+    user_id = session.get("user_id")
 
     amount = request.form.get("amount")
     category_id = request.form.get("category_id")
@@ -186,12 +257,12 @@ def add_transaction_post():
         return render_template(
             "add_transaction.html",
             categories=categories,
-            error="All fields are required."
+            error="All fields are required.",
         )
 
     amount = float(amount)
-    import datetime
-    date = datetime.date.today()
+    import datetime as dt
+    date = dt.date.today()
 
     if transaction_type == "income":
         success, result = add_income(user_id, amount, category_id, date)
@@ -199,21 +270,22 @@ def add_transaction_post():
         success, result = add_expense(user_id, amount, category_id, date)
 
     if success:
+        logging.info(f"User {user_id} added {transaction_type} of {amount}")
         return redirect(url_for("dashboard"))
     else:
         categories = get_category()
         return render_template(
             "add_transaction.html",
             categories=categories,
-            error=result
+            error=result,
         )
 
 
 # route for logout button
 @app.route("/logout")
 def logout():
-    session.clear() # removes user_id and login_time
-
+    logging.info("User logged out")
+    session.clear()  # removes user_id and login_time
     return redirect(url_for("home"))
 
 
