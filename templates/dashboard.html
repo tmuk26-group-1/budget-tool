@@ -36,6 +36,15 @@
                     <h2>Monthly goal</h2>
                     <h1 class="budget-amount">{{ monthly_goal }} kr</h1>
                 </header>
+
+                <button class="btn btn-income" onclick="toggleGoalForm()">
+                    Update Monthly Goal
+                </button>
+
+                <form id="goal-form" method="POST" action="{{ url_for('dashboard') }}" hidden>
+                    <input type="number" name="monthly_goal" required>
+                    <button type="submit">Save</button>
+                </form>
             </div>
 
             
@@ -143,5 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+  function toggleGoalForm() {
+    document.getElementById("goal-form").hidden = false;
+  }
 </script>
+
 {% endblock %}
