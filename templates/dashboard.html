@@ -12,7 +12,7 @@
             <div class="avatar">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
-            <span class="username">ALEX</span>
+            <span class="username">{{ username }}</span>
         </div>
             <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
          </header> 
@@ -73,9 +73,13 @@
                 <div class="history-header">
                     <h2>History</h2>
                     <div class="month-selector">
-                        <a href="#" class="month-btn">&lt; Mars</a>
-                        <span class="current-month">April</span>
-                        <a href="#" class="month-btn">Maj &gt;</a>
+                        <a href="{{ url_for('dashboard', year=prev_y, month=prev_m) }}" class="month-btn">&lt;</a>
+
+                        <span class="current-month">
+                            {{ month }}/{{ year }}
+                        </span>
+
+                        <a href="{{ url_for('dashboard', year=next_y, month=next_m) }}" class="month-btn">&gt;</a>
                     </div>
                 </div>
 
