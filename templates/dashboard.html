@@ -7,9 +7,15 @@
 {% block content %}
 
     <div class="dashboard-wrapper">
-    <header class="dashboard-topbar">
-        <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
-    </header>
+        <header class="dashboard-topbar">
+        <div class="user-profile">
+            <div class="avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <span class="username">ALEX</span>
+        </div>
+            <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
+         </header> 
 
     <div class="dashboard-grid">
         
@@ -23,7 +29,7 @@
                 <div class="action-buttons">
                     <a href="{{ url_for('add_transaction')}}" class="btn btn-income">+ Add transaction</a>
                 </div>
-        </div>
+            </div>
 
             <div class="dashboard-box">
                 <header class="budget-hero">
@@ -41,12 +47,114 @@
                 </form>
             </div>
 
-    </div>
+            
 
-    <script>
-        function toggleGoalForm() {
-            document.getElementById("goal-form").hidden = false;
+            <div class="dashboard-box chart-box" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <h2 style="margin-top: 0; margin-bottom: 15px; font-size: 18px; color: rgba(255, 255, 255, 0.8); font-weight: normal;"> Expenses by Category </h2>
+    
+                <div style="position: relative; height: 200px; width: 100%;">
+            <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right-column">
+            <!-- TILLAGT: NY SEKTION FÖR SPARAD SUMMA -->
+            <div class="dashboard-box">
+                <header class="budget-hero">
+                    <h2>Total Savings</h2>
+                    <!-- Variabeln total_savings hämtas från Flask. Klassen savings-amount är ny för grön färg. -->
+                    <h1 class="budget-amount savings-amount">{{ total_savings }} kr</h1>
+                </header>
+            </div>
+            <!-- SLUT PÅ TILLÄGG -->
+            <div class="dashboard-box history-box">
+                <div class="history-header">
+                    <h2>History</h2>
+                    <div class="month-selector">
+                        <a href="#" class="month-btn">&lt; Mars</a>
+                        <span class="current-month">April</span>
+                        <a href="#" class="month-btn">Maj &gt;</a>
+                    </div>
+                </div>
+
+                <div class="transaction-list">
+                    <div class="transaction-item">
+                        <span class="t-amount negative">-500 kr</span>
+                        <span class="t-date">21/4</span>
+                        <span class="t-desc">Köpt kaffe till gruppen</span>
+                    </div>
+                    <div class="transaction-item">
+                        <span class="t-amount positive">+150 kr</span>
+                        <span class="t-date">19/4</span>
+                        <span class="t-desc">Swish från Kalle</span>
+                    </div>
+                    <div class="transaction-item">
+                        <span class="t-amount negative">-120 kr</span>
+                        <span class="t-date">10/4</span>
+                        <span class="t-desc">Lunch</span>
+                    </div>
+                    <div class="transaction-item"><span class="t-amount negative">-50 kr</span><span class="t-date">08/4</span><span class="t-desc">Bussbiljett</span></div>
+                    <div class="transaction-item"><span class="t-amount negative">-200 kr</span><span class="t-date">05/4</span><span class="t-desc">Matbutik</span></div>
+                    <div class="transaction-item"><span class="t-amount negative">-50 kr</span><span class="t-date">04/4</span><span class="t-desc">Kaffe</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('expenseChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Housing', 'Food', 'Transport', 'Entertainment', 'Other'],
+            datasets: [{
+                data: [35, 25, 15, 15, 10], 
+                backgroundColor: [
+                    '#4CAF50',
+                    '#2196F3',
+                    '#9C27B0',
+                    '#FF9800',
+                    '#E91E63' 
+                ],
+                borderWidth: 0,
+                hoverOffset: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        font: {
+                            size: 12
+                        },
+                        padding: 15
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ' ' + context.label + ': ' + context.parsed + '%';
+                        }
+                    }
+                }
+            }
         }
-    </script>
+    });
+});
+  function toggleGoalForm() {
+    document.getElementById("goal-form").hidden = false;
+  }
+</script>
 
 {% endblock %}
