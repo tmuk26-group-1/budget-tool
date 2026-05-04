@@ -225,3 +225,9 @@ body {
         min-height: 400px;
     }
 }
+
+/* --- TILLAGT: NY STYLING FÖR SPARAD SUMMA --- */
+/* Ger sparpengarna en uppmuntrande grön färg istället för standardvit */
+.savings-amount {
+    color: #86efac !important; 
+}
