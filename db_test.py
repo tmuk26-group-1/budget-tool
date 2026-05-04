@@ -1,4 +1,4 @@
-from db.crud import create_user, get_users, create_transaction, get_transaction, create_category, get_category
+from db.crud import create_user, get_users, create_transaction, get_transaction, create_category, get_category, update_goal
 from db.database import init_db
 from datetime import date as Date
 
@@ -69,6 +69,18 @@ def print_categories():
         print({k: v for k, v in vars(c).items() if not k.startswith("_")})
 
 
+def update_user_goal():
+    email = input("User email: ")
+    amount = input("Amount: ")
+    amount = None if amount.strip() in ("", "None", "none") else int(amount)
+    success, result = update_goal(email, amount)
+
+    if success:
+        print("\nGoal updated.")
+    else:
+        print(f"\nError: {result}")
+        
+
 def menu():
     print("\n--- BudgetBuddy DB Test ---")
     print("1. Add user")
@@ -77,6 +89,7 @@ def menu():
     print("4. Show transactions")
     print("5. Add category")
     print("6. Show categories")
+    print("7. Update user goal")
     print("0. Exit")
 
 
@@ -105,6 +118,9 @@ def main():
 
         elif choice == "6":
             print_categories()
+
+        elif choice == "7":
+            update_user_goal()
 
         elif choice == "0":
             print("\nExiting...")
