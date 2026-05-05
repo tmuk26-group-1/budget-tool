@@ -38,14 +38,14 @@ Meeting Monday 27/4
 
 ## Vasilis Segersköld
 27/4
-- Did:
-- Blockers: 
-- Next: 
+- Did: Spread out stylizing from one big CSS file (styles.css) to multiple smaller ones [#147](https://github.com/tmuk26-group-1/budget-tool/pull/147)
+- Blockers: None
+- Next: Add variables instead of hardcode for monthly goal in dashboard.html
 
 29/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added variables instead of hardcoding for monthly goal [#162](https://github.com/tmuk26-group-1/budget-tool/pull/162)
+- Blockers: None
+- Next: Remove 'remember me' from the login page
 
 ## Jafar Gohari
 27/4

@@ -83,21 +83,17 @@
 - Blockers: problems occured due to the many pull requests and branches. Sugessted that we all be a little more careful when creating new pull requests, meaning that we make sure none are sitting from earlier. Problem was fixed by hard-merging the branches as for now. Otherwise no blockers.
 - Next: See list we discussed during Wednesday meeting.
 
+
 ## Vasilis Segersköld
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Built the first version of our dashboard page [#135](https://github.com/tmuk26-group-1/budget-tool/pull/135)
+- Blockers: None
+- Next: Create add_transaction.html
 
-22/4
-- Did:
-- Blockers:
-- Next:
-
-24/4
-- Did:
-- Blockers:
-- Next:
+21/4
+- Did: Created the add_transaction page [#137](https://github.com/tmuk26-group-1/budget-tool/pull/137)
+- Blockers: None
+- Next: Organize CSS files
 
 
 ## Jafar Gohari
