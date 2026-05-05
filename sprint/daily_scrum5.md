@@ -31,15 +31,15 @@ We met last week on friday, decided that this week should be a pretty much final
 
 ## Vasilis Segersköld
 
-### 4/5
-- Did:
-- Blockers:
-- Next:
+### 3/5
+- Did: Removed 'remember me' from the login page [#148](https://github.com/tmuk26-group-1/budget-tool/issues/148)
+- Blockers: None
+- Next: Add 'update monthly goal' button on the dashboard
 
-### 6/5
-- Did:
-- Blockers:
-- Next:
+### 4/5
+- Did: Added 'update monthly goal' button [#171](https://github.com/tmuk26-group-1/budget-tool/pull/171), and finalized the frontend together with Jafar
+- Blockers: None
+- Next: Not sure at this point; frontend is pretty much done for now.
 
 ---
 
