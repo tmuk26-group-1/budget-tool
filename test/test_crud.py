@@ -197,7 +197,6 @@ def test_update_goal_user_not_found():
     assert msg == "No account with that email"
 
 def test_get_total_savings_success():
-    import datetime
     success, user = crud.create_user("totsav-usr1@example.com", "tot", "sav", "totsav1", "pass")
     now = date.today()
 
