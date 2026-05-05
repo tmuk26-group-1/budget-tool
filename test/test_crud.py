@@ -195,3 +195,16 @@ def test_update_goal_user_not_found():
     success, msg = crud.update_goal("nonexistent@test.com", 5000)
     assert success is False
     assert msg == "No account with that email"
+
+def test_get_total_savings_success():
+    import datetime
+    success, user = crud.create_user("totsav-usr1@example.com", "tot", "sav", "totsav1", "pass")
+    now = date.today()
+
+    savings = crud.get_total_savings(user.user_id)
+    assert savings == 0
+
+    success, result = crud.add_income(user.user_id, 13500, 1, now, "CSN")
+
+    savings = crud.get_total_savings(user.user_id)
+    assert savings == 13500
