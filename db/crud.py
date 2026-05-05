@@ -206,6 +206,26 @@ def get_balance(user_id, year, month):
     finally:
         session.close()
 
+def get_category_totals(user_id, year, month):
+    session = SessionLocal()
+    try:
+        transactions = session.query(Transaction, Category).join(
+            Category, Transaction.category_id == Category.category_id
+        ).filter(
+            Transaction.user_id == user_id,
+            extract("year", Transaction.date) == year,
+            extract("month", Transaction.date) == month
+        ).all()
+
+        totals = {}
+        for t, cat in transactions:
+            if cat.name not in totals:
+                totals[cat.name] = 0
+            totals[cat.name] += abs(t.amount)
+        return totals
+    finally:
+        session.close()
+
 def get_total_savings(user_id):
     session = SessionLocal()
     try:
