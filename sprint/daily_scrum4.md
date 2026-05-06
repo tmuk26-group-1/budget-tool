@@ -78,9 +78,9 @@ update tests get_balance and get_transaction with year and moth fiter
 - Next: Fix failed tests by updating the plaintext password to the generated hashed password
 
 29/4
-- Did:
-- Blockers:
-- Next:
+- Did: Finalized year and month filter so it works correctly and fixed failing tests for hased passwords
+- Blockers: none
+- Next: Start with monthly goal 
 
 
 
