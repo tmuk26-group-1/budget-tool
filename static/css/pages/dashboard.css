@@ -76,7 +76,7 @@ body {
     align-items: start;
 }
 
-.left-column {
+.left-column, .right-column {
     display: flex;
     flex-direction: column;
     gap: 30px;
