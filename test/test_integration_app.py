@@ -7,6 +7,8 @@ from app import app, format_transaction
 from db.database import Base
 import db.crud as crud
 
+from datetime import date
+
 
 engine = create_engine("sqlite:///:memory:")
 TestingSessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
@@ -474,3 +476,23 @@ def test_savings_display(client):
     response = client.get("/dashboard")
 
     assert b"Total Savings" in response.data
+
+
+## expenses shown in dashboard
+def test_expense_shows_in_dashboard(client):
+    success, user = crud.create_user("balance@test.com", "Balance", "User", "balanceuser", generate_password_hash("password"))
+    assert success
+
+    client.post("/login", data = {"email": "balance@test.com", "password": "password"})
+    
+    categories = crud.get_category()
+    for c in categories:
+        if c.name == "Food & Groceries":
+            food_cat = c
+            break
+
+    crud.add_expense(user.user_id, 300, food_cat.category_id, date(2026, 5, 1))
+
+    response = client.get("/dashboard?year=2026&month=5")
+
+    assert b"-300 kr" in response.data 
