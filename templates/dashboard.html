@@ -24,7 +24,9 @@
             <div class="dashboard-box">
                 <header class="budget-hero">
                     <h2>Remaining Budget</h2>
-                    <h1 class="budget-amount">{{ balance }} kr</h1>
+                    <h1 class="budget-amount {% if over_goal %}warning{% endif %}">
+                        {{ balance }} kr
+                    </h1>                
                 </header>
                 <div class="action-buttons">
                     <a href="{{ url_for('add_transaction')}}" class="btn btn-income">+ Add transaction</a>
@@ -84,24 +86,21 @@
                 </div>
 
                 <div class="transaction-list">
-                    <div class="transaction-item">
-                        <span class="t-amount negative">-500 kr</span>
-                        <span class="t-date">21/4</span>
-                        <span class="t-desc">Köpt kaffe till gruppen</span>
-                    </div>
-                    <div class="transaction-item">
-                        <span class="t-amount positive">+150 kr</span>
-                        <span class="t-date">19/4</span>
-                        <span class="t-desc">Swish från Kalle</span>
-                    </div>
-                    <div class="transaction-item">
-                        <span class="t-amount negative">-120 kr</span>
-                        <span class="t-date">10/4</span>
-                        <span class="t-desc">Lunch</span>
-                    </div>
-                    <div class="transaction-item"><span class="t-amount negative">-50 kr</span><span class="t-date">08/4</span><span class="t-desc">Bussbiljett</span></div>
-                    <div class="transaction-item"><span class="t-amount negative">-200 kr</span><span class="t-date">05/4</span><span class="t-desc">Matbutik</span></div>
-                    <div class="transaction-item"><span class="t-amount negative">-50 kr</span><span class="t-date">04/4</span><span class="t-desc">Kaffe</span></div>
+                    {% if transactions %}
+                        {% for t in transactions %}
+                            <div class="transaction-item">
+                                <span class="t-amount {% if t.is_positive %}positive{% else %}negative{% endif %}">
+                                    {{ t.amount }}
+                                </span>
+                                <span class="t-date">{{ t.date }}</span>
+                                <span class="t-desc">{{ t.desc }}</span>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-top: 10px;">
+                            No transactions this month.
+                        </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -117,9 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Housing', 'Food', 'Transport', 'Entertainment', 'Other'],
+            labels: {{ chart_labels|tojson }},
             datasets: [{
-                data: [35, 25, 15, 15, 10], 
+                data: {{ chart_values|tojson }}, 
                 backgroundColor: [
                     '#4CAF50',
                     '#2196F3',

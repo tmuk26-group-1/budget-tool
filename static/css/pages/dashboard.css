@@ -111,6 +111,11 @@ body {
     color: #ffffff;
 }
 
+/* Warning color when balance exceeds monthly goal */
+.warning {
+    color: #ff4d4d !important;
+}
+
 .btn-income {
     display: block;
     background-color: #4CAF50;

@@ -20,6 +20,10 @@ from db.crud import (
     add_income,
     add_expense,
     get_user_by_id,
+    update_goal,
+    get_total_savings,
+    get_transaction,
+    get_category_totals,
 )
 from db.database import init_db
 
@@ -190,26 +194,42 @@ def users():
 
 
 # dashboard
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["GET", "POST"])
 @login_required
 def dashboard():
     user_id = session.get("user_id")
 
     if not check_timeout():
         return redirect(url_for("home"))
+    
+    user = get_user_by_id(user_id)
+
+    # handle monthly goal update
+    if request.method == "POST":
+        new_goal = request.form.get("monthly_goal")
+        update_goal(user.email, new_goal)
+        user = get_user_by_id(user_id)
+
 
     # get current year and month (with query override)
     now = datetime.now()
     year = request.args.get("year", now.year, type=int)
     month = request.args.get("month", now.month, type=int)
 
-    user = get_user_by_id(user_id)
     username = user.username
 
     prev_y, prev_m = prev_month(year, month)
     next_y, next_m = next_month(year, month)
 
     balance = get_balance(user_id, year, month)
+    monthly_goal = user.goal or 0
+    over_goal = balance > monthly_goal
+    transactions = get_transaction(user_id, year, month)
+    formatted_transactions = [format_transaction(t) for t in transactions]
+    category_totals = get_category_totals(user_id, year, month)
+    chart_labels = list(category_totals.keys())
+    chart_values = list(category_totals.values())
+    total_savings = get_total_savings(user_id)
 
     logging.info(f"User {user_id} opened dashboard for {month}/{year}")
 
@@ -223,6 +243,12 @@ def dashboard():
         prev_m=prev_m,
         next_y=next_y,
         next_m=next_m,
+        monthly_goal=monthly_goal,
+        over_goal=over_goal,
+        total_savings=total_savings,
+        transactions=formatted_transactions,
+        chart_labels=chart_labels,
+        chart_values=chart_values,
     )
 
 
