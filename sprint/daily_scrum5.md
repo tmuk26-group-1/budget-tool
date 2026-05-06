@@ -74,11 +74,11 @@ We met last week on friday, decided that this week should be a pretty much final
 ## Simon Rignell
 
 ### 4/5
-- Did:
-- Blockers:
-- Next:
+- Did: Added function that calculates the totalt incomes. Also added function add get_transaction with join, get_total_savings and get_category_totals 
+- Blockers: none 
+- Next: Panning and fixing everython for the upcoming lab 
 
 ### 6/5
-- Did:
-- Blockers:
-- Next:
+- Did: Connected everything for the lab, so that everything works as it should
+- Blockers: none
+- Next: Work with total saving with albin 
