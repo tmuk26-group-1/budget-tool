@@ -236,6 +236,7 @@ def dashboard():
 
     # Category totals for chart
     category_totals = get_category_totals(user_id, year, month)
+    category_totals = {k: v for k, v in category_totals.items() if k != "Salary"}
     chart_labels = list(category_totals.keys())
     chart_values = list(category_totals.values())
 
