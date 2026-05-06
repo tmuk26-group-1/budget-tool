@@ -53,7 +53,7 @@ def test_login_and_access_dashboard(client):
 
     dashboard_response = client.get("/dashboard")
     assert dashboard_response.status_code == 200
-    assert b"Remaining Budget" in dashboard_response.data
+    assert b"Remaining Balance" in dashboard_response.data
 
 
 def test_login_failure(client):
@@ -365,8 +365,8 @@ def test_dashboard_loads(client):
     response = client.get("/dashboard")
 
     assert response.status_code == 200
-    assert b"Remaining Budget" in response.data
-    assert b"Monthly goal" in response.data
+    assert b"Remaining Balance" in response.data
+    assert b"Monthly Budgetgoal" in response.data
 
 
 # ---------------------------------------------------------
