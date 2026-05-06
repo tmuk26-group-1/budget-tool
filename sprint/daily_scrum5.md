@@ -60,14 +60,14 @@ We met last week on friday, decided that this week should be a pretty much final
 ## Albin Törnberg
 
 ### 4/5
-- Did:
-- Blockers:
-- Next:
+- Did: Adjusted the User class to include the monthly goal. Implemented function to update.
+- Blockers: None
+- Next: Work on total savings with Simon.
 
 ### 6/5
-- Did:
-- Blockers:
-- Next:
+- Did: Added some testing, fixed description input and routing, and some other small frontend changes.
+- Blockers: None
+- Next: Work on monthly "rollover" implementation.
 
 ---
 
