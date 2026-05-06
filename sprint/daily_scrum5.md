@@ -79,6 +79,6 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next: Panning and fixing everython for the upcoming lab 
 
 ### 6/5
-- Did: Connected everything for the lab, so that everything works as it should
+- Did: Connected everything for the lab, so that everything works as it should. Also added my integration-test
 - Blockers: none
 - Next: Work with total saving with albin 
