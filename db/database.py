@@ -1,5 +1,5 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 # from .database import engine, Base
 # from .models import User
 
@@ -10,12 +10,12 @@ SessionLocal = sessionmaker(bind=engine)
 
 Base = declarative_base()
 
+
 def init_db():
     '''
-    Function to initialize database  
+    Function to initialize database
     Adds all missing tables.
     '''
     Base.metadata.create_all(engine)
     from db.crud import pre_categories
     pre_categories()
-    
