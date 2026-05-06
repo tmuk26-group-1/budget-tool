@@ -275,6 +275,7 @@ def add_transaction_post():
 
     amount = request.form.get("amount")
     category_id = request.form.get("category_id")
+    description = request.form.get("description")
     transaction_type = request.form.get("type")
 
     # Basic validation
@@ -291,9 +292,9 @@ def add_transaction_post():
     date = dt.date.today()
 
     if transaction_type == "income":
-        success, result = add_income(user_id, amount, category_id, date)
+        success, result = add_income(user_id, amount, category_id, date, description)
     else:  # "expense"
-        success, result = add_expense(user_id, amount, category_id, date)
+        success, result = add_expense(user_id, amount, category_id, date, description)
 
     if success:
         logging.info(f"User {user_id} added {transaction_type} of {amount}")
