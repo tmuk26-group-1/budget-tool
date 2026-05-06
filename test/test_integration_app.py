@@ -53,7 +53,7 @@ def test_login_and_access_dashboard(client):
 
     dashboard_response = client.get("/dashboard")
     assert dashboard_response.status_code == 200
-    assert b"Remaining Budget" in dashboard_response.data
+    assert b"Remaining Balance" in dashboard_response.data
 
 
 def test_login_failure(client):
@@ -348,3 +348,129 @@ def test_format_transaction_function():
     assert result["is_positive"] is True
     assert result["date"] == "21/04"
     assert result["desc"] == "Test"
+
+
+# ---------------------------------------------------------
+# DASHBOARD LOAD TEST
+# ---------------------------------------------------------
+def test_dashboard_loads(client):
+    success, user = crud.create_user(
+        "dash@test.com", "Dash", "User", "dashuser",
+        generate_password_hash("password")
+    )
+    assert success
+
+    client.post("/login", data={"email": "dash@test.com", "password": "password"})
+
+    response = client.get("/dashboard")
+
+    assert response.status_code == 200
+    assert b"Remaining Balance" in response.data
+    assert b"Monthly Budgetgoal" in response.data
+
+
+# ---------------------------------------------------------
+# UPDATE MONTHLY GOAL TEST
+# ---------------------------------------------------------
+def test_update_monthly_goal(client):
+    success, user = crud.create_user(
+        "goal@test.com", "Goal", "User", "goaluser",
+        generate_password_hash("password")
+    )
+    assert success
+
+    client.post("/login", data={"email": "goal@test.com", "password": "password"})
+
+    response = client.post("/dashboard", data={"monthly_goal": "5000"}, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"5000 kr" in response.data
+
+
+# ---------------------------------------------------------
+# MONTHLY GOAL WARNING (RED) TEST
+# ---------------------------------------------------------
+def test_goal_turns_red_when_exceeds_budget(client):
+    success, user = crud.create_user(
+        "warn@test.com", "Warn", "User", "warnuser",
+        generate_password_hash("password")
+    )
+    assert success
+
+    client.post("/login", data={"email": "warn@test.com", "password": "password"})
+
+    # Add income so balance = 2000
+    crud.add_income(user.user_id, 2000, "Salary", "2026-05-01")
+
+    # Set goal to 5000 (greater than balance)
+    client.post("/dashboard", data={"monthly_goal": "5000"})
+
+    response = client.get("/dashboard")
+
+    # Check for the warning class
+    assert b"warning" in response.data
+
+
+# ---------------------------------------------------------
+# DASHBOARD REQUIRES LOGIN TEST
+# ---------------------------------------------------------
+def test_dashboard_requires_login(client):
+    response = client.get("/dashboard", follow_redirects=True)
+    assert b"Login" in response.data
+
+
+# ---------------------------------------------------------
+# SESSION TIMEOUT TEST
+# ---------------------------------------------------------
+def test_session_timeout_redirects(client, monkeypatch):
+    success, user = crud.create_user(
+        "timeout@test.com", "Time", "Out", "timeoutuser",
+        generate_password_hash("password")
+    )
+    assert success
+
+    client.post("/login", data={"email": "timeout@test.com", "password": "password"})
+
+    # Force timeout
+    monkeypatch.setattr("app.check_timeout", lambda: False)
+
+    response = client.get("/dashboard", follow_redirects=True)
+
+    assert b"Login" in response.data or b"Welcome" in response.data
+
+
+# ---------------------------------------------------------
+# MONTH NAVIGATION TEST
+# ---------------------------------------------------------
+def test_month_navigation(client):
+    success, user = crud.create_user(
+        "nav@test.com", "Nav", "User", "navuser",
+        generate_password_hash("password")
+    )
+    assert success
+
+    client.post("/login", data={"email": "nav@test.com", "password": "password"})
+
+    response = client.get("/dashboard?year=2026&month=5")
+
+    assert b"5/2026" in response.data
+    assert b"&lt;" in response.data
+    assert b"&gt;" in response.data
+
+
+
+# ---------------------------------------------------------
+# SAVINGS DISPLAY TEST
+# ---------------------------------------------------------
+def test_savings_display(client):
+    success, user = crud.create_user(
+        "save@test.com", "Save", "User", "saveuser",
+        generate_password_hash("password")
+    )
+    assert success
+
+    client.post("/login", data={"email": "save@test.com", "password": "password"})
+
+    response = client.get("/dashboard")
+
+    assert b"Total Savings" in response.data

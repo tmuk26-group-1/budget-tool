@@ -20,6 +20,10 @@ from db.crud import (
     add_income,
     add_expense,
     get_user_by_id,
+    update_goal,
+    get_total_savings,
+    get_transaction,
+    get_category_totals,
 )
 from db.database import init_db
 
@@ -190,7 +194,7 @@ def users():
 
 
 # dashboard
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["GET", "POST"])
 @login_required
 def dashboard():
     user_id = session.get("user_id")
@@ -198,18 +202,46 @@ def dashboard():
     if not check_timeout():
         return redirect(url_for("home"))
 
-    # get current year and month (with query override)
+    # Always load user first
+    user = get_user_by_id(user_id)
+
+    # Handle monthly goal update
+    if request.method == "POST":
+        new_goal = int(request.form.get("monthly_goal"))
+        update_goal(user.email, new_goal)
+
+        # Refresh user AFTER updating goal
+        user = get_user_by_id(user_id)
+
+    # Get current year and month (with query override)
     now = datetime.now()
     year = request.args.get("year", now.year, type=int)
     month = request.args.get("month", now.month, type=int)
 
-    user = get_user_by_id(user_id)
     username = user.username
 
     prev_y, prev_m = prev_month(year, month)
     next_y, next_m = next_month(year, month)
 
+    # Core dashboard values
     balance = get_balance(user_id, year, month)
+    monthly_goal = int(user.goal or 0)
+
+    # NEW: highlight goal when it exceeds remaining budget
+    goal_exceeds_budget = monthly_goal > balance
+
+    # Transactions
+    transactions = get_transaction(user_id, year, month)
+    formatted_transactions = [format_transaction(t) for t in transactions]
+
+    # Category totals for chart
+    category_totals = get_category_totals(user_id, year, month)
+    category_totals = {k: v for k, v in category_totals.items() if k != "Salary"}
+    chart_labels = list(category_totals.keys())
+    chart_values = list(category_totals.values())
+
+    # Savings
+    total_savings = get_total_savings(user_id)
 
     logging.info(f"User {user_id} opened dashboard for {month}/{year}")
 
@@ -223,6 +255,12 @@ def dashboard():
         prev_m=prev_m,
         next_y=next_y,
         next_m=next_m,
+        monthly_goal=monthly_goal,
+        goal_exceeds_budget=goal_exceeds_budget,
+        total_savings=total_savings,
+        transactions=formatted_transactions,
+        chart_labels=chart_labels,
+        chart_values=chart_values,
     )
 
 
@@ -249,6 +287,7 @@ def add_transaction_post():
 
     amount = request.form.get("amount")
     category_id = request.form.get("category_id")
+    description = request.form.get("description")
     transaction_type = request.form.get("type")
 
     # Basic validation
@@ -265,9 +304,9 @@ def add_transaction_post():
     date = dt.date.today()
 
     if transaction_type == "income":
-        success, result = add_income(user_id, amount, category_id, date)
+        success, result = add_income(user_id, amount, category_id, date, description)
     else:  # "expense"
-        success, result = add_expense(user_id, amount, category_id, date)
+        success, result = add_expense(user_id, amount, category_id, date, description)
 
     if success:
         logging.info(f"User {user_id} added {transaction_type} of {amount}")

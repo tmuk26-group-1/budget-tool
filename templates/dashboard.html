@@ -6,35 +6,44 @@
 
 {% block content %}
 
-    <div class="dashboard-wrapper">
-        <header class="dashboard-topbar">
+<div class="dashboard-wrapper">
+    <header class="dashboard-topbar">
         <div class="user-profile">
             <div class="avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
             </div>
             <span class="username">{{ username }}</span>
         </div>
-            <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
-         </header> 
+        <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
+    </header>
 
     <div class="dashboard-grid">
-        
+
         <div class="left-column">
-            
+
+            <!-- REMAINING BUDGET -->
             <div class="dashboard-box">
                 <header class="budget-hero">
-                    <h2>Remaining Budget</h2>
-                    <h1 class="budget-amount">{{ balance }} kr</h1>
+                    <h2>Remaining Balance</h2>
+                    <h1 class="budget-amount">
+                        {{ balance }} kr
+                    </h1>
                 </header>
                 <div class="action-buttons">
                     <a href="{{ url_for('add_transaction')}}" class="btn btn-income">+ Add transaction</a>
                 </div>
             </div>
 
+            <!-- MONTHLY GOAL -->
             <div class="dashboard-box">
                 <header class="budget-hero">
-                    <h2>Monthly goal</h2>
-                    <h1 class="budget-amount">{{ monthly_goal }} kr</h1>
+                    <h2>Monthly Budgetgoal</h2>
+                    <h1 class="budget-amount {% if goal_exceeds_budget %}warning{% endif %}">
+                        {{ monthly_goal }} kr
+                    </h1>
                 </header>
 
                 <button class="btn btn-income" onclick="toggleGoalForm()">
@@ -47,28 +56,30 @@
                 </form>
             </div>
 
-            
-
+            <!-- CATEGORY CHART -->
             <div class="dashboard-box chart-box" style="display: flex; flex-direction: column; align-items: flex-start;">
-                <h2 style="margin-top: 0; margin-bottom: 15px; font-size: 18px; color: rgba(255, 255, 255, 0.8); font-weight: normal;"> Expenses by Category </h2>
-    
+                <h2 style="margin-top: 0; margin-bottom: 15px; font-size: 18px; color: rgba(255, 255, 255, 0.8); font-weight: normal;">
+                    Expenses by Category
+                </h2>
+
                 <div style="position: relative; height: 200px; width: 100%;">
-            <canvas id="expenseChart"></canvas>
+                    <canvas id="expenseChart"></canvas>
                 </div>
             </div>
 
         </div>
 
         <div class="right-column">
-            <!-- TILLAGT: NY SEKTION FÖR SPARAD SUMMA -->
+
+            <!-- TOTAL SAVINGS -->
             <div class="dashboard-box">
                 <header class="budget-hero">
                     <h2>Total Savings</h2>
-                    <!-- Variabeln total_savings hämtas från Flask. Klassen savings-amount är ny för grön färg. -->
                     <h1 class="budget-amount savings-amount">{{ total_savings }} kr</h1>
                 </header>
             </div>
-            <!-- SLUT PÅ TILLÄGG -->
+
+            <!-- HISTORY -->
             <div class="dashboard-box history-box">
                 <div class="history-header">
                     <h2>History</h2>
@@ -84,24 +95,21 @@
                 </div>
 
                 <div class="transaction-list">
-                    <div class="transaction-item">
-                        <span class="t-amount negative">-500 kr</span>
-                        <span class="t-date">21/4</span>
-                        <span class="t-desc">Köpt kaffe till gruppen</span>
-                    </div>
-                    <div class="transaction-item">
-                        <span class="t-amount positive">+150 kr</span>
-                        <span class="t-date">19/4</span>
-                        <span class="t-desc">Swish från Kalle</span>
-                    </div>
-                    <div class="transaction-item">
-                        <span class="t-amount negative">-120 kr</span>
-                        <span class="t-date">10/4</span>
-                        <span class="t-desc">Lunch</span>
-                    </div>
-                    <div class="transaction-item"><span class="t-amount negative">-50 kr</span><span class="t-date">08/4</span><span class="t-desc">Bussbiljett</span></div>
-                    <div class="transaction-item"><span class="t-amount negative">-200 kr</span><span class="t-date">05/4</span><span class="t-desc">Matbutik</span></div>
-                    <div class="transaction-item"><span class="t-amount negative">-50 kr</span><span class="t-date">04/4</span><span class="t-desc">Kaffe</span></div>
+                    {% if transactions %}
+                        {% for t in transactions %}
+                            <div class="transaction-item">
+                                <span class="t-amount {% if t.is_positive %}positive{% else %}negative{% endif %}">
+                                    {{ t.amount }}
+                                </span>
+                                <span class="t-date">{{ t.date }}</span>
+                                <span class="t-desc">{{ t.desc }}</span>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-top: 10px;">
+                            No transactions this month.
+                        </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -113,19 +121,19 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('expenseChart').getContext('2d');
-    
+
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Housing', 'Food', 'Transport', 'Entertainment', 'Other'],
+            labels: {{ chart_labels|tojson }},
             datasets: [{
-                data: [35, 25, 15, 15, 10], 
+                data: {{ chart_values|tojson }},
                 backgroundColor: [
                     '#4CAF50',
                     '#2196F3',
                     '#9C27B0',
                     '#FF9800',
-                    '#E91E63' 
+                    '#E91E63'
                 ],
                 borderWidth: 0,
                 hoverOffset: 5
@@ -139,16 +147,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     position: 'right',
                     labels: {
                         color: 'rgba(255, 255, 255, 0.8)',
-                        font: {
-                            size: 12
-                        },
+                        font: { size: 12 },
                         padding: 15
                     }
                 },
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            return ' ' + context.label + ': ' + context.parsed + '%';
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const pct = ((context.parsed / total) * 100).toFixed(1);
+                            return ' ' + context.label + ': ' + pct + '%';
                         }
                     }
                 }
@@ -156,9 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-  function toggleGoalForm() {
+
+function toggleGoalForm() {
     document.getElementById("goal-form").hidden = false;
-  }
+}
 </script>
 
 {% endblock %}
