@@ -496,3 +496,13 @@ def test_expense_shows_in_dashboard(client):
     response = client.get("/dashboard?year=2026&month=5")
 
     assert b"-300 kr" in response.data 
+
+
+def test_check_timeout_expired(client):
+    # Test where time has surpassed SESSION_TIMEOUT (300s)
+    import time
+    with client.session_transaction() as sess:
+        sess["user_id"] = 1
+        sess["login_time"] = time.time() - 400
+    response = client.get("/dashboard")
+    assert response.status_code == 302
