@@ -1,10 +1,11 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Date 
+from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from .database import Base
+
 
 class User(Base):
     '''
-    A class that represents the User table  
-    ID, email, username must be unique  
+    A class that represents the User table
+    ID, email, username must be unique
     No fields left blank
     '''
     __tablename__ = "Users"
@@ -18,14 +19,15 @@ class User(Base):
     goal = Column(Integer, nullable=True)
 
 
-class Transaction(Base): 
+class Transaction(Base):
     __tablename__ = "Transactions"
 
-    transaction_id = Column(Integer, primary_key=True) 
-    user_id = Column(Integer, ForeignKey("Users.user_id"), nullable = False)
-    amount = Column(Integer, nullable = False)
-    category_id = Column(Integer, ForeignKey("Categories.category_id"), nullable=False)
-    date = Column(Date, nullable = False)
+    transaction_id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("Users.user_id"), nullable=False)
+    amount = Column(Integer, nullable=False)
+    category_id = Column(
+        Integer, ForeignKey("Categories.category_id"), nullable=False)
+    date = Column(Date, nullable=False)
     description = Column(String)
 
 
@@ -33,6 +35,5 @@ class Category(Base):
 
     __tablename__ = "Categories"
 
-    category_id = Column(Integer, primary_key = True)
-    name = Column(String, unique = True, nullable = False)
-    
+    category_id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)
