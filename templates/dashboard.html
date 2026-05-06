@@ -6,37 +6,44 @@
 
 {% block content %}
 
-    <div class="dashboard-wrapper">
-        <header class="dashboard-topbar">
+<div class="dashboard-wrapper">
+    <header class="dashboard-topbar">
         <div class="user-profile">
             <div class="avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
             </div>
             <span class="username">{{ username }}</span>
         </div>
-            <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
-         </header> 
+        <a href="{{ url_for('logout') }}" class="btn-logout">Log out</a>
+    </header>
 
     <div class="dashboard-grid">
-        
+
         <div class="left-column">
-            
+
+            <!-- REMAINING BUDGET -->
             <div class="dashboard-box">
                 <header class="budget-hero">
                     <h2>Remaining Budget</h2>
-                    <h1 class="budget-amount {% if over_goal %}warning{% endif %}">
+                    <h1 class="budget-amount">
                         {{ balance }} kr
-                    </h1>                
+                    </h1>
                 </header>
                 <div class="action-buttons">
                     <a href="{{ url_for('add_transaction')}}" class="btn btn-income">+ Add transaction</a>
                 </div>
             </div>
 
+            <!-- MONTHLY GOAL -->
             <div class="dashboard-box">
                 <header class="budget-hero">
                     <h2>Monthly goal</h2>
-                    <h1 class="budget-amount">{{ monthly_goal }} kr</h1>
+                    <h1 class="budget-amount {% if goal_exceeds_budget %}warning{% endif %}">
+                        {{ monthly_goal }} kr
+                    </h1>
                 </header>
 
                 <button class="btn btn-income" onclick="toggleGoalForm()">
@@ -49,28 +56,30 @@
                 </form>
             </div>
 
-            
-
+            <!-- CATEGORY CHART -->
             <div class="dashboard-box chart-box" style="display: flex; flex-direction: column; align-items: flex-start;">
-                <h2 style="margin-top: 0; margin-bottom: 15px; font-size: 18px; color: rgba(255, 255, 255, 0.8); font-weight: normal;"> Expenses by Category </h2>
-    
+                <h2 style="margin-top: 0; margin-bottom: 15px; font-size: 18px; color: rgba(255, 255, 255, 0.8); font-weight: normal;">
+                    Expenses by Category
+                </h2>
+
                 <div style="position: relative; height: 200px; width: 100%;">
-            <canvas id="expenseChart"></canvas>
+                    <canvas id="expenseChart"></canvas>
                 </div>
             </div>
 
         </div>
 
         <div class="right-column">
-            <!-- TILLAGT: NY SEKTION FÖR SPARAD SUMMA -->
+
+            <!-- TOTAL SAVINGS -->
             <div class="dashboard-box">
                 <header class="budget-hero">
                     <h2>Total Savings</h2>
-                    <!-- Variabeln total_savings hämtas från Flask. Klassen savings-amount är ny för grön färg. -->
                     <h1 class="budget-amount savings-amount">{{ total_savings }} kr</h1>
                 </header>
             </div>
-            <!-- SLUT PÅ TILLÄGG -->
+
+            <!-- HISTORY -->
             <div class="dashboard-box history-box">
                 <div class="history-header">
                     <h2>History</h2>
@@ -112,19 +121,19 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('expenseChart').getContext('2d');
-    
+
     new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: {{ chart_labels|tojson }},
             datasets: [{
-                data: {{ chart_values|tojson }}, 
+                data: {{ chart_values|tojson }},
                 backgroundColor: [
                     '#4CAF50',
                     '#2196F3',
                     '#9C27B0',
                     '#FF9800',
-                    '#E91E63' 
+                    '#E91E63'
                 ],
                 borderWidth: 0,
                 hoverOffset: 5
@@ -138,9 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     position: 'right',
                     labels: {
                         color: 'rgba(255, 255, 255, 0.8)',
-                        font: {
-                            size: 12
-                        },
+                        font: { size: 12 },
                         padding: 15
                     }
                 },
@@ -155,9 +162,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-  function toggleGoalForm() {
+
+function toggleGoalForm() {
     document.getElementById("goal-form").hidden = false;
-  }
+}
 </script>
 
 {% endblock %}

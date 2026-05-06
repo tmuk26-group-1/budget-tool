@@ -201,17 +201,19 @@ def dashboard():
 
     if not check_timeout():
         return redirect(url_for("home"))
-    
+
+    # Always load user first
     user = get_user_by_id(user_id)
 
-    # handle monthly goal update
+    # Handle monthly goal update
     if request.method == "POST":
-        new_goal = request.form.get("monthly_goal")
+        new_goal = int(request.form.get("monthly_goal"))
         update_goal(user.email, new_goal)
+
+        # Refresh user AFTER updating goal
         user = get_user_by_id(user_id)
 
-
-    # get current year and month (with query override)
+    # Get current year and month (with query override)
     now = datetime.now()
     year = request.args.get("year", now.year, type=int)
     month = request.args.get("month", now.month, type=int)
@@ -221,14 +223,23 @@ def dashboard():
     prev_y, prev_m = prev_month(year, month)
     next_y, next_m = next_month(year, month)
 
+    # Core dashboard values
     balance = get_balance(user_id, year, month)
-    monthly_goal = user.goal or 0
-    over_goal = balance > monthly_goal
+    monthly_goal = int(user.goal or 0)
+
+    # NEW: highlight goal when it exceeds remaining budget
+    goal_exceeds_budget = monthly_goal > balance
+
+    # Transactions
     transactions = get_transaction(user_id, year, month)
     formatted_transactions = [format_transaction(t) for t in transactions]
+
+    # Category totals for chart
     category_totals = get_category_totals(user_id, year, month)
     chart_labels = list(category_totals.keys())
     chart_values = list(category_totals.values())
+
+    # Savings
     total_savings = get_total_savings(user_id)
 
     logging.info(f"User {user_id} opened dashboard for {month}/{year}")
@@ -244,7 +255,7 @@ def dashboard():
         next_y=next_y,
         next_m=next_m,
         monthly_goal=monthly_goal,
-        over_goal=over_goal,
+        goal_exceeds_budget=goal_exceeds_budget,
         total_savings=total_savings,
         transactions=formatted_transactions,
         chart_labels=chart_labels,
