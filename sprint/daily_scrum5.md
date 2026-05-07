@@ -13,6 +13,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Blockers:
 - Next:
 
+### 9/5
+- Did:
+- Blockers:
+- Next:
+
 ---
 
 ## Gresa Hoxha
@@ -23,6 +28,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next: Create backend–database integration issue and prepare for dynamic dashboard implementation once DB updates are ready.
 
 ### 6/5
+- Did:
+- Blockers:
+- Next:
+
+### 9/5
 - Did:
 - Blockers:
 - Next:
@@ -41,6 +51,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Blockers: None
 - Next: Not sure at this point; frontend is pretty much done for now.
 
+### 9/5
+- Did:
+- Blockers:
+- Next:
+
 ---
 
 ## Jafar Gohari
@@ -51,6 +66,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next:
 
 ### 6/5
+- Did:
+- Blockers:
+- Next:
+
+### 9/5
 - Did:
 - Blockers:
 - Next:
@@ -69,6 +89,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Blockers: None
 - Next: Work on monthly "rollover" implementation.
 
+### 9/5
+- Did: Fixed some code structure of DB files using linter.
+- Blockers: None
+- Next: Work on monthly "rollover" implementation.
+
 ---
 
 ## Simon Rignell
@@ -82,3 +107,8 @@ We met last week on friday, decided that this week should be a pretty much final
 - Did: Connected everything for the lab, so that everything works as it should. Also added my integration-test
 - Blockers: none
 - Next: Work with total saving with albin 
+
+### 9/5
+- Did:
+- Blockers:
+- Next:
