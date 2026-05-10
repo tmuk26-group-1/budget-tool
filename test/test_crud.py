@@ -203,7 +203,40 @@ def test_get_total_savings_success():
     savings = crud.get_total_savings(user.user_id)
     assert savings == 0
 
-    success, result = crud.add_income(user.user_id, 13500, 1, now, "CSN")
+    crud.update_savings(user.user_id, 13500)
 
     savings = crud.get_total_savings(user.user_id)
     assert savings == 13500
+
+def test_update_savings_add_and_remove():
+    success, user = crud.create_user(
+        "savings@test.com",
+        "Save",
+        "User",
+        "saveuser",
+        "pass"
+    )
+
+    crud.update_savings(user.user_id, 1000)
+
+    savings = crud.get_total_savings(user.user_id)
+    assert savings == 1000
+
+    crud.update_savings(user.user_id, -400)
+
+    savings = crud.get_total_savings(user.user_id)
+    assert savings == 600
+
+def test_savings_not_negative():
+    success, user = crud.create_user(
+        "neg@test.com",
+        "Neg",
+        "User",
+        "neguser",
+        "pass"
+    )
+
+    crud.update_savings(user.user_id, -500)
+
+    savings = crud.get_total_savings(user.user_id)
+    assert savings == 0
