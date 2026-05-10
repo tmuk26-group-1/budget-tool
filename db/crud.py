@@ -229,8 +229,28 @@ def get_category_totals(user_id, year, month):
 def get_total_savings(user_id):
     session = SessionLocal()
     try:
-        transactions = session.query(Transaction).filter(Transaction.user_id == user_id, Transaction.amount > 0).all()
-        return sum(t.amount for t in transactions)
+        user = session.query(User).filter(User.user_id == user_id).first()
+        return user.savings if user else 0
+    finally:
+        session.close()
+        
+
+def update_savings(user_id, amount):
+    session = SessionLocal()
+    try:
+        user = session.query(User).filter(User.user_id == user_id).first()
+
+        if not user:
+            return False, "User not found"
+
+        user.savings = (user.savings or 0) + amount
+
+        if user.savings < 0:
+            user.savings = 0
+
+        session.commit()
+        return True, user.savings
+
     finally:
         session.close()
 

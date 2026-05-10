@@ -330,3 +330,26 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/update_savings", methods=["POST"])
+@login_required
+def update_savings_route():
+    if not check_timeout():
+        return redirect(url_for("home"))
+
+    user_id = session.get("user_id")
+    amount = request.form.get("amount")
+
+    if not amount:
+        return redirect(url_for("dashboard"))
+
+    try:
+        amount = int(amount)
+    except ValueError:
+        return redirect(url_for("dashboard"))
+
+    from db.crud import update_savings
+
+    success, _ = update_savings(user_id, amount)
+
+    return redirect(url_for("dashboard"))
