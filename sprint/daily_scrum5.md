@@ -9,14 +9,14 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next:
 
 ### 6/5
-- Did:
-- Blockers:
-- Next:
+- Did: Implemented backend support for savings. Added a savings field to the User model and updated CRUD logic to store and retrieve savings per user. Implemented functionality to manually update savings (add/remove money) and connected it to the dashboard.
+- Blockers: Minor issues with existing tests due to previous savings logic being based on transactions.
+- Next: Update tests to match the new savings implementation and support frontend integration for updating savings.
 
 ### 9/5
-- Did:
-- Blockers:
-- Next:
+- Did: Updated existing tests to match the new savings implementation. Replaced transaction‑based savings calculations with the new update_savings logic and ensured tests correctly validate manual add/remove behavior. Added additional tests to cover savings updates and edge cases.
+- Blockers: None
+- Next: Verify all tests pass consistently and ensure frontend integration works smoothly with the new savings functionality.
 
 ---
 
