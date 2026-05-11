@@ -22,6 +22,8 @@ from db.crud import (
     get_user_by_id,
     update_goal,
     get_total_savings,
+    add_savings,
+    withdraw_savings,
     get_transaction,
     get_category_totals,
 )
@@ -337,6 +339,8 @@ def update_savings_route():
     user_id = session.get("user_id")
     amount = request.form.get("amount")
 
+    today = datetime.today()
+
     if not amount:
         return redirect(url_for("dashboard"))
 
@@ -345,9 +349,7 @@ def update_savings_route():
     except ValueError:
         return redirect(url_for("dashboard"))
 
-    from db.crud import update_savings
-
-    success, _ = update_savings(user_id, amount)
+    success, _ = add_savings(user_id, amount, today)
 
     return redirect(url_for("dashboard"))
 
