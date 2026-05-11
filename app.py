@@ -22,6 +22,8 @@ from db.crud import (
     get_user_by_id,
     update_goal,
     get_total_savings,
+    add_savings,
+    withdraw_savings,
     get_transaction,
     get_category_totals,
 )
@@ -236,12 +238,12 @@ def dashboard():
 
     # Category totals for chart
     category_totals = get_category_totals(user_id, year, month)
-    category_totals = {k: v for k, v in category_totals.items() if k != "Salary"}
     chart_labels = list(category_totals.keys())
     chart_values = list(category_totals.values())
 
     # Savings
-    total_savings = get_total_savings(user_id)
+    _, total_savings = get_total_savings(user_id)
+    savings_error = request.args.get("error")
 
     logging.info(f"User {user_id} opened dashboard for {month}/{year}")
 
@@ -258,6 +260,7 @@ def dashboard():
         monthly_goal=monthly_goal,
         goal_exceeds_budget=goal_exceeds_budget,
         total_savings=total_savings,
+        savings_error=savings_error,
         transactions=formatted_transactions,
         chart_labels=chart_labels,
         chart_values=chart_values,
@@ -327,6 +330,35 @@ def logout():
     session.clear()  # removes user_id and login_time
     return redirect(url_for("home"))
 
+
+@app.route("/update_savings", methods=["POST"])
+@login_required
+def update_savings_route():
+    if not check_timeout():
+        return redirect(url_for("home"))
+
+    user_id = session.get("user_id")
+    amount = request.form.get("amount")
+
+    today = datetime.today()
+
+    if not amount:
+        return redirect(url_for("dashboard"))
+
+    try:
+        amount = int(amount)
+    except ValueError:
+        return redirect(url_for("dashboard"))
+
+    action = request.form.get("action")
+    if action == "withdraw":
+        success, msg = withdraw_savings(user_id, amount, today)
+    else:
+        success, msg = add_savings(user_id, amount, today)
+
+    if not success:
+        return redirect(url_for("dashboard", error=msg))
+    return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":
     app.run(debug=True)
