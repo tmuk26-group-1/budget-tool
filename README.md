@@ -1,5 +1,6 @@
 [![BudgetBuddy](https://github.com/tmuk26-group-1/budget-tool/actions/workflows/python-app.yml/badge.svg)](https://github.com/tmuk26-group-1/budget-tool/actions/workflows/python-app.yml)
 
+
 ## Budget Tool
 BudgetBuddy is a webapplication budgeting tool designed to help users track income, expenses, and monthly budgets. The goal is to provide a clean, simple interface where users can:
 - Create and manage monthly budgets,
@@ -7,6 +8,60 @@ BudgetBuddy is a webapplication budgeting tool designed to help users track inco
 - View summaries of spending,
 - Track remaining budget,
 - Visualize spending patterns.
+
+
+## Kanban Board  
+We track our workflow using a GitHub Project KanBan Board:  
+https://github.com/orgs/tmuk26-group-1/projects/2
+
+
+## How to run and test the project  
+
+### Prerequisites
+
+1. Python v3 or above
+
+### Setup the environment
+
+Virtual environment setup:
+1. Clone the repository (skip this if you already have the repo locally): https://github.com/tmuk26-group-1/budget-tool
+2. Create a virtual environment (only needed once per machine): 
+    ```
+    python -m venv .venv
+    ```
+3. Activate the virtual environment (do this every time you start working (you'll know it's active when you see '(.venv)' at the start of your terminal prompt)):
+    - Mac/Linux:
+        ```bash
+        source .venv/bin/activate
+        ```
+    - Windows:
+        ```bash
+        .venv\Scripts\activate
+        ```
+4. Install dependencies (installs exact package versions from requirements.txt (check with `pip list` if your venv has all packages required, else install)):
+    ```
+    pip install -r requirements.txt
+    ```
+
+### How to run
+
+1. Run the app: 
+    ```
+    task run
+    ```
+2. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
+
+### How to perform tests 
+
+- Perform unit testing with code coverage report using a Taskipy task. A HTML coverage report is automatically generated in: `htmlcov/index.html`
+    ```
+    task test
+    ```
+- Run linter using
+    ```
+    task lint
+    ```
+
 
 ## Project plan (Draft)
 The first version of BudgetBuddy will include:
@@ -23,11 +78,12 @@ Future milestones may include:
 - export/import of data,
 - saving goals.
 
-## How will it work?
-The __frontend__ will provide pages for login, dashboard, and expense entry.  
-The __backend__ will expose routes for authentication, budget management, and expense handling.  
-The __database__ will store users, budgets, and expenses.  
-The system will follow a clean separation between frontend, backend, and data layers.  
+## How does it work?
+The __frontend__ provides pages for login, dashboard, and expense entry.  
+The __backend__ exposes routes for authentication, budget management, and expense handling.  
+The __database__ stores users, transactions, and categories.  
+The system will follow a clean separation between frontend, backend, and data layers.
+
 
 ## Technology Choices
 - __Python__ for backend
@@ -47,9 +103,18 @@ Work divided into three teams:
 
 __COMMUNICATION IS KEY__
 
-## Kanban Board  
-We track our workflow using a GitHub Project KanBan Board:  
-https://github.com/orgs/tmuk26-group-1/projects/2
+
+## Members
+
+| Name               | JU Email               | GitHub Username |
+|--------------------|------------------------|-----------------|
+| Albin Törnberg     | toal24ui@student.ju.se | Altornberg      |
+| Vasilis Segersköld | phva23yl@student.ju.se | Glimba          |
+| Simon Rignell      | risi23vx@student.ju.se | llengiR         |
+| Gresa Hoxha        | hogr24bj@student.ju.se | hogr24bj        |
+| Jafar Gohari       | goja23ll@student.ju.se | jafgo0          |
+| Ellen Pennebratt   | peel24jb@student.ju.se | peel24jb        |
+
 
 ## Project Structure Overview
 The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
@@ -71,41 +136,15 @@ The project follows a standard Flask layout to keep frontend, backend, and futur
 
 This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
 
-## How to run the project  
-Virtual environment setup:
-1. Clone the repository (skip this if you already have the repo locally): https://github.com/tmuk26-group-1/budget-tool
-2. Create a virtual environment (only needed once per machine): `python -m venv .venv`
-3. Activate the virtual environment (do this every time you start working (you'll know it's active when you see '(venv)' at the start of your terminal prompt)):
-    - Mac/Linux: `source .venv/bin/activate`
-    - Windows: `.venv\Scripts\activate`
-4. Install dependencies (installs exact package versions from requirements.txt (check with `pip list` if your venv has all packages required, else install)): `pip install -r requirements.txt`
-5. Run the app: `task run`
-6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
-
-### How to perform tests 
-
-- Perform unit testing with code coverage report using `task test`
-    - The HTML coverage report is generated in: `htmlcov/index.html`
-- Run linter using `task lint`
-
 
 ### Third-Party Assets
 
 This project does not use any third-party assets such as external images, icons, or media files.
 
+
 ## License
 This project is licensed under the MIT License.
 
-## Members
-
-| Name               | JU Email               | GitHub Username |
-|--------------------|------------------------|-----------------|
-| Albin Törnberg     | toal24ui@student.ju.se | Altornberg      |
-| Vasilis Segersköld | phva23yl@student.ju.se | Glimba          |
-| Simon Rignell      | risi23vx@student.ju.se | llengiR         |
-| Gresa Hoxha        | hogr24bj@student.ju.se | hogr24bj        |
-| Jafar Gohari       | goja23ll@student.ju.se | jafgo0          |
-| Ellen Pennebratt   | peel24jb@student.ju.se | peel24jb        |
 
 ## Declaration
 
