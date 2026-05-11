@@ -328,9 +328,6 @@ def logout():
     return redirect(url_for("home"))
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
 @app.route("/update_savings", methods=["POST"])
 @login_required
 def update_savings_route():
@@ -353,3 +350,6 @@ def update_savings_route():
     success, _ = update_savings(user_id, amount)
 
     return redirect(url_for("dashboard"))
+
+if __name__ == "__main__":
+    app.run(debug=True)
