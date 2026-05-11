@@ -349,7 +349,11 @@ def update_savings_route():
     except ValueError:
         return redirect(url_for("dashboard"))
 
-    success, _ = add_savings(user_id, amount, today)
+    action = request.form.get("action")
+    if action == "withdraw":
+        success, _ = withdraw_savings(user_id, amount, today)
+    else:
+        success, _ = add_savings(user_id, amount, today)
 
     return redirect(url_for("dashboard"))
 
