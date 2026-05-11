@@ -193,7 +193,7 @@ def get_category():
         session.close()
 
 def pre_categories():
-    categories = ["Salary", "Food & Groceries", "Rent & Housing", "Entertainment", "Other"]
+    categories = ["Salary", "Savings", "Food & Groceries", "Rent & Housing", "Entertainment", "Other"]
     for name in categories:
         create_category(name)
 
@@ -226,7 +226,8 @@ def get_category_totals(user_id, year, month):
     finally:
         session.close()
 
-def get_total_savings(user_id):
+
+def get_total_savings(user_id) -> tuple[bool, int | str]:
     session = SessionLocal()
     try:
         user = session.query(User).filter(User.user_id == user_id).first()
@@ -238,24 +239,58 @@ def get_total_savings(user_id):
         session.close()
         
 
-def update_savings(user_id, amount):
+def add_savings(user_id, amount, date) -> tuple[bool, int | str]:
+    session = SessionLocal()
+    try:
+        user = session.query(User).filter(User.user_id == user_id).first()
+        year = date.year
+        month = date.month
+        balance = get_balance(user.user_id, year, month)
+
+        if not user:
+            return False, "User not found"
+        
+        if amount > balance:
+            return False, "Amount exceeds this months balance"
+
+        user.savings = user.savings + amount
+
+        session.commit()
+        add_savings_transaction(user.user_id, amount, date)
+        return True, user.savings
+
+    finally:
+        session.close()
+
+
+def withdraw_savings(user_id, amount, date) -> tuple[bool, int | str]:
     session = SessionLocal()
     try:
         user = session.query(User).filter(User.user_id == user_id).first()
 
         if not user:
             return False, "User not found"
-
-        user.savings = (user.savings or 0) + amount
-
-        if user.savings < 0:
-            user.savings = 0
+        
+        # ensures balance never gets negative
+        if amount > user.savings:
+            return False, "Amount exceeds available savings"
+        else:
+            user.savings = user.savings - amount
 
         session.commit()
+        add_withdraw_transaction(user.user_id, amount, date)
         return True, user.savings
 
     finally:
         session.close()
+
+
+def add_savings_transaction(user_id, amount, date):
+    return create_transaction(user_id, -abs(amount), 2, date, "Added into savings account")
+
+
+def add_withdraw_transaction(user_id, amount, date):
+    return create_transaction(user_id, abs(amount), 2, date, "Withdrawn from savings account")
 
 
 def add_income(user_id, amount, category_id, date, description = None):
