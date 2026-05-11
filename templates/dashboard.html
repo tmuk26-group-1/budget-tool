@@ -74,10 +74,10 @@
             <!-- TOTAL SAVINGS -->
             <div class="dashboard-box">
                 <header class="budget-hero">
-                    <h2>Total savings</h2>
+                    <h2>Total Savings</h2>
                     <h1 class="budget-amount savings-amount">{{ total_savings }} kr</h1>
                     <button class="btn btn-income" onclick="toggleSavingsForm()">
-                        Add / Witdraw savings
+                        Add / Withdraw savings
                     </button>
                     <form id="savings-form" method="POST" action="{{ url_for('update_savings_route') }}" hidden>
                         <select name ="action">
