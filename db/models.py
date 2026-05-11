@@ -17,7 +17,7 @@ class User(Base):
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
     goal = Column(Integer, nullable=True)
-
+    savings = Column (Integer, default=0)
 
 class Transaction(Base):
     __tablename__ = "Transactions"

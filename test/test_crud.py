@@ -190,7 +190,7 @@ def test_get_transactions():
 
 def test_get_category():
     categories = crud.get_category()
-    assert len(categories) == 5
+    assert len(categories) == 6
     assert categories[0].name == "Salary"
 
 
@@ -219,12 +219,52 @@ def test_get_total_savings_success():
     success, user = crud.create_user(
         "totsav-usr1@example.com", "tot", "sav", "totsav1", "pass"
     )
-    now = date.today()
+    crud.add_income(user.user_id, 20000, 1, date(2026,3,25))
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 0
+    success, result = crud.get_total_savings(user.user_id)
+    assert success is True
+    assert result == 0
 
-    success, result = crud.add_income(user.user_id, 13500, 1, now, "CSN")
+    crud.add_savings(user.user_id, 13500, date(2026,3,25))
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 13500
+    success, result = crud.get_total_savings(user.user_id)
+    assert success == True
+    assert result == 13500
+
+def test_update_savings_add_and_remove():
+    success, user = crud.create_user(
+        "savings@test.com",
+        "Save",
+        "User",
+        "saveuser",
+        "pass"
+    )
+
+    crud.add_income(user.user_id, 20000, 1, date(2026,3,25))
+
+    crud.add_savings(user.user_id, 1000, date(2026,3,25))
+
+    sucess, result = crud.get_total_savings(user.user_id)
+    assert success == True 
+    assert result == 1000
+
+    crud.withdraw_savings(user.user_id, 400, date(2026,3,26))
+
+    success, result = crud.get_total_savings(user.user_id)
+    assert success == True
+    assert result == 600
+
+def test_savings_not_negative():
+    success, user = crud.create_user(
+        "neg@test.com",
+        "Neg",
+        "User",
+        "neguser",
+        "pass"
+    )
+
+    crud.withdraw_savings(user.user_id, 500, date(2026,3,26))
+
+    success, result = crud.get_total_savings(user.user_id)
+    assert success == True
+    assert result == 0

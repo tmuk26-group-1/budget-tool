@@ -16,12 +16,12 @@ Meeting Monday 27/4
 
 ## Ellen Pennebratt
 27/4
-- Did:
-- Blockers: 
-- Next: 
+- Did: Worked on implementing backend support for the Monthly Goal feature. Added logic to store the goal per user in the database and updated CRUD functions to retrieve and display the value on the dashboard. Ensured the goal is user‑specific and not tied to a specific month.
+- Blockers: None
+- Next: Start implementing savings functionality in the backend, including updating CRUD logic and reviewing how savings should be stored separately from transactions.
 
 29/4
-- Did:
+- Did: (Got sick for a week and got very little work done.)
 - Blockers:
 - Next:
 

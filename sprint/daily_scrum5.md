@@ -9,9 +9,14 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next:
 
 ### 6/5
-- Did:
-- Blockers:
-- Next:
+- Did: Implemented backend support for savings. Added a savings field to the User model and updated CRUD logic to store and retrieve savings per user. Implemented functionality to manually update savings (add/remove money) and connected it to the dashboard.
+- Blockers: Minor issues with existing tests due to previous savings logic being based on transactions.
+- Next: Update tests to match the new savings implementation and support frontend integration for updating savings.
+
+### 9/5
+- Did: Updated existing tests to match the new savings implementation. Replaced transaction‑based savings calculations with the new update_savings logic and ensured tests correctly validate manual add/remove behavior. Added additional tests to cover savings updates and edge cases.
+- Blockers: None
+- Next: Verify all tests pass consistently and ensure frontend integration works smoothly with the new savings functionality.
 
 ---
 
@@ -23,6 +28,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next: Create backend–database integration issue and prepare for dynamic dashboard implementation once DB updates are ready.
 
 ### 6/5
+- Did:
+- Blockers:
+- Next:
+
+### 9/5
 - Did:
 - Blockers:
 - Next:
@@ -41,6 +51,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Blockers: None
 - Next: Not sure at this point; frontend is pretty much done for now.
 
+### 9/5
+- Did:
+- Blockers:
+- Next:
+
 ---
 
 ## Jafar Gohari
@@ -51,6 +66,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Next:
 
 ### 6/5
+- Did:
+- Blockers:
+- Next:
+
+### 9/5
 - Did:
 - Blockers:
 - Next:
@@ -69,6 +89,11 @@ We met last week on friday, decided that this week should be a pretty much final
 - Blockers: None
 - Next: Work on monthly "rollover" implementation.
 
+### 9/5
+- Did: Fixed some code structure of DB files using linter.
+- Blockers: None
+- Next: Work on monthly "rollover" implementation.
+
 ---
 
 ## Simon Rignell
@@ -82,3 +107,8 @@ We met last week on friday, decided that this week should be a pretty much final
 - Did: Connected everything for the lab, so that everything works as it should. Also added my integration-test
 - Blockers: none
 - Next: Work with total saving with albin 
+
+### 9/5
+- Did:
+- Blockers:
+- Next:
