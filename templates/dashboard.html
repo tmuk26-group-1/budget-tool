@@ -76,6 +76,9 @@
                 <header class="budget-hero">
                     <h2>Total Savings</h2>
                     <h1 class="budget-amount savings-amount">{{ total_savings }} kr</h1>
+                    {% if savings_error %}
+                        <p style="color: red; font-size: 14px;">{{ savings_error }}</p>
+                    {% endif %}
                     <button class="btn btn-income" onclick="toggleSavingsForm()">
                         Add / Withdraw savings
                     </button>

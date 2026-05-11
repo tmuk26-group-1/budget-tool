@@ -238,12 +238,12 @@ def dashboard():
 
     # Category totals for chart
     category_totals = get_category_totals(user_id, year, month)
-    category_totals = {k: v for k, v in category_totals.items() if k != "Salary"}
     chart_labels = list(category_totals.keys())
     chart_values = list(category_totals.values())
 
     # Savings
     _, total_savings = get_total_savings(user_id)
+    savings_error = request.args.get("error")
 
     logging.info(f"User {user_id} opened dashboard for {month}/{year}")
 
@@ -260,6 +260,7 @@ def dashboard():
         monthly_goal=monthly_goal,
         goal_exceeds_budget=goal_exceeds_budget,
         total_savings=total_savings,
+        savings_error=savings_error,
         transactions=formatted_transactions,
         chart_labels=chart_labels,
         chart_values=chart_values,
@@ -351,10 +352,12 @@ def update_savings_route():
 
     action = request.form.get("action")
     if action == "withdraw":
-        success, _ = withdraw_savings(user_id, amount, today)
+        success, msg = withdraw_savings(user_id, amount, today)
     else:
-        success, _ = add_savings(user_id, amount, today)
+        success, msg = add_savings(user_id, amount, today)
 
+    if not success:
+        return redirect(url_for("dashboard", error=msg))
     return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":

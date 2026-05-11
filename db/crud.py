@@ -219,9 +219,12 @@ def get_category_totals(user_id, year, month):
 
         totals = {}
         for t, cat in transactions:
+            if t.amount >= 0:
+                continue
             if cat.name not in totals:
                 totals[cat.name] = 0
             totals[cat.name] += abs(t.amount)
+
         return totals
     finally:
         session.close()
