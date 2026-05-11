@@ -198,15 +198,16 @@ def test_update_goal_user_not_found():
 
 def test_get_total_savings_success():
     success, user = crud.create_user("totsav-usr1@example.com", "tot", "sav", "totsav1", "pass")
-    now = date.today()
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 0
+    success, result = crud.get_total_savings(user.user_id)
+    assert success is True
+    assert result == 0
 
     crud.update_savings(user.user_id, 13500)
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 13500
+    success, result = crud.get_total_savings(user.user_id)
+    assert success == True
+    assert result == 13500
 
 def test_update_savings_add_and_remove():
     success, user = crud.create_user(
@@ -219,13 +220,15 @@ def test_update_savings_add_and_remove():
 
     crud.update_savings(user.user_id, 1000)
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 1000
+    sucess, result = crud.get_total_savings(user.user_id)
+    assert success == True 
+    assert result == 1000
 
     crud.update_savings(user.user_id, -400)
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 600
+    success, result = crud.get_total_savings(user.user_id)
+    assert success == True
+    assert result == 600
 
 def test_savings_not_negative():
     success, user = crud.create_user(
@@ -238,5 +241,6 @@ def test_savings_not_negative():
 
     crud.update_savings(user.user_id, -500)
 
-    savings = crud.get_total_savings(user.user_id)
-    assert savings == 0
+    success, result = crud.get_total_savings(user.user_id)
+    assert success == True
+    assert result == 0
