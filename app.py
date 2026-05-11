@@ -243,7 +243,7 @@ def dashboard():
     chart_values = list(category_totals.values())
 
     # Savings
-    total_savings = get_total_savings(user_id)
+    _, total_savings = get_total_savings(user_id)
 
     logging.info(f"User {user_id} opened dashboard for {month}/{year}")
 
