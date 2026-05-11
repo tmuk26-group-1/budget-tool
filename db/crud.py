@@ -230,7 +230,10 @@ def get_total_savings(user_id):
     session = SessionLocal()
     try:
         user = session.query(User).filter(User.user_id == user_id).first()
-        return user.savings if user else 0
+        if not user:
+            return False, "User not found"
+        else:
+            return True, user.savings
     finally:
         session.close()
         
