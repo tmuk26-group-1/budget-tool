@@ -1,5 +1,6 @@
 [![BudgetBuddy](https://github.com/tmuk26-group-1/budget-tool/actions/workflows/python-app.yml/badge.svg)](https://github.com/tmuk26-group-1/budget-tool/actions/workflows/python-app.yml)
 
+
 ## Budget Tool
 BudgetBuddy is a webapplication budgeting tool designed to help users track income, expenses, and monthly budgets. The goal is to provide a clean, simple interface where users can:
 - Create and manage monthly budgets,
@@ -7,6 +8,62 @@ BudgetBuddy is a webapplication budgeting tool designed to help users track inco
 - View summaries of spending,
 - Track remaining budget,
 - Visualize spending patterns.
+
+
+### Kanban Board  
+We track our workflow using a [GitHub KanBan Board](https://github.com/orgs/tmuk26-group-1/projects/2)
+
+
+## How to run and test the project  
+
+### Prerequisites
+
+- Python 3.10
+
+### Setup the environment
+
+Virtual environment setup:
+1. Clone the repository (skip this if you already have the repo locally): 
+    ```bash
+    git clone https://github.com/tmuk26-group-1/budget-tool.git
+    ```
+2. Create a virtual environment (only needed once per machine): 
+    ```bash
+    python -m venv .venv
+    ```
+3. Activate the virtual environment (do this every time you start working (you'll know it's active when you see '(.venv)' at the start of your terminal prompt)):
+    - Mac/Linux:
+        ```bash
+        source .venv/bin/activate
+        ```
+    - Windows:
+        ```
+        .venv\Scripts\activate
+        ```
+4. Install dependencies (installs exact package versions from requirements.txt (check with `pip list` if your venv has all packages required, else install)):
+    ```
+    pip install -r requirements.txt
+    ```
+
+### How to run
+
+1. Run the app: 
+    ```
+    task run
+    ```
+2. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
+
+### How to perform tests 
+
+- Perform unit testing with code coverage report using a Taskipy task. A HTML coverage report is automatically generated in: `htmlcov/index.html`
+    ```
+    task test
+    ```
+- Run linter using
+    ```
+    task lint
+    ```
+
 
 ## Project plan (Draft)
 The first version of BudgetBuddy will include:
@@ -23,11 +80,12 @@ Future milestones may include:
 - export/import of data,
 - saving goals.
 
-## How will it work?
-The __frontend__ will provide pages for login, dashboard, and expense entry.  
-The __backend__ will expose routes for authentication, budget management, and expense handling.  
-The __database__ will store users, budgets, and expenses.  
-The system will follow a clean separation between frontend, backend, and data layers.  
+## How does it work?
+The __frontend__ provides pages for login, dashboard, and expense entry.  
+The __backend__ exposes routes for authentication, budget management, and expense handling.  
+The __database__ stores users, transactions, and categories.  
+The system will follow a clean separation between frontend, backend, and data layers.
+
 
 ## Technology Choices
 - __Python__ for backend
@@ -39,7 +97,7 @@ The system will follow a clean separation between frontend, backend, and data la
 ## Workflow
 Work divided into three teams:  
 - Team 1 __FRONTEND__ : Jafar and Vasilis  
-    Decide on the look of the webbapplication and the user interface.
+    Decide on the look of the web application and the user interface.
 - Team 2 __BACKEND__  : Gresa and Ellen  
     Implement the logic behind the application. This is the bridge between the frontend and the database.
 - Team 3 __DATABASE__ : Albin and Simon  
@@ -47,54 +105,6 @@ Work divided into three teams:
 
 __COMMUNICATION IS KEY__
 
-## Kanban Board  
-We track our workflow using a GitHub Project KanBan Board:  
-https://github.com/orgs/tmuk26-group-1/projects/2
-
-## Project Structure Overview
-The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
-- _app.py_ - main application file (__BACKEND__). This will later intialize Flask, register routes, connect to the database, and start the server.
-- _requirements.txt_ - Specifies all dependency versions needed for the virtual environment to run the project, ensuring consistent environments across machines.
-- _templates/_ - Contains all HTML pages (__FRONTEND__).
-    - _base.html_ is the shared layout.
-    - _login.html_ the index page where login happens
-    - _dashboard.html_ will become real page later.
-    - _registration.html the page for registration
-- _static/_ - Stores CDD, images, and other static files (__FRONTEND__).
-    - _styles.css_ will hold the app's styling.
-- *db/* - Contains all database logic (**DATABASE**).
-  - *database.py* sets up the SQLite database connection and initializes tables.
-  - *models.py* defines the database tables as SQLAlchemy ORM classes (currently: User).
-  - *crud.py* contains functions to create and retrieve data (currently: create_user, get_users).
-- *db_test.py* - CLI tool for testing the database directly without running the web app.
-
-
-This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
-
-## How to run the project  
-Virtual environment setup:
-1. Clone the repository (skip this if you already have the repo locally): https://github.com/tmuk26-group-1/budget-tool
-2. Create a virtual environment (only needed once per machine): `python -m venv .venv`
-3. Activate the virtual environment (do this every time you start working (you'll know it's active when you see '(venv)' at the start of your terminal prompt)):
-    - Mac/Linux: `source .venv/bin/activate`
-    - Windows: `.venv\Scripts\activate`
-4. Install dependencies (installs exact package versions from requirements.txt (check with `pip list` if your venv has all packages required, else install)): `pip install -r requirements.txt`
-5. Run the app: `task run`
-6. Open `http://localhost:5000` in your browser. Stop the server with `Ctrl + C`
-
-### How to perform tests 
-
-- Perform unit testing with code coverage report using `task test`
-    - The HTML coverage report is generated in: `htmlcov/index.html`
-- Run linter using `task lint`
-
-
-### Third-Party Assets
-
-This project does not use any third-party assets such as external images, icons, or media files.
-
-## License
-This project is licensed under the MIT License.
 
 ## Members
 
@@ -107,6 +117,37 @@ This project is licensed under the MIT License.
 | Jafar Gohari       | goja23ll@student.ju.se | jafgo0          |
 | Ellen Pennebratt   | peel24jb@student.ju.se | peel24jb        |
 
+
+## Project Structure Overview
+The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
+- _app.py_ - main application file (__BACKEND__). This will later initialize Flask, register routes, connect to the database, and start the server.
+- _requirements.txt_ - Specifies all dependency versions needed for the virtual environment to run the project, ensuring consistent environments across machines.
+- _templates/_ - Contains all HTML pages (__FRONTEND__).
+    - _base.html_ is the shared layout.
+    - _login.html_ the index page where login happens
+    - _dashboard.html_ will become real page later.
+    - _registration.html the page for registration
+- _static/_ - Stores CSS, images, and other static files (__FRONTEND__).
+    - _styles.css_ will hold the app's styling.
+- *db/* - Contains all database logic (**DATABASE**).
+  - *database.py* sets up the SQLite database connection and initializes tables.
+  - *models.py* defines the database tables as SQLAlchemy ORM classes (currently: User).
+  - *crud.py* contains functions to create and retrieve data (currently: create_user, get_users).
+- *db_test.py* - CLI tool for testing the database directly without running the web app.
+
+
+This structure forms the foundation of the BudgetBuddy web application and allows the frontend, backend, and database teams to work in parallel as the project grows.
+
+
+### Third-Party Assets
+
+This project does not use any third-party assets such as external images, icons, or media files.
+
+
+## License
+This project is licensed under the MIT License.
+
+
 ## Declaration
 
 I, __Albin Törnberg__, declare that I am the sole author of the content I add to this repository.  
@@ -117,4 +158,4 @@ I, __Jafar Gohari__, declare that I am the sole author of the content I add to t
 I, __Ellen Pennebratt__, declare that I am the sole author of the content I add to this repository.  
 
 
-This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engeneering practices taught in the lectures.
+This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engineering practices taught in the lectures.
