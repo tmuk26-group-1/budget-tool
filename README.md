@@ -10,7 +10,7 @@ BudgetBuddy is a webapplication budgeting tool designed to help users track inco
 - Visualize spending patterns.
 
 
-## Kanban Board  
+### Kanban Board  
 We track our workflow using a [GitHub KanBan Board](https://github.com/orgs/tmuk26-group-1/projects/2)
 
 
@@ -18,7 +18,7 @@ We track our workflow using a [GitHub KanBan Board](https://github.com/orgs/tmuk
 
 ### Prerequisites
 
-1. Python v3 or above
+- Python 3.10
 
 ### Setup the environment
 
