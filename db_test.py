@@ -1,4 +1,12 @@
-from db.crud import create_user, get_users, create_transaction, get_transaction, create_category, get_category, update_goal
+from db.crud import (
+    create_user,
+    get_users,
+    create_transaction,
+    get_transaction,
+    create_category,
+    get_category,
+    update_goal
+)
 from db.database import init_db
 from datetime import date as Date
 
@@ -10,8 +18,10 @@ def add_user():
     username = input("Username: ")
     password = input("Password: ")
 
-    success, result = create_user(email, firstname, lastname, username, password)
-    
+    success, result = create_user(
+        email, firstname, lastname, username, password
+    )
+
     if success:
         print("\nUser created.")
     else:
@@ -35,7 +45,9 @@ def add_transaction():
     date = Date.fromisoformat(date_input)
     description = input("Description (optional): ")
 
-    success, result = create_transaction(user_id, amount, category_name, date, description or None)
+    success, result = create_transaction(
+        user_id, amount, category_name, date, description or None
+    )
     if success:
         print("\nTransaction created.")
     else:
@@ -79,7 +91,7 @@ def update_user_goal():
         print("\nGoal updated.")
     else:
         print(f"\nError: {result}")
-        
+
 
 def menu():
     print("\n--- BudgetBuddy DB Test ---")
@@ -132,6 +144,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-

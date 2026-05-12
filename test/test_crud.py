@@ -73,7 +73,7 @@ def test_create_user_duplicate_username():
 
 
 def test_create_transaction_success():
-    # Create Category for transaction test 
+    # Create Category for transaction test
     success, category = crud.create_category("Food")
     assert success is True
     assert category.name == "Food"
@@ -96,11 +96,11 @@ def test_create_transaction_success():
 # Non exsisting category
 def test_create_transaction_invalid_category():
     success, msg = crud.create_transaction(
-        user_id = 1,
-        amount = 50,
-        category_id = 999,  
+        user_id=1,
+        amount=50,
+        category_id=999,
         date=date(2024, 1, 1),
-        description = "Invalid category test"
+        description="Invalid category test"
     )
 
     assert success is False
@@ -123,7 +123,9 @@ def test_update_password_user_not_found():
 
 
 def test_get_user_by_email():
-    crud.create_user("gresa@test.com", "Gresa", "Hoxha", "gresah", "mypassword")
+    crud.create_user(
+        "gresa@test.com", "Gresa", "Hoxha", "gresah", "mypassword"
+    )
     user = crud.get_user_by_email("gresa@test.com")
 
     assert user is not None
@@ -132,19 +134,28 @@ def test_get_user_by_email():
 
 
 def test_get_users():
-    crud.create_user("messi@goat.com", "Lionel", "Messi", "Messiah", "goal")
-    crud.create_user("ronaldinho@goat.com", "Ronaldo", "Moreira", "Ronaldinho", "smile")
+    crud.create_user(
+        "messi@goat.com", "Lionel", "Messi", "Messiah", "goal"
+    )
+    crud.create_user(
+        "ronaldinho@goat.com", "Ronaldo", "Moreira", "Ronaldinho", "smile"
+    )
     users = crud.get_users()
     assert len(users) == 2
     assert users[0].username == "Messiah"
     assert users[1].password == "smile"
 
+
 def test_get_balance():
 
-    crud.add_income(user_id=1, amount=25000, category_id=1, date=date(2024, 1, 1))
-    crud.add_expense(user_id=1, amount=500, category_id=2, date=date(2024, 1, 2))
+    crud.add_income(
+        user_id=1, amount=25000, category_id=1, date=date(2024, 1, 1)
+    )
+    crud.add_expense(
+        user_id=1, amount=500, category_id=2, date=date(2024, 1, 2)
+    )
 
-    balance = crud.get_balance(1, year=2024, month =1)
+    balance = crud.get_balance(1, year=2024, month=1)
 
     assert balance == 24500
 
@@ -158,16 +169,22 @@ def test_delete_user_success():
 
 def test_delete_user_failures():
     crud.create_user("del2@test.com", "A", "B", "deluser2", "pass")
-    success, msg = crud.delete_user("del2@test.com", "wrongpass") ## test for wrong passoword
-    assert msg == "Wrong password" 
-    success, msg = crud.delete_user("none@test.com", "pass") ##test if no user with that email exist
+    # test for wrong passoword
+    success, msg = crud.delete_user("del2@test.com", "wrongpass")
+    assert msg == "Wrong password"
+    # test if no user with that email exist
+    success, msg = crud.delete_user("none@test.com", "pass")
     assert msg == "No account with that email"
 
 
 def test_get_transactions():
-    crud.create_transaction(user_id=1, amount=100, category_id=1, date=date(2024, 1, 1))
-    crud.create_transaction(user_id=1, amount=200, category_id=2, date=date(2024, 1, 2))
-    transactions = crud.get_transaction(1, year =2024, month = 1)
+    crud.create_transaction(
+        user_id=1, amount=100, category_id=1, date=date(2024, 1, 1)
+    )
+    crud.create_transaction(
+        user_id=1, amount=200, category_id=2, date=date(2024, 1, 2)
+    )
+    transactions = crud.get_transaction(1, year=2024, month=1)
     assert len(transactions) == 2
 
 
@@ -175,6 +192,7 @@ def test_get_category():
     categories = crud.get_category()
     assert len(categories) == 6
     assert categories[0].name == "Salary"
+
 
 def test_update_goal_success():
     crud.create_user("goal@test.com", "A", "B", "goaluser", "pass")
@@ -196,19 +214,23 @@ def test_update_goal_user_not_found():
     assert success is False
     assert msg == "No account with that email"
 
+
 def test_get_total_savings_success():
-    success, user = crud.create_user("totsav-usr1@example.com", "tot", "sav", "totsav1", "pass")
-    crud.add_income(user.user_id, 20000, 1, date(2026,3,25))
+    success, user = crud.create_user(
+        "totsav-usr1@example.com", "tot", "sav", "totsav1", "pass"
+    )
+    crud.add_income(user.user_id, 20000, 1, date(2026, 3, 25))
 
     success, result = crud.get_total_savings(user.user_id)
     assert success is True
     assert result == 0
 
-    crud.add_savings(user.user_id, 13500, date(2026,3,25))
+    crud.add_savings(user.user_id, 13500, date(2026, 3, 25))
 
     success, result = crud.get_total_savings(user.user_id)
-    assert success == True
+    assert success is True
     assert result == 13500
+
 
 def test_update_savings_add_and_remove():
     success, user = crud.create_user(
@@ -219,19 +241,20 @@ def test_update_savings_add_and_remove():
         "pass"
     )
 
-    crud.add_income(user.user_id, 20000, 1, date(2026,3,25))
+    crud.add_income(user.user_id, 20000, 1, date(2026, 3, 25))
 
-    crud.add_savings(user.user_id, 1000, date(2026,3,25))
+    crud.add_savings(user.user_id, 1000, date(2026, 3, 25))
 
     sucess, result = crud.get_total_savings(user.user_id)
-    assert success == True 
+    assert success is True
     assert result == 1000
 
-    crud.withdraw_savings(user.user_id, 400, date(2026,3,26))
+    crud.withdraw_savings(user.user_id, 400, date(2026, 3, 26))
 
     success, result = crud.get_total_savings(user.user_id)
-    assert success == True
+    assert success is True
     assert result == 600
+
 
 def test_savings_not_negative():
     success, user = crud.create_user(
@@ -242,8 +265,8 @@ def test_savings_not_negative():
         "pass"
     )
 
-    crud.withdraw_savings(user.user_id, 500, date(2026,3,26))
+    crud.withdraw_savings(user.user_id, 500, date(2026, 3, 26))
 
     success, result = crud.get_total_savings(user.user_id)
-    assert success == True
+    assert success is True
     assert result == 0
