@@ -11,8 +11,7 @@ BudgetBuddy is a webapplication budgeting tool designed to help users track inco
 
 
 ## Kanban Board  
-We track our workflow using a GitHub Project KanBan Board:  
-https://github.com/orgs/tmuk26-group-1/projects/2
+We track our workflow using a [GitHub KanBan Board](https://github.com/orgs/tmuk26-group-1/projects/2)
 
 
 ## How to run and test the project  
@@ -24,9 +23,12 @@ https://github.com/orgs/tmuk26-group-1/projects/2
 ### Setup the environment
 
 Virtual environment setup:
-1. Clone the repository (skip this if you already have the repo locally): https://github.com/tmuk26-group-1/budget-tool
-2. Create a virtual environment (only needed once per machine): 
+1. Clone the repository (skip this if you already have the repo locally): 
+    ```bash
+    git clone https://github.com/tmuk26-group-1/budget-tool.git
     ```
+2. Create a virtual environment (only needed once per machine): 
+    ```bash
     python -m venv .venv
     ```
 3. Activate the virtual environment (do this every time you start working (you'll know it's active when you see '(.venv)' at the start of your terminal prompt)):
@@ -35,7 +37,7 @@ Virtual environment setup:
         source .venv/bin/activate
         ```
     - Windows:
-        ```bash
+        ```
         .venv\Scripts\activate
         ```
 4. Install dependencies (installs exact package versions from requirements.txt (check with `pip list` if your venv has all packages required, else install)):
@@ -95,7 +97,7 @@ The system will follow a clean separation between frontend, backend, and data la
 ## Workflow
 Work divided into three teams:  
 - Team 1 __FRONTEND__ : Jafar and Vasilis  
-    Decide on the look of the webbapplication and the user interface.
+    Decide on the look of the web application and the user interface.
 - Team 2 __BACKEND__  : Gresa and Ellen  
     Implement the logic behind the application. This is the bridge between the frontend and the database.
 - Team 3 __DATABASE__ : Albin and Simon  
@@ -118,14 +120,14 @@ __COMMUNICATION IS KEY__
 
 ## Project Structure Overview
 The project follows a standard Flask layout to keep frontend, backend, and future database logic organised.
-- _app.py_ - main application file (__BACKEND__). This will later intialize Flask, register routes, connect to the database, and start the server.
+- _app.py_ - main application file (__BACKEND__). This will later initialize Flask, register routes, connect to the database, and start the server.
 - _requirements.txt_ - Specifies all dependency versions needed for the virtual environment to run the project, ensuring consistent environments across machines.
 - _templates/_ - Contains all HTML pages (__FRONTEND__).
     - _base.html_ is the shared layout.
     - _login.html_ the index page where login happens
     - _dashboard.html_ will become real page later.
     - _registration.html the page for registration
-- _static/_ - Stores CDD, images, and other static files (__FRONTEND__).
+- _static/_ - Stores CSS, images, and other static files (__FRONTEND__).
     - _styles.css_ will hold the app's styling.
 - *db/* - Contains all database logic (**DATABASE**).
   - *database.py* sets up the SQLite database connection and initializes tables.
@@ -156,4 +158,4 @@ I, __Jafar Gohari__, declare that I am the sole author of the content I add to t
 I, __Ellen Pennebratt__, declare that I am the sole author of the content I add to this repository.  
 
 
-This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engeneering practices taught in the lectures.
+This project is developed as part of the __Mjukvaruutveckling__ course 2026, and follows the software-engineering practices taught in the lectures.
