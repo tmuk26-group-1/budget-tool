@@ -506,3 +506,14 @@ def test_check_timeout_expired(client):
         sess["login_time"] = time.time() - 400
     response = client.get("/dashboard")
     assert response.status_code == 302
+
+# Tests that a logged in user can deposit savings through the /update_savings route and receive a 200 response
+def test_add_savings_success(client):
+    success, user = crud.create_user(
+        "yeezy@example.com", "Kanye", "West", "Yeezy", generate_password_hash("000000")
+    )
+    client.post("/login", data={"email": "yeezy@example.com", "password": "000000"})
+
+    response = client.post("/update_savings", data={"amount": "500000", "action": "add"}, follow_redirects=True)
+
+    assert response.status_code == 200
