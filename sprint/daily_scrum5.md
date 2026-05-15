@@ -61,19 +61,19 @@ We met last week on friday, decided that this week should be a pretty much final
 ## Jafar Gohari
 
 ### 4/5
-- Did:
-- Blockers:
-- Next:
+- Did: Added savings summary, transaction history, username and pie chart to the dashboard. Finalized the frontend together with Vasilis. Merged PR #172.
+- Blockers: None
+- Next:  Make sure everything connects properly once backend is done with savings.
 
 ### 6/5
-- Did:
-- Blockers:
-- Next:
+- Did: Checked that the dashboard works with Ellen's new savings backend. Made some small adjustments.
+- Blockers: Waiting for savings and rollover to be fully done before we can test everything end to end.
+- Next: Final checks before the lab.
 
 ### 9/5
-- Did:
-- Blockers:
-- Next:
+- Did:  Went through the whole frontend, made sure dashboard, savings, transaction history and pie chart all work with real data.
+- Blockers: None
+- Next: Frontend is done. Help out with any last integration issues if needed.
 
 ---
 
