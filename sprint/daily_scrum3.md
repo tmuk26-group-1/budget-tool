@@ -98,19 +98,20 @@
 
 ## Jafar Gohari
 20/4
-- Did:
-- Blockers:
-- Next:
+- Did: Meeting. Discussed sprint goals and the dashboard structure with the frontend team.
+- Blockers: Waiting for backend routes before we can connect frontend to real data.
+- Next: Start on CSS and styling for the dashboard.
 
 22/4
-- Did:
-- Blockers:
-- Next:
+- Did: Meeting. Went through the new budget logic (savings, "Other" category, carry over). Looked at Vasilis's dashboard and add-transaction pages.
+- Blockers: None
+- Next: Split up and restructure the CSS files.
+
 
 24/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added CSS files base.css, components.css, utils.css and page specific ones for dashboard, login, registration and forgot-password.
+- Blockers: None
+- Next:Keep refining the dashboard styling once backend has the new fields ready.
 
 
 ## Albin Törnberg
