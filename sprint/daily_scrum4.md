@@ -49,14 +49,14 @@ Meeting Monday 27/4
 
 ## Jafar Gohari
 27/4
-- Did:
-- Blockers: 
-- Next: 
+- Did: Cleaned up dashboard.css and base.css, fixed some stuff that was wrong after the CSS refactor. Updated dashboard.html a bit.
+- Blockers: Some CSS conflicts after Vasilis split the files, but sorted it out.
+- Next:  Add logout and monthly goal to the dashboard.
 
 29/4
-- Did:
-- Blockers:
-- Next:
+- Did: Added logout button and monthly budget goal section to dashboard.html and dashboard.css. #157
+- Blockers: None
+- Next: Hook up dynamic variables for the monthly goal.
 
 ## Albin Törnberg
 27/4
